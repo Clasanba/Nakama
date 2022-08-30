@@ -1,26 +1,25 @@
-import React, { useContext } from "react";
-import { Context } from "../store/appContext";
-import rigoImageUrl from "../../img/rigo-baby.jpg";
+import React from "react";
+
+import logoNakama from "/workspace/Nakama/src/front/img/LogoNakamaLetras.png";
 import "../../styles/home.css";
 
 export const Home = () => {
-	const { store, actions } = useContext(Context);
-
-	return (
-		<div className="text-center mt-5">
-			<h1>Hello Rigo!!</h1>
-			<p>
-				<img src={rigoImageUrl} />
-			</p>
-			<div className="alert alert-info">
-				{store.message || "Loading message from the backend (make sure your python backend is running)..."}
-			</div>
-			<p>
-				This boilerplate comes with lots of documentation:{" "}
-				<a href="https://github.com/4GeeksAcademy/react-flask-hello/tree/95e0540bd1422249c3004f149825285118594325/docs">
-					Read documentation
-				</a>
-			</p>
-		</div>
-	);
+  return (
+    <main className="d-flex justify-content-center  ">
+      <figure className="card border-0" style={{width: 40 + "rem"}}>
+        <img src={logoNakama} className="card-img-top logo_nakama" alt="logo_nakama"/>
+        <figcaption className="card-body">
+          <p className="card-text text-center">
+            Somos una comunidad dirigida a personas relacionadas directa o
+            indirectamente con el cáncer, a través de la cual, puedan aprender
+            aspectos sobre el día a día de la enfermedad más allá del propio
+            diagnóstico.
+			Aquí encontraran información sobre alimentación, aspectos psicológicos,
+			avances médicos e investigaciones y entrenamientos para favorecer una mejor
+			calidad de vida.
+          </p>
+        </figcaption>
+      </figure>
+    </main>
+  );
 };
