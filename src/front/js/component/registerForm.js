@@ -38,7 +38,7 @@ const RegisterForm = () => {
                             
                             <div className="container-btn ">
                             <div className="text-center ">
-                                <button type="submit" className=" btn btn-block send-button tx-tfm btn-info">Crear Cuenta</button>
+                                <button type="submit" className=" btn btn-block send-button tx-tfm btn-success">Crear Cuenta</button>
                             </div>
                             
                             <div className="col-md-12 ">
