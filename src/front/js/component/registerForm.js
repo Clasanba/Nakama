@@ -30,10 +30,13 @@ const RegisterForm = () => {
                                 <input type="text" name="username" className="form-control my-input" id="username" placeholder="Nombre usuario" required/>
                             </div>
                             <div className="form-group mb-2">
-                                <input type="email" name="email" className="form-control my-input" id="email" placeholder="Email" required/>
+                                <input type="email" name="email" className="form-control my-input" id="email" placeholder="Correo electrónico" required/>
                             </div>
                             <div className="form-group mb-2">
-                                <input type="password" min="0" name="password" id="password" className="form-control my-input" placeholder="Contraseña" required/>
+                                <input type="password" name="password" id="password" className="form-control my-input" placeholder="Contraseña" required/>
+                            </div>
+                            <div className="form-group mb-2">
+                                <input type="password" name="password" id="password-confirm" className="form-control my-input" placeholder="Repetir contraseña" required/>
                             </div>
                             <div className="container-btn ">
                             <div className="text-center ">
