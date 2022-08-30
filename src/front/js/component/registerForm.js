@@ -3,10 +3,10 @@ import React from "react";
 const RegisterForm = () => {
     return (
         
-        <div className="container">
-            <div className="col-md-6 mx-auto text-center mb-3">
+        <div className="container mt-4">
+            <div className="col-md-6 mx-auto text-center ">
                 <div className="header-title">
-                    <h1 className="wv-heading--title fw-bold">
+                    <h1 className="wv-heading--title fw-bold mb-4">
                         Formulario de Registro
                     </h1>
                     
@@ -16,14 +16,18 @@ const RegisterForm = () => {
                 <div className="col-md-4 mx-auto">
                     <div className="myform form ">
                         <form action="" method="post" name="login">
+                            
                             <div className="form-group mb-2">
                                 <input type="text" name="name" className="form-control my-input" id="name" placeholder="Nombre" required/>
                             </div>
                             <div className="form-group mb-2">
-                                <input type="text" name="apellido1" className="form-control my-input" id="apellido1" placeholder=" Primer apellido" required/>
+                                <input type="text" name="apellido1" className="form-control my-input" id="apellido1" placeholder="Primer apellido" required/>
                             </div>
                             <div className="form-group mb-2">
-                                <input type="text" name="apellido2" className="form-control my-input" id="apellido2" placeholder=" Segundo apellido"/>
+                                <input type="text" name="apellido2" className="form-control my-input" id="apellido2" placeholder="Segundo apellido"/>
+                            </div>
+                            <div className="form-group mb-2">
+                                <input type="text" name="username" className="form-control my-input" id="username" placeholder="Nombre usuario" required/>
                             </div>
                             <div className="form-group mb-2">
                                 <input type="email" name="email" className="form-control my-input" id="email" placeholder="Email" required/>

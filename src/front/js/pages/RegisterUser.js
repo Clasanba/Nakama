@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+
 import RegisterForm from "../component/registerForm";
 
 
@@ -7,15 +7,9 @@ import RegisterForm from "../component/registerForm";
 	
 
 	return (
-		<div className="container-fluid">
-			<RegisterForm/>
-
-			<Link to="/">
-				<span className="btn btn-primary btn-lg" href="#" role="button">
-					Back home
-				</span>
-			</Link>
-		</div>
+		<main className="container-fluid ">
+			<RegisterForm/>	
+		</main>
 	);
 }
 
