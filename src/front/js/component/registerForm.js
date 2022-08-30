@@ -35,9 +35,7 @@ const RegisterForm = () => {
                             <div className="form-group mb-2">
                                 <input type="password" name="password" id="password" className="form-control my-input" placeholder="Contraseña" required/>
                             </div>
-                            <div className="form-group mb-2">
-                                <input type="password" name="password" id="password-confirm" className="form-control my-input" placeholder="Repetir contraseña" required/>
-                            </div>
+                            
                             <div className="container-btn ">
                             <div className="text-center ">
                                 <button type="submit" className=" btn btn-block send-button tx-tfm btn-info">Crear Cuenta</button>
