@@ -1,0 +1,16 @@
+.cardYoutube {
+  width: 25%;
+  height: 25%;
+  margin-left: 35%;
+  margin-top: 5%;
+}
+.heart {
+  margin-right: 20px;
+  margin-bottom: 10px;
+  font-size: 30px;
+  color: black;
+}
+.titulovideo {
+  color: black;
+  font-size: larger;
+}
