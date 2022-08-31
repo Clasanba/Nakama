@@ -12,6 +12,8 @@ import { Footer } from "./component/footer";
 import { Login } from "./component/login";
 import { CardTraining } from "./component/card_training";
 import Psychology from "./pages/psychology";
+import Nutrition from "./pages/nutrition";
+import Article from "./pages/article";
 
 //create your first component
 const Layout = () => {
@@ -31,6 +33,8 @@ const Layout = () => {
             <Route element={<Login />} path="/login" />
             <Route element={<CardTraining />} path="/training" />
             <Route element={<Psychology />} path="/psychology" />
+            <Route element={<Nutrition />} path="/nutrition" />
+            <Route element={<Article />} path="/article" />
             <Route element={<h1>Not found!</h1>} />
           </Routes>
           <Footer />
