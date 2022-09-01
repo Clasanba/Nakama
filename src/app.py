@@ -38,7 +38,6 @@ db.init_app(app)
 CORS(app)
 
 # JWT config
-
 app.config["JWT_SECRET_KEY"] = os.environ.get('JWT_Secret_Key')
 jwt = JWTManager(app)
 #configuración de bcrypt

@@ -1,6 +1,33 @@
-import React from "react";
+import React, { useState } from "react";
 
 const RegisterForm = () => {
+    const [name, setName] = useState("")
+    const [firstName, setFirstName]=useState("")
+    const [lastName, setLastName]=useState("")
+    const [userName, setUserName]=useState("")
+    const [email, setEmail]=useState("")
+    const [password, setPassword]=useState("")
+    const image = "imagen por defecto"
+    const handleSubmit = async (e) =>{
+        e.preventDefault();
+        const res = await fetch("https://3001-clasanba-nakama-o0oa8bahqvy.ws-eu63.gitpod.io/api/register",{
+            method: 'POST',
+            headers:{'Content-Type':'application/json'},
+            body:JSON.stringify({
+                name,
+                first_name:firstName,
+                last_name:lastName,
+                user_name:userName,
+                email,
+                password,
+                image
+            })
+        })
+        const data = await res.json()
+        console.log(data)
+    }
+
+
     return (
         
         <div className="container mt-4">
@@ -15,25 +42,25 @@ const RegisterForm = () => {
             <div className="row">
                 <div className="col-md-4 mx-auto">
                     <div className="myform form ">
-                        <form action="" method="post" name="login">
+                        <form onSubmit={handleSubmit} name="register">
                             
                             <div className="form-group mb-2">
-                                <input type="text" name="name" className="form-control my-input" id="name" placeholder="Nombre" required/>
+                                <input type="text" onChange={(e) => setName(e.target.value)} value={name} name="name" className="form-control my-input" id="name" placeholder="Nombre" required/>
                             </div>
                             <div className="form-group mb-2">
-                                <input type="text" name="apellido1" className="form-control my-input" id="apellido1" placeholder="Primer apellido" required/>
+                                <input type="text" onChange={(e) => setFirstName(e.target.value)} value={firstName} name="first_name" className="form-control my-input" id="apellido1" placeholder="Primer apellido" required/>
                             </div>
                             <div className="form-group mb-2">
-                                <input type="text" name="apellido2" className="form-control my-input" id="apellido2" placeholder="Segundo apellido"/>
+                                <input type="text" onChange={(e) => setLastName(e.target.value)} value={lastName} name="last_name" className="form-control my-input" id="apellido2" placeholder="Segundo apellido"/>
                             </div>
                             <div className="form-group mb-2">
-                                <input type="text" name="username" className="form-control my-input" id="username" placeholder="Nombre usuario" required/>
+                                <input type="text" onChange={(e) => setUserName(e.target.value)} value={userName} name="user_name" className="form-control my-input" id="username" placeholder="Nombre usuario" required/>
                             </div>
                             <div className="form-group mb-2">
-                                <input type="email" name="email" className="form-control my-input" id="email" placeholder="Correo electrónico" required/>
+                                <input type="email" onChange={(e) => setEmail(e.target.value)} value={email} name="email" className="form-control my-input" id="email" placeholder="Correo electrónico" required/>
                             </div>
                             <div className="form-group mb-2">
-                                <input type="password" name="password" id="password" className="form-control my-input" placeholder="Contraseña" required/>
+                                <input type="password" onChange={(e) => setPassword(e.target.value)} value={password} name="password" id="password" className="form-control my-input" placeholder="Contraseña" required/>
                             </div>
                             
                             <div className="container-btn ">
@@ -49,7 +76,7 @@ const RegisterForm = () => {
                             </div>
                             <div className="form-group text-center">
                                 <button className="btn btn-block g-button btn-danger" href="#">
-                                    <i className="fa fa-google"></i> Crear con Google
+                                    <i className="fa fa-google"></i> Registro con Google
                                 </button>
                             </div>
                             </div>
