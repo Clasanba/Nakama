@@ -24,21 +24,26 @@ def register():
     #Encripta la contraseña
     pw_hash = current_app.bcrypt.generate_password_hash(password).decode("utf-8")
     
-    #Comprueba que el email no exista ya en la bbdd
+    # Utilizo query para filtrar el email
     user = User.query.filter_by(email=email).first()
     
-    #Comprueba que el usuario no exista en la BBDD
+    # Utilizo query para filtrar el username
     username = User.query.filter_by(user_name= user_name).first()
     
     if user:
+        # Comprueba que el email no este en la BBDD
         if email == user.email:
             return jsonify({"msg": "Email ya registrado"}),401
     elif username:
+    
+        if username:
+        # Comprueba que el username no este ya creado
+
             if user_name == username.user_name:
                 return jsonify({"msg": "Usuario ya registrado"}),402
         
     else:    
-    #añade el nuevo usuario a la base de datos
+    # Añade el nuevo usuario a la base de datos
         new_user = User(name = name,first_name =first_name,last_name =last_name, user_name = user_name, email = email, password = pw_hash, image = image)
         db.session.add(new_user)
         db.session.commit()
