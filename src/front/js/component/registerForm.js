@@ -7,6 +7,7 @@ const RegisterForm = () => {
     const [userName, setUserName]=useState("")
     const [email, setEmail]=useState("")
     const [password, setPassword]=useState("")
+    const [error, setError] = useState("")
     const image = "imagen por defecto"
     const handleSubmit = async (e) =>{
         e.preventDefault();
@@ -23,8 +24,15 @@ const RegisterForm = () => {
                 image
             })
         })
-        const data = await res.json()
-        console.log(data)
+        if(res.ok){
+            const data = await res.json()
+            console.log(data)
+            //NAVEGAR A LA ROUTA DE LOGIN AUTOMATICAMENTE
+
+        }else {
+            const error = await res.json()
+            setError(error.msg)
+        }
     }
 
 
@@ -42,6 +50,7 @@ const RegisterForm = () => {
             <div className="row">
                 <div className="col-md-4 mx-auto">
                     <div className="myform form ">
+                        {error && <p className="text-danger">{error}</p>}
                         <form onSubmit={handleSubmit} name="register">
                             
                             <div className="form-group mb-2">
