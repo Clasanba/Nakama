@@ -19,13 +19,17 @@ def register():
     user_name = request.json.get("user_name")
     email = request.json.get("email")
     password = request.json.get("password")
-    image = request.json.get("image")        
+    image = request.json.get("image") 
+           
     #Encripta la contraseña
     pw_hash = current_app.bcrypt.generate_password_hash(password).decode("utf-8")
+    
     #Comprueba que el email no exista ya en la bbdd
     user = User.query.filter_by(email=email).first()
+    
     #Comprueba que el usuario no exista en la BBDD
     username = User.query.filter_by(user_name= user_name).first()
+    
     if user:
         if email == user.email:
             return jsonify({"msg": "email ya registrado"}),401
