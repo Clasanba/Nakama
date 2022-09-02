@@ -10,8 +10,6 @@ import injectContext from "./store/appContext";
 
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
-import { Login } from "./component/login";
-import { CardTraining } from "./component/card_training";
 import Psychology from "./pages/psychology";
 import Nutrition from "./pages/nutrition";
 import Article from "./pages/article";
@@ -31,8 +29,7 @@ const Layout = () => {
             <Route element={<Home />} path="/" />
             <Route element={<Training />} path="/training" />
             <Route element={<RegisterUser />} path="/register" />
-            <Route element={<Login />} path="/login" />
-            <Route element={<CardTraining />} path="/training" />
+            <Route element={<LoginView />} path="/login" />
             <Route element={<Psychology />} path="/psychology" />
             <Route element={<Nutrition />} path="/nutrition" />
             <Route element={<Article />} path="/article" />
