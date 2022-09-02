@@ -5,6 +5,7 @@ import ScrollToTop from "./component/scrollToTop";
 import Home from "./pages/home";
 import Training from "./pages/training";
 import RegisterUser from "./pages/registerUser";
+import LoginView from "./pages/login";
 import injectContext from "./store/appContext";
 
 import { Navbar } from "./component/navbar";
