@@ -33,11 +33,14 @@ def register():
     if user:
         # Comprueba que el email no este en la BBDD
         if email == user.email:
-            return jsonify({"msg": "email ya registrado"}),401
-    if username:
+            return jsonify({"msg": "Email ya registrado"}),401
+    elif username:
+    
+        if username:
         # Comprueba que el username no este ya creado
+
             if user_name == username.user_name:
-                return jsonify({"msg": "usuario ya registrado"}),402
+                return jsonify({"msg": "Usuario ya registrado"}),402
         
     else:    
     # Añade el nuevo usuario a la base de datos
