@@ -9,7 +9,7 @@ export const CardTraining = () => {
         <img
           src="https://i.blogs.es/30ba5b/youtube/1366_2000.jpg"
           className="card-img-top"
-          alt="..."
+          alt="training"
         />
         <div className="card-body">
           <a className="card-title text-decoration-none titulovideo">
