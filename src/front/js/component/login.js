@@ -30,7 +30,6 @@ export const Login = () => {
                 type="email"
                 onChange={(e) => setEmail(e.target.value)}
                 value={email}
-                placeholder="email"
                 required
                 className="form-control"
                 id="exampleInputEmail1"
@@ -48,9 +47,8 @@ export const Login = () => {
               type="password"
               onChange={(e) => setPassword(e.target.value)}
               value={password}
-              placeholder="password"
               required
-              className="form-control"
+              className="form-control  "
               id="exampleInputPassword1"
             />
           </div>
