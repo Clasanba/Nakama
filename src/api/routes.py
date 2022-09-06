@@ -9,6 +9,10 @@ from flask_bcrypt import Bcrypt
 
 api = Blueprint('api', __name__)
 
+# función que encripta las contraseñas
+def encrypt_pwd(pwd):
+    return current_app.bcrypt.generate_password_hash(pwd).decode("utf-8")
+
 # user registration
 @api.route('/register', methods=['POST'])
 def register():
@@ -22,7 +26,7 @@ def register():
     image = request.json.get("image") 
            
     #Encripta la contraseña
-    pw_hash = current_app.bcrypt.generate_password_hash(password).decode("utf-8")
+    pw_hash = encrypt_pwd(password)
     
     # Utilizo query para filtrar el email
     user = User.query.filter_by(email=email).first()
@@ -32,6 +36,47 @@ def register():
     
     if user:
         # Comprueba que el email no este en la BBDD
+        if email == user.email:
+            return jsonify({"msg": "Email ya registrado"}),401
+    elif username:
+    
+        if username:
+        # Comprueba que el username no este ya creado
+
+            if user_name == username.user_name:
+                return jsonify({"msg": "Usuario ya registrado"}),402
+        
+    else:    
+    # Añade el nuevo usuario a la base de datos
+        new_user = User(name = name,first_name =first_name,last_name =last_name, user_name = user_name, email = email, password = pw_hash, image = image)
+        db.session.add(new_user)
+        db.session.commit()
+    
+    response_body = {
+        "message": "Usuario registrado correctamente"
+    }
+
+    return jsonify(response_body), 200 
+
+
+@api.route('/login', methods=['POST'])
+def login():
+    # Recibe los datos de usuario 
+
+    email = request.json.get("email")
+    password = request.json.get("password")
+     
+           
+    #Encripta la contraseña
+    
+    pw_hash = encrypt_pwd(password)
+    
+    # Utilizo query para filtrar el email y contraseña
+    user = User.query.filter_by(email=email, password=pw_hash).first()
+    
+    
+    if user:
+        # Comprueba que el email  este en la BBDD
         if email == user.email:
             return jsonify({"msg": "Email ya registrado"}),401
     elif username:
