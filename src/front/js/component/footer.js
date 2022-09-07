@@ -1,12 +1,13 @@
 import React from "react";
+import "../../styles/footer.css";
 
 export const Footer = () => {
   return (
     <>
-      <footer className="footer mt-auto py-3 text-center bg-success bg-gradient">
-        <div className="container-fluid d-flex justify-content-center">
+      <footer className="footer mt-auto py-3 text-center bg-success bg-gradient styleFoot ">
+        <div className="container-fluid d-flex justify-content-center ">
           <a>
-            <i className="fa-brands fa-square-facebook me-3 fs-2 text-white"></i>
+            <i className="fa-brands fa-square-facebook me-3 fs-2 text-white "></i>
           </a>
           <a>
             <i className="fa-brands fa-instagram me-3 fs-2 text-white"></i>

@@ -6,7 +6,7 @@ export const Login = () => {
   return (
     <>
       <div className="containerLogin">
-        <h1 className="mb-3">Registro Usuario</h1>
+        <h1 className="mb-3">Inicio sesión</h1>
         <form>
           <div className="mb-3">
             <label for="exampleInputEmail1" className="form-label mt-3">
