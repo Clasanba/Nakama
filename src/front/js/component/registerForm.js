@@ -24,18 +24,18 @@ const RegisterForm = () => {
       const handleMouseDownPassword = (event) => {
         event.preventDefault();
       };
-      const onFormSubmit = (e) => {
+      const onFormSubmit = async (e) => {
         if (!e.target.checkValidity()) {
-          e.preventDefault();
+            e.preventDefault();
           e.stopPropagation();
         }
-    
-        e.target.classList.add("was-validated");
-      };
-
-    const handleSubmit = async (e) =>{
         e.preventDefault();
+        const regex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,16}$/gm;
+        if(!password.match(regex)){
+            setError(
+                "La contraseña debe contener entre 8-16 caracteres (mayúsculas,minúsculas y dígito)")
         
+        }else{
             const res = await fetch("https://3001-clasanba-nakama-3oq8t6kbx63.ws-eu63.gitpod.io/api/register",{
                 method: 'POST',
                 headers:{'Content-Type':'application/json'},
@@ -59,6 +59,16 @@ const RegisterForm = () => {
                 setError(error.msg)
             }
         }
+    
+        e.target.classList.add("was-validated");
+      };
+
+    const handleSubmit = async (e) =>{
+        e.preventDefault();
+        
+        
+            
+        }
 
 
     return (
@@ -80,15 +90,15 @@ const RegisterForm = () => {
                         <form onSubmit={onFormSubmit} name="register"  className="needs-validation"noValidate>
                             
                             <div className="form-group mb-2 ">
-                                <input type="text" onChange={(e) => setName(e.target.value)} value={name} name="name" className="form-control my-input" id="validationCustom01" placeholder="Nombre" pattern="/ ^ [a-zA-Z] + [a-zA-Z] + $ /;" required/>
+                                <input type="text" onChange={(e) => setName(e.target.value)} value={name} name="name" className="form-control my-input" id="validationCustom01" placeholder="Nombre"  required/>
                                 <div className="invalid-feedback">Nombre incorrecto</div>
                             </div>
                             <div className="form-group mb-2">
-                                <input type="text" onChange={(e) => setFirstName(e.target.value)} value={firstName} name="first_name" className="form-control my-input" id="apellido1" placeholder="Primer apellido" pattern="/ ^ [a-zA-Z] + [a-zA-Z] + $ /;" required/>
+                                <input type="text" onChange={(e) => setFirstName(e.target.value)} value={firstName} name="first_name" className="form-control my-input" id="apellido1" placeholder="Primer apellido"  required/>
                                 <div className="invalid-feedback">Apellido incorrecto</div>
                             </div>
                             <div className="form-group mb-2">
-                                <input type="text" onChange={(e) => setLastName(e.target.value)} value={lastName} name="last_name" className="form-control my-input" id="apellido2" placeholder="Segundo apellido" pattern="/ ^ [a-zA-Z] + [a-zA-Z] + $ /;"/>
+                                <input type="text" onChange={(e) => setLastName(e.target.value)} value={lastName} name="last_name" className="form-control my-input" id="apellido2" placeholder="Segundo apellido" />
                                 <div className="invalid-feedback">Apellido incorrecto</div>
                             </div>
                             <div className="form-group mb-2">
@@ -96,13 +106,13 @@ const RegisterForm = () => {
                                 <div className="invalid-feedback">Introduzca nombre de usuario</div>
                             </div>
                             <div className="form-group mb-2">
-                                <input type="email" onChange={(e) => setEmail(e.target.value)} value={email} name="email" className="form-control my-input" id="email" placeholder="Correo electrónico"  pattern="/^[^@]+@[^@]+.[a-zA-Z]{2,}$" required/>
+                                <input type="email" onChange={(e) => setEmail(e.target.value)} value={email} name="email" className="form-control my-input" id="email" placeholder="Correo electrónico"  required/>
                                 <div className="invalid-feedback">Email incorrecto</div>
                             </div>
                             <div className="form-group mb-2 d-flex justify-content-end" >
                  
                                 <input type={values.showPassword ? 'text' : 'password'} minLength="8" maxLength="16"  onChange={(e) => setPassword(e.target.value)} value={password} name="password" id="password" className="form-control my-input" placeholder="Contraseña" required/>
-                                <div className="invalid-feedback">La contraseña debe contener entre 8-16 caracteres (mayúsculas,minúsculas y dígito)</div>
+                                
                                 <span
                                     aria-label="toggle password visibility"
                                     onClick={handleClickShowPassword}
