@@ -13,6 +13,7 @@ import { Footer } from "./component/footer";
 import Psychology from "./pages/psychology";
 import Nutrition from "./pages/nutrition";
 import Article from "./pages/article";
+import Profile from "./pages/profile";
 
 //create your first component
 const Layout = () => {
