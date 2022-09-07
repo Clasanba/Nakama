@@ -45,7 +45,7 @@ export const Login = () => {
   return (
     <>
       <div className="containerLogin  ">
-        <h1 className="mb-3">Registro Usuario</h1>
+        <h1 className="mb-3">Inicio sesión</h1>
 
         {showError && (
           <div className="alert alert-danger" role="alert">
