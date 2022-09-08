@@ -9,7 +9,7 @@ export const Login = () => {
         <h1 className="mb-3">Registro Usuario</h1>
         <form>
           <div className="mb-3">
-            <label for="exampleInputEmail1" className="form-label mt-3">
+            <label htmlFor="exampleInputEmail1" className="form-label mt-3">
               Correo electrónico
             </label>
             <input
@@ -23,7 +23,7 @@ export const Login = () => {
             </div>
           </div>
           <div className="mb-3">
-            <label for="exampleInputPassword1" className="form-label mt-3">
+            <label htmlFor="exampleInputPassword1" className="form-label mt-3">
               Contraseña
             </label>
             <input
@@ -31,7 +31,7 @@ export const Login = () => {
               className="form-control"
               id="exampleInputPassword1"
             />
-            <a href="#" class="stretched-link">
+            <a href="#" className="stretched-link">
               ¿Olvidaste la contraseña?
             </a>
           </div>

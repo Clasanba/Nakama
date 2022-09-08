@@ -4,7 +4,7 @@ import Cards from "../component/cards";
 const Psychology = () => {
   return (
     <>
-      <h1>Psychology</h1>
+      <h1 className="text-success">Psicología</h1>
       <Cards />
     </>
   );
