@@ -58,6 +58,12 @@ def register():
 
     return jsonify(response_body), 200 
 
+def check_password(hash, password):
+    try:
+        return current_app.bcrypt.check_password_hash(hash, password)
+    except: 
+        return False
+
 @api.route('/login', methods=['POST'])
 def login():
     # Recibe los datos de usuario 
@@ -65,25 +71,13 @@ def login():
     email = request.json.get("email")
     password = request.json.get("password")
      
-           
-    #Encripta la contraseña
-    
-    pw_hash = encrypt_pwd(password)
-    
+
     # Utilizo query para filtrar el email y contraseña
-    user = User.query.filter_by(email=email, password=pw_hash).first()
+    user = User.query.filter_by(email=email).first()
     
-    if user:
-        
-        if password != user.password:
-            return jsonify({"msg": "Contraseña erronea"}),401
-        else:
-            access_token = create_access_token(identity=email)
-            return jsonify({"access_token": access_token})
-    else:
-        return jsonify({"msg":"Dirección de correo incorrecta"}), 401
-    response_body = {
-        "menssage" : "login"
-    }
-    return jsonify(response_body), 200
+    if user and check_password(user.password, password):
+        access_token = create_access_token(identity=email)
+        return jsonify({"access_token": access_token})
+
+    return jsonify({}),400
 

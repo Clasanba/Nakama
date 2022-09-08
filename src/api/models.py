@@ -25,6 +25,7 @@ class User(db.Model):
             "last_name": self.last_name,
             "user_name": self.user_name,
             "image": self.image,
+            "pwd":self.password
         }
 class Favorite(db.Model):
     id = db.Column(db.Integer, primary_key=True)

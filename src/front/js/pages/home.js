@@ -2,8 +2,11 @@ import React from "react";
 
 import logoNakama from "/workspace/Nakama/src/front/img/LogoNakamaLetras.png";
 import "../../styles/home.css";
+import { isLoggedIn } from "../auth";
 
- const Home = () => {
+const Home = () => {
+  const hasLogin = isLoggedIn();
+
   return (
     <main className="d-flex justify-content-center  ">
       <figure className="card border-0" style={{ width: 40 + "rem" }}>
@@ -12,6 +15,7 @@ import "../../styles/home.css";
           className="card-img-top logo_nakamaHome"
           alt="logo_nakama"
         />
+        {!hasLogin ? "No estás logueado!" : ""}
         <figcaption className="card-body">
           <p className="card-text text-center">
             Somos una comunidad dirigida a personas relacionadas directa o
@@ -26,4 +30,4 @@ import "../../styles/home.css";
     </main>
   );
 };
-export default Home
+export default Home;
