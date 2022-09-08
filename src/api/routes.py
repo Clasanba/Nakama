@@ -58,7 +58,6 @@ def register():
 
     return jsonify(response_body), 200 
 
-
 @api.route('/login', methods=['POST'])
 def login():
     # Recibe los datos de usuario 
@@ -74,27 +73,17 @@ def login():
     # Utilizo query para filtrar el email y contraseña
     user = User.query.filter_by(email=email, password=pw_hash).first()
     
-    
     if user:
-        # Comprueba que el email  este en la BBDD
-        if email == user.email:
-            return jsonify({"msg": "Email ya registrado"}),401
-    elif username:
-    
-        if username:
-        # Comprueba que el username no este ya creado
-
-            if user_name == username.user_name:
-                return jsonify({"msg": "Usuario ya registrado"}),402
         
-    else:    
-    # Añade el nuevo usuario a la base de datos
-        new_user = User(name = name,first_name =first_name,last_name =last_name, user_name = user_name, email = email, password = pw_hash, image = image)
-        db.session.add(new_user)
-        db.session.commit()
-    
+        if password != user.password:
+            return jsonify({"msg": "Contraseña erronea"}),401
+        else:
+            access_token = create_access_token(identity=email)
+            return jsonify({"access_token": access_token})
+    else:
+        return jsonify({"msg":"Dirección de correo incorrecta"}), 401
     response_body = {
-        "message": "Usuario registrado correctamente"
+        "menssage" : "login"
     }
-
     return jsonify(response_body), 200
+
