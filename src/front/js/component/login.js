@@ -1,30 +1,64 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "../../styles/login.css";
+import { saveToken } from "../auth";
 
 export const Login = () => {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
+  const [showError, setShowError] = useState(false);
+  const navigate = useNavigate();
 
   const onFormSubmit = (e) => {
-    if (!e.target.checkValidity()) {
-      e.preventDefault();
-      e.stopPropagation();
-    }
-
+    e.preventDefault();
+    e.stopPropagation();
     e.target.classList.add("was-validated");
+    if (!e.target.checkValidity()) {
+      return;
+    }
+    fetch(
+      "https://3001-clasanba-nakama-k43de7m1xg6.ws-eu64.gitpod.io/api/login",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email,
+          password,
+        }),
+      }
+    )
+      .then((response) => {
+        if (response.status !== 200) {
+          throw new Error();
+        }
+        return response.json();
+      })
+      .then((data) => {
+        saveToken(data.access_token);
+        navigate("/");
+      })
+      .catch(() => setShowError(true));
   };
 
   return (
     <>
-      <div className="containerLogin">
-        <h1 className="mb-3">Inicio sesión</h1>
-        <form>
+      <div className="containerLogin  ">
+        <h1 className="mb-3">Registro Usuario</h1>
+
+        {showError && (
+          <div className="alert alert-danger" role="alert">
+            Email y/o contraseña incorrecta.
+          </div>
+        )}
+
+        <form className="needs-validation" noValidate onSubmit={onFormSubmit}>
           <div className="mb-3">
             <label htmlFor="exampleInputEmail1" className="form-label mt-3">
               Correo electrónico
             </label>
-            <div class="input-group has-validation">
+            <div className="input-group has-validation">
               <input
                 type="email"
                 onChange={(e) => setEmail(e.target.value)}
@@ -34,7 +68,9 @@ export const Login = () => {
                 id="exampleInputEmail1"
                 aria-describedby="emailHelp"
               />
-              <div class="invalid-feedback">Por favor,introduzca un email</div>
+              <div className="invalid-feedback">
+                Por favor,introduzca un email
+              </div>
             </div>
           </div>
 
