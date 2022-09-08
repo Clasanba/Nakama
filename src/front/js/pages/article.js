@@ -4,7 +4,7 @@ import Cards from "../component/cards";
 const Article = () => {
   return (
     <>
-      <h1>Articles</h1>
+      <h1 className="text-success">Artículos</h1>
       <Cards />
     </>
   );

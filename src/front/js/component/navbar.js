@@ -9,22 +9,26 @@ export const Navbar = () => {
     <>
       <nav className="navbar bg-success bg-gradient">
         <div className="container-fluid ">
-          <a className="navbar-brand ">
+          <Link to="/" className="navbar-brand ">
             <img src={logoNakama1} className="logo_navBar" />
-          </a>
+          </Link>
           <form className="d-flex" role="search">
+            <Link to="/register">
             <button
               className="bg-success text-white p-2 me-md-3 border-0 bg-opacity-10"
               type="button"
             >
               Registro usuario
             </button>
+            </Link>
+            <Link to="/login">
             <button
               className="bg-success text-white p-2 me-md-3 border-0 bg-opacity-10"
               type="button"
             >
               Inicio sesión
             </button>
+            </Link>
           </form>
         </div>
       </nav>
@@ -32,19 +36,19 @@ export const Navbar = () => {
         <div className=" ">
           <ul className="nav ">
             <li className="nav-item ">
-              <a className="nav-link text-white" aria-current="page" href="#">
+              <Link to="/psychology" className="nav-link text-white" >
                 Psicología
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link text-white" href="#">
+              <Link to="/nutrition" className="nav-link text-white" >
                 Nutrición
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link text-white" href="#">
+              <Link to="/article" className="nav-link text-white">
                 Artículos
-              </a>
+              </Link>
             </li>
           </ul>
         </div>
