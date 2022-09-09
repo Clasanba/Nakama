@@ -4,9 +4,9 @@ import { Login } from "../component/login";
 
 const LoginView = () => {
   return (
-    <main className="container-fluid ">
+    <div className="container-fluid ">
       <Login />
-    </main>
+    </div>
   );
 };
 
