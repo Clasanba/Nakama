@@ -37,7 +37,7 @@ const RegisterForm = () => {
       );
     } else {
       const res = await fetch(
-        process.env.BACKEND_URL + "/api/register",
+        "https://3001-clasanba-nakama-6tel6trqglz.ws-eu64.gitpod.io/api/register",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
