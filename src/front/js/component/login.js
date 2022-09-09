@@ -17,7 +17,7 @@ export const Login = () => {
       return;
     }
     fetch(
-      "https://3001-clasanba-nakama-k43de7m1xg6.ws-eu64.gitpod.io/api/login",
+      process.env.BACKEND_URL + "/api/login",
       {
         method: "POST",
         headers: {
