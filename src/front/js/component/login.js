@@ -31,14 +31,14 @@ export const Login = () => {
               className="form-control"
               id="exampleInputPassword1"
             />
-            <a href="#" className="stretched-link">
-              ¿Olvidaste la contraseña?
-            </a>
           </div>
           <button type="submit" className="btn btn-outline-success">
             Entrar
           </button>
         </form>
+        <a href="/">
+          <p>¿Olvidaste la contraseña?</p>
+        </a>
       </div>
     </>
   );
