@@ -4,7 +4,7 @@ import Cards from "../component/cards";
 const Nutrition = () => {
   return (
     <>
-      <h1>Nutrition</h1>
+      <h1 className="text-success">Nutrición</h1>
       <Cards />
     </>
   );

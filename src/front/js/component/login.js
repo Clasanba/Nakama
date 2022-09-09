@@ -1,44 +1,99 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "../../styles/login.css";
+import { saveToken } from "../auth";
 
 export const Login = () => {
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState();
+  const [showError, setShowError] = useState(false);
+  const navigate = useNavigate();
+
+  const onFormSubmit = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    e.target.classList.add("was-validated");
+    if (!e.target.checkValidity()) {
+      return;
+    }
+    fetch(
+      process.env.BACKEND_URL + "/api/login",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email,
+          password,
+        }),
+      }
+    )
+      .then((response) => {
+        if (response.status !== 200) {
+          throw new Error();
+        }
+        return response.json();
+      })
+      .then((data) => {
+        saveToken(data.access_token);
+        navigate("/");
+      })
+      .catch(() => setShowError(true));
+  };
+
   return (
     <>
-      <div className="containerLogin">
+      <div className="containerLogin  ">
         <h1 className="mb-3">Inicio sesión</h1>
-        <form>
+
+        {showError && (
+          <div className="alert alert-danger" role="alert">
+            Email y/o contraseña incorrecta.
+          </div>
+        )}
+
+        <form className="needs-validation" noValidate onSubmit={onFormSubmit}>
           <div className="mb-3">
-            <label for="exampleInputEmail1" className="form-label mt-3">
+            <label htmlFor="exampleInputEmail1" className="form-label mt-3">
               Correo electrónico
             </label>
-            <input
-              type="email"
-              className="form-control"
-              id="exampleInputEmail1"
-              aria-describedby="emailHelp"
-            />
-            <div id="emailHelp" className="form-text">
-              Nunca compartiremos su correo electrónico con nadie más.
+            <div className="input-group has-validation">
+              <input
+                type="email"
+                onChange={(e) => setEmail(e.target.value)}
+                value={email}
+                required
+                className="form-control"
+                id="exampleInputEmail1"
+                aria-describedby="emailHelp"
+              />
+              <div className="invalid-feedback">
+                Por favor,introduzca un email
+              </div>
             </div>
           </div>
+
           <div className="mb-3">
-            <label for="exampleInputPassword1" className="form-label mt-3">
+            <label htmlFor="exampleInputPassword1" className="form-label mt-3">
               Contraseña
             </label>
             <input
               type="password"
-              className="form-control"
+              onChange={(e) => setPassword(e.target.value)}
+              value={password}
+              required
+              className="form-control  "
               id="exampleInputPassword1"
             />
-            <a href="#" class="stretched-link">
-              ¿Olvidaste la contraseña?
-            </a>
           </div>
           <button type="submit" className="btn btn-outline-success">
             Entrar
           </button>
         </form>
+        <a href="/">
+          <p>¿Olvidaste la contraseña?</p>
+        </a>
       </div>
     </>
   );

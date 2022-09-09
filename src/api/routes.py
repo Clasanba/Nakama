@@ -9,6 +9,10 @@ from flask_bcrypt import Bcrypt
 
 api = Blueprint('api', __name__)
 
+# función que encripta las contraseñas
+def encrypt_pwd(pwd):
+    return current_app.bcrypt.generate_password_hash(pwd).decode("utf-8")
+
 # user registration
 @api.route('/register', methods=['POST'])
 def register():
@@ -22,7 +26,7 @@ def register():
     image = request.json.get("image") 
            
     #Encripta la contraseña
-    pw_hash = current_app.bcrypt.generate_password_hash(password).decode("utf-8")
+    pw_hash = encrypt_pwd(password)
     
     # Utilizo query para filtrar el email
     user = User.query.filter_by(email=email).first()
@@ -52,4 +56,28 @@ def register():
         "message": "Usuario registrado correctamente"
     }
 
-    return jsonify(response_body), 200
+    return jsonify(response_body), 200 
+
+def check_password(hash, password):
+    try:
+        return current_app.bcrypt.check_password_hash(hash, password)
+    except: 
+        return False
+
+@api.route('/login', methods=['POST'])
+def login():
+    # Recibe los datos de usuario 
+
+    email = request.json.get("email")
+    password = request.json.get("password")
+     
+
+    # Utilizo query para filtrar el email y contraseña
+    user = User.query.filter_by(email=email).first()
+    
+    if user and check_password(user.password, password):
+        access_token = create_access_token(identity=email)
+        return jsonify({"access_token": access_token})
+
+    return jsonify({}),400
+
