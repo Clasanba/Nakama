@@ -1,14 +1,11 @@
 * {
   font-family: "Roboto Mono", monospace;
 }
-.layout{
+.layout {
   height: 100vh;
   display: flex;
   flex-direction: column;
- 
-
 }
 .layout-main {
   flex-grow: 1;
-  
 }
