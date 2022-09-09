@@ -33,7 +33,7 @@ const RegisterForm = () => {
     const regex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,16}$/gm;
     if (!password.match(regex)) {
       setError(
-        "La contraseña debe contener entre 8-16 caracteres (mayúsculas,minúsculas y dígito)"
+        "La contraseña debe contener entre 8-16 caracteres (mayúsculas,minúsculas y dígito) "
       );
     } else {
       const res = await fetch(
