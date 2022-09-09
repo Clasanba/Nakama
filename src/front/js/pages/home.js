@@ -3,9 +3,9 @@ import React from "react";
 import logoNakama from "/workspace/Nakama/src/front/img/LogoNakamaLetras.png";
 import "../../styles/home.css";
 
- const Home = () => {
+const Home = () => {
   return (
-    <main className="d-flex justify-content-center  ">
+    <div className="d-flex justify-content-center  ">
       <figure className="card border-0" style={{ width: 40 + "rem" }}>
         <img
           src={logoNakama}
@@ -23,7 +23,7 @@ import "../../styles/home.css";
           </p>
         </figcaption>
       </figure>
-    </main>
+    </div>
   );
 };
-export default Home
+export default Home;
