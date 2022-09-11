@@ -4,3 +4,9 @@
   margin-top: 5%;
   color: rgba(12, 121, 59, 0.856);
 }
+.show-pass {
+  position: absolute;
+  display: block;
+  text-align: center;
+  padding: 0.3rem 1rem 0.5rem;
+}
