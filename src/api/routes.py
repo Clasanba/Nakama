@@ -6,7 +6,7 @@ from api.models import db, User
 from api.utils import generate_sitemap, APIException
 from flask_jwt_extended import create_access_token, get_jwt_identity, jwt_required, JWTManager
 from flask_bcrypt import Bcrypt
-
+from datetime import timedelta
 
 api = Blueprint('api', __name__)
 
@@ -77,7 +77,8 @@ def login():
     user = User.query.filter_by(email=email).first()
     
     if user and check_password(user.password, password):
-        access_token = create_access_token(identity=email)
+        time= timedelta(hours=24)
+        access_token = create_access_token(identity=email, expires_delta=time)
         return jsonify({"access_token": access_token})
 
     return jsonify({}),400
@@ -91,13 +92,13 @@ def user_profile():
     return jsonify(user.serialize()), 200
 
 # User profile modificación de los datos de usuario (ruta privada)
-@api.route('/profile_update', methods=['GET','PUT'])
+@api.route('/profile', methods=['PUT'])
 @jwt_required()
 def user_profile_update():
     user = get_jwt_identity()
     name = request.json.get("name")
-    first_name = request.json.get("first_name")
-    last_name = request.json.get("last_name")
+    first_name = request.json.get("firstName")
+    last_name = request.json.get("lastName")
     email = request.json.get("email")
     password = request.json.get("password")
     image = request.json.get("image")
@@ -110,7 +111,7 @@ def user_profile_update():
     user_update.name = name
     user_update.first_name = first_name
     user_update.last_name = last_name
-    user_update.email = email
+    # user_update.email = email -> eliminar para no tener que comprobar y guardar en la base de datos que el email esta libre
     user_update.password = pw_hash
 
     

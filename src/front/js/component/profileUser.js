@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { getToken, saveToken } from "../auth";
 
 const ProfileUser = () => {
   const [name, setName] = useState("");
@@ -7,6 +9,41 @@ const ProfileUser = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const image = "imagen por defecto";
+  const [showError, setShowError] = useState(false);
+  const navigate = useNavigate();
+
+  const onFormSubmit = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    e.target.classList.add("was-validated");
+    if (!e.target.checkValidity()) {
+      return;
+    }
+    fetch(process.env.BACKEND_URL + "/api/profile", {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + getToken(),
+      },
+      body: JSON.stringify({
+        name,
+        firstName,
+        lastName,
+        email,
+        password,
+      }),
+    })
+      .then((response) => {
+        if (response.status !== 200) {
+          throw new Error();
+        }
+        return response.json();
+      })
+      .then((data) => {
+        navigate("/profile");
+      })
+      .catch(() => setShowError(true));
+  };
 
   return (
     <div className="container-fluid ">
@@ -35,10 +72,16 @@ const ProfileUser = () => {
             action="##"
             method="post"
             id="registrationForm"
+            onSubmit={onFormSubmit}
           >
+            {showError && (
+              <div className="alert alert-danger" role="alert">
+                No se ha podido actualizar los datos de usuario
+              </div>
+            )}
             <div className="form-group d-flex justify-content-center">
               <div className="col-md-6">
-                <label for="first_name">
+                <label for="name">
                   <h4 className="text-success mt-2">Nombre</h4>
                 </label>
                 <input
@@ -53,7 +96,7 @@ const ProfileUser = () => {
             </div>
             <div className="form-group d-flex justify-content-center">
               <div className="col-md-6">
-                <label for="last_name">
+                <label for="first_name">
                   <h4 className="text-success">Primer apellido</h4>
                 </label>
                 <input
