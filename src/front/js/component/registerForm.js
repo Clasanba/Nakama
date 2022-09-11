@@ -119,7 +119,7 @@ const RegisterForm = () => {
                   id="apellido2"
                   placeholder="Segundo apellido"
                 />
-                <div className="invalid-feedback">Apellido incorrecto</div>
+                
               </div>
               <div className="form-group mb-2">
                 <input

@@ -7,6 +7,7 @@ from api.utils import generate_sitemap, APIException
 from flask_jwt_extended import create_access_token, get_jwt_identity, jwt_required, JWTManager
 from flask_bcrypt import Bcrypt
 
+
 api = Blueprint('api', __name__)
 
 # función que encripta las contraseñas
@@ -81,3 +82,55 @@ def login():
 
     return jsonify({}),400
 
+# User Profile una vez logueado hago que me traiga los datos del usuario (ruta privada)
+@api.route('/profile', methods=['GET'])
+@jwt_required()
+def user_profile():
+    current_user = get_jwt_identity()
+    user = User.query.filter_by(email=current_user).first()
+    return jsonify(user.serialize()), 200
+
+# User profile modificación de los datos de usuario (ruta privada)
+@api.route('/profile_update', methods=['GET','PUT'])
+@jwt_required()
+def user_profile_update():
+    user = get_jwt_identity()
+    name = request.json.get("name")
+    first_name = request.json.get("first_name")
+    last_name = request.json.get("last_name")
+    email = request.json.get("email")
+    password = request.json.get("password")
+    image = request.json.get("image")
+    user_name = request.json.get("user_name")
+    
+    
+    pw_hash = encrypt_pwd(password)
+    
+    user_update = User.query.filter_by(email=user).first()
+    user_update.name = name
+    user_update.first_name = first_name
+    user_update.last_name = last_name
+    user_update.email = email
+    user_update.password = pw_hash
+
+    
+    db.session.commit()
+    response_body = {
+        "message": "Usuario modificado correctamente"
+    }
+    return jsonify(response_body),200
+
+# User profile eliminar cuenta (ruta privada)
+@api.route("/profile", methods=['DELETE'])
+@jwt_required()
+def delete_user_profile():
+    current_user = get_jwt_identity()
+    delete_user = User.query.filter_by(email = current_user).first()
+    
+    db.session.delete(delete_user)
+    db.session.commit()
+    
+    response_body = {
+        "message": "Usuario eliminado correctamente"
+    }
+    return jsonify(response_body),200
