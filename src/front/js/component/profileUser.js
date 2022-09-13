@@ -8,10 +8,31 @@ const ProfileUser = () => {
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const image = "imagen por defecto";
+  const [files,setFiles]=useState(null);
   const [showError, setShowError] = useState(false);
   const navigate = useNavigate();
-
+  
+  const uploadImage = (evt) =>{
+    evt.preventDefault();
+    // we are about to send this to the backend.
+    console.log("This are the files", files);
+    let body = new FormData();
+    body.append("profile_image", files[0]);
+    const options = {
+        body,
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + getToken(),
+        }
+    };
+    // you need to have the user_id in the localStorage
+    
+    fetch(process.env.BACKEND_URL + "/api/profile", options)
+        .then(resp => resp.json())
+        .then(data => console.log("Success!!!!", data))
+        .catch(error => console.error("ERRORRRRRR!!!", error));
+}
   const onFormSubmit = (e) => {
     e.preventDefault();
     e.stopPropagation();
@@ -54,6 +75,7 @@ const ProfileUser = () => {
       </div>
       <div className="row d-flex justify-content-center mt-2">
         <div className="col-md-4">
+          <form onSubmit={uploadImage}>
           <div className="text-center">
             <img
               src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png"
@@ -63,10 +85,12 @@ const ProfileUser = () => {
 
             <input
               type="file"
+              onChange={(e)=>setFiles(e.target.files)}
               className="text-center center-block file-upload mt-2"
             />
+            <button>Guardar imagen</button>
           </div>
-
+          </form>
           <form
             className="form"
             action="##"
@@ -81,7 +105,7 @@ const ProfileUser = () => {
             )}
             <div className="form-group d-flex justify-content-center">
               <div className="col-md-6">
-                <label for="name">
+                <label htmlFor="name">
                   <h4 className="text-success mt-2">Nombre</h4>
                 </label>
                 <input
@@ -96,7 +120,7 @@ const ProfileUser = () => {
             </div>
             <div className="form-group d-flex justify-content-center">
               <div className="col-md-6">
-                <label for="first_name">
+                <label htmlFor="first_name">
                   <h4 className="text-success">Primer apellido</h4>
                 </label>
                 <input
@@ -110,7 +134,7 @@ const ProfileUser = () => {
             </div>
             <div className="form-group d-flex justify-content-center">
               <div className="col-md-6">
-                <label for="last_name">
+                <label htmlFor="last_name">
                   <h4 className="text-success">Segundo apellido</h4>
                 </label>
                 <input
@@ -125,7 +149,7 @@ const ProfileUser = () => {
 
             <div className="form-group d-flex justify-content-center">
               <div className="col-md-6">
-                <label for="email">
+                <label htmlFor="email">
                   <h4 className="text-success">Correo electrónico </h4>
                 </label>
                 <input
@@ -140,7 +164,7 @@ const ProfileUser = () => {
 
             <div className="form-group d-flex justify-content-center">
               <div className="col-lg-6">
-                <label for="password">
+                <label htmlFor="password">
                   <h4 className="text-success">Contraseña</h4>
                 </label>
                 <input

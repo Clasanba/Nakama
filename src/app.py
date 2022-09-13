@@ -15,6 +15,7 @@ from api.commands import setup_commands
 from flask_jwt_extended import JWTManager
 #importo libreria para encriptación
 from flask_bcrypt import Bcrypt
+import cloudinary
 
 #from models import Person
 
@@ -36,6 +37,19 @@ db.init_app(app)
 
 # Allow CORS requests to this API
 CORS(app)
+
+# Configuración cloudinary
+app.config['CLOUD_NAME'] = os.environ.get("CLOUD_NAME")
+app.config['CLOUD_API_KEY'] = os.environ.get("CLOUD_API_KEY")
+app.config['CLOUD_API_SECRECT'] = os.environ.get("CLOUD_API_SECRECT")
+
+
+cloudinary.config( 
+cloud_name = app.config['CLOUD_NAME'] , 
+ api_key = app.config['CLOUD_API_KEY'], 
+ api_secret = app.config['CLOUD_API_SECRECT'],
+ secure=True)
+
 
 # JWT config
 app.config["JWT_SECRET_KEY"] = os.environ.get('JWT_Secret_Key')
