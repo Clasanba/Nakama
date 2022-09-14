@@ -1,11 +1,15 @@
-import React from "react";
+import React,{useContext} from "react";
 import Cards from "../component/cards";
+import { Context } from "../store/appContext"
 
 const Nutrition = () => {
+  const {store, actions} = useContext(Context)
   return (
     <>
-      <h1 className="text-success">Nutrición</h1>
-      <Cards />
+      <h1 className="text-success text-center">Nutrición</h1>
+      <div className="d-flex">
+      <Cards articles={store.nutrition}/>
+      </div>
     </>
   );
 };
