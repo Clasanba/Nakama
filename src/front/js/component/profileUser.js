@@ -46,25 +46,22 @@ const ProfileUser = () => {
   };
 
   return (
-    <div className="container-fluid ">
-      <div className="row">
-        <div className="mt-2 text-center">
-          <h1 className="text-success text-center">Nombre de usuario</h1>
-        </div>
-      </div>
+    <div className="container-fluid justify">
+      
       <div className="row d-flex justify-content-center mt-2">
-        <div className="col-md-4">
+        <div className="col-12">
           <div className="text-center">
             <img
               src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png"
-              className="avatar rounded-circle img-thumbnail"
+              className="avatar  img-thumbnail"
               alt="avatar"
             />
-
+            <div className="d-flex justify-content-center mt-1">
             <input
-              type="file"
-              className="text-center center-block file-upload mt-2"
+              type="file" 
+              className="text-center row "
             />
+            </div>
           </div>
 
           <form
@@ -81,7 +78,7 @@ const ProfileUser = () => {
             )}
             <div className="form-group d-flex justify-content-center">
               <div className="col-md-6">
-                <label for="name">
+                <label htmlFor="name">
                   <h4 className="text-success mt-2">Nombre</h4>
                 </label>
                 <input
@@ -96,7 +93,7 @@ const ProfileUser = () => {
             </div>
             <div className="form-group d-flex justify-content-center">
               <div className="col-md-6">
-                <label for="first_name">
+                <label htmlFor="first_name">
                   <h4 className="text-success">Primer apellido</h4>
                 </label>
                 <input
@@ -110,7 +107,7 @@ const ProfileUser = () => {
             </div>
             <div className="form-group d-flex justify-content-center">
               <div className="col-md-6">
-                <label for="last_name">
+                <label htmlFor="last_name">
                   <h4 className="text-success">Segundo apellido</h4>
                 </label>
                 <input
@@ -125,7 +122,7 @@ const ProfileUser = () => {
 
             <div className="form-group d-flex justify-content-center">
               <div className="col-md-6">
-                <label for="email">
+                <label htmlFor="email">
                   <h4 className="text-success">Correo electrónico </h4>
                 </label>
                 <input
@@ -140,7 +137,7 @@ const ProfileUser = () => {
 
             <div className="form-group d-flex justify-content-center">
               <div className="col-lg-6">
-                <label for="password">
+                <label htmlFor="password">
                   <h4 className="text-success">Contraseña</h4>
                 </label>
                 <input
@@ -154,7 +151,7 @@ const ProfileUser = () => {
             </div>
 
             <div className="form-group ">
-              <div className="col-xs-12">
+              <div className=" d-flex justify-content-evenly mb-3">
                 <button
                   className="btn btn-lg btn btn-outline-success mx-5"
                   type="submit"
@@ -163,12 +160,7 @@ const ProfileUser = () => {
                   Guardar
                 </button>
 
-                <button
-                  className="btn btn-lg btn btn-outline-danger ms-2"
-                  type="delete"
-                >
-                  Eliminar cuenta
-                </button>
+              
               </div>
             </div>
           </form>
