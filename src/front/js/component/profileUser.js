@@ -34,13 +34,12 @@ const ProfileUser = () => {
       body,
       method: "POST",
       headers: {
-        "Content-Type": "application/json",
         Authorization: "Bearer " + getToken(),
       },
     };
     // you need to have the user_id in the localStorage
 
-    fetch(process.env.BACKEND_URL + "/api/profile", options)
+    fetch(process.env.BACKEND_URL + "/api/profile/image", options)
       .then((resp) => resp.json())
       .then((data) => console.log("Success!!!!", data))
       .catch((error) => console.error("ERRORRRRRR!!!", error));
@@ -106,6 +105,7 @@ const ProfileUser = () => {
               <button>Guardar imagen</button>
             </div>
           </form>
+
           <form
             className="form"
             action="##"

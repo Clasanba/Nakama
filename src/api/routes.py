@@ -126,7 +126,7 @@ def user_profile_update():
     return jsonify(response_body),200
 
 # User profile image
-@api.route('/profile', methods=['POST'])
+@api.route('/profile/image', methods=['POST'])
 @jwt_required()
 def upload_image():
     if 'profile_image' in request.files:
@@ -141,7 +141,7 @@ def upload_image():
         db.session.add(user_update)
         db.session.commit()
 
-        return jsonify(user1.serialize()), 200
+        return jsonify(user_update.serialize()), 200
     else:
         raise APIException('Missing profile_image on the FormData')
 
