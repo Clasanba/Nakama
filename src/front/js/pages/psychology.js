@@ -1,15 +1,14 @@
-import React,{useContext} from "react";
+import React, { useContext } from "react";
 import Cards from "../component/cards";
-import { Context } from "../store/appContext"
-
+import { Context } from "../store/appContext";
 
 const Psychology = () => {
-  const {store, actions} = useContext(Context)
+  const { store } = useContext(Context);
   return (
     <div className="">
       <h1 className="text-success text-center">Psicología</h1>
       <div className="d-flex">
-      <Cards articles={store.psychology}/>
+        <Cards articles={store.psychology} />
       </div>
     </div>
   );
