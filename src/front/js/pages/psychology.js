@@ -1,12 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
 import Cards from "../component/cards";
+import { Context } from "../store/appContext";
 
 const Psychology = () => {
+  const { store } = useContext(Context);
   return (
-    <>
-      <h1 className="text-success">Psicología</h1>
-      <Cards />
-    </>
+    <div className="">
+      <h1 className="text-success text-center">Psicología</h1>
+      <div className="d-flex">
+        <Cards articles={store.psychology} />
+      </div>
+    </div>
   );
 };
 
