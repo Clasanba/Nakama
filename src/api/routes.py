@@ -129,12 +129,14 @@ def user_profile_update():
 @api.route('/profile/image', methods=['POST'])
 @jwt_required()
 def upload_image():
+    mailRegisterUser = get_jwt_identity()
+  
     if 'profile_image' in request.files:
         # upload file to uploadcare
         result = cloudinary.uploader.upload(request.files['profile_image'])
 
         # fetch for the user
-        user_update = User.query.filter_by(email=user).first()
+        user_update = User.query.filter_by(email= mailRegisterUser).first()
         # update the user with the given cloudinary image URL
         user_update.image = result['secure_url']
 
