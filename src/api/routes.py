@@ -7,6 +7,10 @@ from api.utils import generate_sitemap, APIException
 from flask_jwt_extended import create_access_token, get_jwt_identity, jwt_required, JWTManager
 from flask_bcrypt import Bcrypt
 from datetime import timedelta
+from  dotenv  import  load_dotenv 
+import cloudinary
+import cloudinary.api
+from cloudinary.uploader import upload
 
 api = Blueprint('api', __name__)
 
@@ -101,9 +105,8 @@ def user_profile_update():
     last_name = request.json.get("lastName")
     email = request.json.get("email")
     password = request.json.get("password")
-    image = request.json.get("image")
     user_name = request.json.get("user_name")
-    
+    # image = cloudinary.uploader.upload(request.files['image'])
     
     pw_hash = encrypt_pwd(password)
     
@@ -111,15 +114,38 @@ def user_profile_update():
     user_update.name = name
     user_update.first_name = first_name
     user_update.last_name = last_name
+    # user_update.image = image['secure_url']
+    
     # user_update.email = email -> eliminar para no tener que comprobar y guardar en la base de datos que el email esta libre
     user_update.password = pw_hash
 
-    
     db.session.commit()
     response_body = {
         "message": "Usuario modificado correctamente"
     }
     return jsonify(response_body),200
+
+# User profile image
+@api.route('/profile/image', methods=['POST'])
+@jwt_required()
+def upload_image():
+    mailRegisterUser = get_jwt_identity()
+  
+    if 'profile_image' in request.files:
+        # upload file to uploadcare
+        result = cloudinary.uploader.upload(request.files['profile_image'])
+
+        # fetch for the user
+        user_update = User.query.filter_by(email= mailRegisterUser).first()
+        # update the user with the given cloudinary image URL
+        user_update.image = result['secure_url']
+
+        db.session.add(user_update)
+        db.session.commit()
+
+        return jsonify(user_update.serialize()), 200
+    else:
+        raise APIException('Missing profile_image on the FormData')
 
 # User profile eliminar cuenta (ruta privada)
 @api.route("/profile", methods=['DELETE'])

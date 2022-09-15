@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { getToken, saveToken } from "../auth";
 
@@ -8,10 +8,42 @@ const ProfileUser = () => {
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const image = "imagen por defecto";
+  const [files, setFiles] = useState(null);
   const [showError, setShowError] = useState(false);
+  const [imageContent, setImageContent] = useState(undefined);
   const navigate = useNavigate();
 
+  useEffect(() => {
+    if (files) {
+      const file = files[0];
+      const filereader = new FileReader();
+      filereader.readAsDataURL(file);
+      filereader.onload = function (evt) {
+        setImageContent(evt.target.result);
+      };
+    }
+  }, [files]);
+
+  const uploadImage = (evt) => {
+    evt.preventDefault();
+    // we are about to send this to the backend.
+    console.log("This are the files", files);
+    let body = new FormData();
+    body.append("profile_image", files[0]);
+    const options = {
+      body,
+      method: "POST",
+      headers: {
+        Authorization: "Bearer " + getToken(),
+      },
+    };
+    // you need to have the user_id in the localStorage
+
+    fetch(process.env.BACKEND_URL + "/api/profile/image", options)
+      .then((resp) => resp.json())
+      .then((data) => console.log("Success!!!!", data))
+      .catch((error) => console.error("ERRORRRRRR!!!", error));
+  };
   const onFormSubmit = (e) => {
     e.preventDefault();
     e.stopPropagation();
@@ -49,20 +81,26 @@ const ProfileUser = () => {
     <div className="container-fluid justify">
       
       <div className="row d-flex justify-content-center mt-2">
-        <div className="col-12">
-          <div className="text-center">
-            <img
-              src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png"
-              className="avatar  img-thumbnail"
-              alt="avatar"
-            />
-            <div className="d-flex justify-content-center mt-1">
-            <input
-              type="file" 
-              className="text-center row "
-            />
+        <div className="col-md-4">
+          <form onSubmit={uploadImage}>
+            <div className="text-center">
+              <img
+                src={
+                  imageContent ||
+                  "http://ssl.gstatic.com/accounts/ui/avatar_2x.png"
+                }
+                className="avatar rounded-circle img-thumbnail"
+                alt="avatar"
+              />
+
+              <input
+                type="file"
+                onChange={(e) => setFiles(e.target.files)}
+                className="text-center center-block file-upload mt-2"
+              />
+              <button>Guardar imagen</button>
             </div>
-          </div>
+          </form>
 
           <form
             className="form"
