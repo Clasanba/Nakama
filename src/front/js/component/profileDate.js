@@ -1,7 +1,6 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import "../../styles/index.css";
 import { Context } from "../store/appContext";
-import "../../styles/profileDate.css";
 
 const ProfileDate = () => {
   const { store, actions } = useContext(Context);

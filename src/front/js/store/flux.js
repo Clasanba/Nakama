@@ -1,3 +1,5 @@
+import { getToken } from "../auth";
+
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
@@ -85,12 +87,25 @@ const getState = ({ getStore, getActions, setStore }) => {
 					url:"https://www.cnio.es/noticias/desvelada-la-estructura-de-la-proteina-raf1-un-paso-clave-para-crear-nuevos-farmacos-contra-el-cancer-de-pulmon/"
 				}
 
-			]
+			],
+			user: [],
+			
+			
+			
+			
+			
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
-			exampleFunction: () => {
-				getActions().changeColor(0, "green");
+			getDataProfile: () => {
+				fetch(process.env.BACKEND_URL + "/api/profile",{
+					method: "GET",
+					headers: {
+						Authorization: "Bearer " + getToken(),
+					  }
+				})
+				.then((resp) => resp.json())
+				.then((data)=> setStore({user: data}))
 			},
 
 			
