@@ -78,12 +78,8 @@ const ProfileUser = () => {
   };
 
   return (
-    <div className="container-fluid ">
-      <div className="row">
-        <div className="mt-2 text-center">
-          <h1 className="text-success text-center">Nombre de usuario</h1>
-        </div>
-      </div>
+    <div className="container-fluid justify">
+      
       <div className="row d-flex justify-content-center mt-2">
         <div className="col-md-4">
           <form onSubmit={uploadImage}>
@@ -193,7 +189,7 @@ const ProfileUser = () => {
             </div>
 
             <div className="form-group ">
-              <div className="col-xs-12">
+              <div className=" d-flex justify-content-evenly mb-3">
                 <button
                   className="btn btn-lg btn btn-outline-success mx-5"
                   type="submit"
@@ -202,12 +198,7 @@ const ProfileUser = () => {
                   Guardar
                 </button>
 
-                <button
-                  className="btn btn-lg btn btn-outline-danger ms-2"
-                  type="delete"
-                >
-                  Eliminar cuenta
-                </button>
+              
               </div>
             </div>
           </form>
