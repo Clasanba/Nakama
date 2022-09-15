@@ -21,7 +21,6 @@ const ProfileDate = () => {
       .then((data) => console.log("Usuario borrado", data))
       .catch((error) => console.error("ERRORRRRRR!!!", error));
   };
-  const showModals = () => {};
 
   return (
     <>
@@ -31,13 +30,14 @@ const ProfileDate = () => {
           className="avatar rounded-circle img-thumbnail img-profile-date "
           alt="..."
         />
-        <div className="card-body ">
+        <div className="card-body">
           <h5 className="card-title fs-1 text-capitalize mb-4">
             {store.user.user_name}
           </h5>
         </div>
         <ul className="list-group list-group-flush">
           <li className="list-group-item text-capitalize">
+            {" "}
             Nombre: {store.user.name}
           </li>
           <li className="list-group-item text-capitalize">
@@ -51,11 +51,15 @@ const ProfileDate = () => {
           </li>
         </ul>
         <div className="card-body">
-          <button className="btn btn-md btn btn-outline-danger " type="delete">
+          <button
+            className="btn btn-md btn btn-outline-danger "
+            type="delete"
+            onClick={onDeleteButtonClick}
+          >
             Eliminar cuenta
           </button>
           <button
-            className="btn btn-md btn btn-outline-danger ms-4 "
+            className="btn btn-md btn btn-outline-danger ms-4"
             type="button"
           >
             Modificar datos de usuario
