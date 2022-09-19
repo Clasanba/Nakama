@@ -1,7 +1,15 @@
 import React from "react";
 import "../../styles/index.css";
+import { Context } from "../store/appContext";
+import "../../styles/profileDate.css";
 
 const ProfileDate = () => {
+  const { store, actions } = useContext(Context);
+
+  useEffect(() => {
+    actions.getDataProfile();
+  }, []);
+
   const onDeleteButtonClick = () => {
     fetch(process.env.BACKEND_URL + "/profile", {
       method: "DELETE",
@@ -14,27 +22,37 @@ const ProfileDate = () => {
       .catch((error) => console.error("ERRORRRRRR!!!", error));
   };
   const showModals = () => {};
+
   return (
     <>
-      <div
-        className="card border-success  mt-3 d-flex justify-content-center"
-        style={{ width: 30 + "rem", height: 17 + "rem" }}
-      >
-        <div className="card-header text-center ">Nombre de usuario</div>
+      <div className="card profile-date">
+        <img
+          src={store.user.image}
+          className="avatar rounded-circle img-thumbnail img-profile-date "
+          alt="..."
+        />
         <div className="card-body">
-          <p className="card-text">Nombre:</p>
-          <p className="card-text">Primer apellido:</p>
-          <p className="card-text">Segundo apellido:</p>
-          <p className="card-text">Correo electrónico:</p>
-          <form className="d-flex justify-content-end mb-2">
-            <button
-              className="btn btn-md btn btn-outline-danger "
-              type="delete"
-              onClick={() => onDeleteButtonClick(i)}
-            >
-              Eliminar cuenta
-            </button>
-          </form>
+          <h5 className="card-title">{store.user.user_name}</h5>
+        </div>
+        <ul className="list-group list-group-flush">
+          <li className="list-group-item"> Nombre: {store.user.name}</li>
+          <li className="list-group-item">
+            Primer apellido: {store.user.first_name}
+          </li>
+          <li className="list-group-item">
+            Segundo apellido: {store.user.last_name}
+          </li>
+          <li className="list-group-item">
+            Correo electrónico: {store.user.email}
+          </li>
+        </ul>
+        <div className="card-body">
+          <button className="btn btn-md btn btn-outline-danger " type="delete">
+            Eliminar cuenta
+          </button>
+          <button className="btn btn-md btn btn-outline-danger " type="button">
+            Modificar datos de usuario
+          </button>
         </div>
       </div>
 
