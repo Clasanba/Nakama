@@ -22,7 +22,7 @@ const Layout = () => {
   const basename = process.env.BASENAME || "";
 
   return (
-    <div>
+    <div className="layout">
       <BrowserRouter basename={basename}>
         <ScrollToTop>
           <Navbar />
@@ -33,7 +33,7 @@ const Layout = () => {
               <Route element={<RegisterUser />} path="/register" />
               <Route element={<LoginView />} path="/login" />
               <Route element={<Profile />} path="/profile" />
-            <Route element={<Psychology />} path="/psychology" />
+              <Route element={<Psychology />} path="/psychology" />
               <Route element={<Nutrition />} path="/nutrition" />
               <Route element={<Article />} path="/article" />
               <Route element={<h1>Not found!</h1>} />

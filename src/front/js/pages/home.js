@@ -1,6 +1,6 @@
 import React from "react";
 
-import logoNakama from "../../img/LogoNakamaLetras.png"
+import logoNakama from "../../img/Logo_Nakama-removebg.png"
 import "../../styles/home.css";
 import { isLoggedIn } from "../auth";
 
