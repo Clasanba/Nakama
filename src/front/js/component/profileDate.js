@@ -52,7 +52,6 @@ const ProfileDate = () => {
         </div>
         <ul className="list-group list-group-flush">
           <li className="list-group-item text-capitalize">
-            {" "}
             Nombre: {store.user.name}
           </li>
           <li className="list-group-item text-capitalize">
