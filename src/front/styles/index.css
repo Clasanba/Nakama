@@ -1,6 +1,12 @@
 * {
   font-family: "Roboto Mono", monospace;
 }
+.layout{
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+}
 .layout-main {
-  min-height: calc(100vh - 222px);
+  flex-grow: 1;
 }
