@@ -7,7 +7,7 @@ const Profile = () =>{
     
     <main className="container-fluid row">
       <div className="col">
-      
+      <ProfileDate/>
       <ProfileUser/>
       </div>
     </main>
