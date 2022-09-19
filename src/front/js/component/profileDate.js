@@ -4,6 +4,7 @@ import { Context } from "../store/appContext";
 import "../../styles/profileDate.css";
 import ModalDeleteUser from "./modalUserDelete";
 import { getToken } from "../auth";
+import { Link } from "react-router-dom";
 const ProfileDate = () => {
   const [showModal, setShowModal] = useState(false);
   const { store, actions } = useContext(Context);
@@ -71,12 +72,14 @@ const ProfileDate = () => {
           >
             Eliminar cuenta
           </button>
-          <button
-            className="btn btn-md btn btn-outline-danger ms-4"
-            type="button"
-          >
-            Modificar datos de usuario
-          </button>
+          <Link to="/profile/modificate">
+            <button
+              className="btn btn-md btn btn-outline-danger ms-4"
+              type="button"
+            >
+              Modificar datos de usuario
+            </button>
+          </Link>
         </div>
       </div>
       {showModal && <ModalDeleteUser />}

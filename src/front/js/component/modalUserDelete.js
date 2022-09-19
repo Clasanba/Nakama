@@ -19,9 +19,6 @@ const ModalDeleteUser = () => {
               data-bs-dismiss="modal"
               onClick={goHome}
             >
-              Cerrar
-            </button>
-            <button type="button" className="btn btn-primary">
               Volver página de inicio
             </button>
           </div>
