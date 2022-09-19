@@ -21,7 +21,7 @@ class User(db.Model):
             "id": self.id,
             "email": self.email,
             "name": self.name,
-            "firt_name": self.first_name,
+            "first_name": self.first_name,
             "last_name": self.last_name,
             "user_name": self.user_name,
             "image": self.image,
