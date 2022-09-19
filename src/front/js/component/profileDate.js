@@ -1,9 +1,11 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "../../styles/index.css";
 import { Context } from "../store/appContext";
 import "../../styles/profileDate.css";
-
+import ModalDeleteUser from "./modalUserDelete";
+import { getToken } from "../auth";
 const ProfileDate = () => {
+  const [showModal, setShowModal] = useState(false);
   const { store, actions } = useContext(Context);
 
   useEffect(() => {
@@ -11,15 +13,26 @@ const ProfileDate = () => {
   }, []);
 
   const onDeleteButtonClick = () => {
-    fetch(process.env.BACKEND_URL + "/profile", {
+    fetch(process.env.BACKEND_URL + "/api/profile", {
       method: "DELETE",
       headers: {
         Authorization: "Bearer " + getToken(),
       },
     })
-      .then((resp) => resp.json())
-      .then((data) => console.log("Usuario borrado", data))
-      .catch((error) => console.error("ERRORRRRRR!!!", error));
+      .then((response) => {
+        if (response.status !== 200) {
+          throw new Error();
+        }
+        return response.json();
+      })
+      .then((data) => {
+        console.log("data");
+        setShowModal(true);
+      })
+      .catch(() => {
+        setShowModal(false);
+        console.log("catch");
+      });
   };
 
   return (
@@ -66,6 +79,7 @@ const ProfileDate = () => {
           </button>
         </div>
       </div>
+      {showModal && <ModalDeleteUser />}
     </>
   );
 };
