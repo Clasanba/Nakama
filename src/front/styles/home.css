@@ -2,45 +2,40 @@
   height: 15em;
   width: 20em;
 }
-.img-container{
+.img-container {
   display: flex;
   justify-content: center;
-
 }
-.body-home{
-  background: url(https://images.pexels.com/photos/163703/woods-landscape-road-loyalsock-state-forest-163703.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260 );
+.body-home {
+  background: url(https://images.pexels.com/photos/163703/woods-landscape-road-loyalsock-state-forest-163703.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260);
   background-size: cover;
   background-repeat: no-repeat;
   height: 100%;
   display: flex;
   align-items: center;
- 
 }
-.figure-body{
+.figure-body {
   background: transparent;
   justify-content: center;
 }
-.description{
+.description {
   background-color: rgba(235, 232, 220, 0.507);
-  box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.39);
-  -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.39);
-  -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.39);
-  
+  box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.39);
+  -webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.39);
+  -moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.39);
 }
-.detail{
-  color:#002E2C;
+.detail {
+  color: #002e2c;
   font-weight: bolder;
- 
 }
-.letters{
+.letters {
   font-weight: bolder;
   font-size: 4rem;
-  color:  #023112;
+  color: #023112;
   text-shadow: 1px 1px 1px #4febb7;
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
-/* #4FB8EB; , #82c75a, #0a4b7e,053f6b*/ 
-
+/* #4FB8EB; , #82c75a, #0a4b7e,053f6b*/
 
 /* https://images.pexels.com/photos/807598/pexels-photo-807598.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1 */
