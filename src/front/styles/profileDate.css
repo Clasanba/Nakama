@@ -3,7 +3,8 @@
   height: 50%;
 }
 .profile-date {
-  display: flex;
   flex-direction: column;
   align-items: center;
+  padding-top: 1%;
+  border: none;
 }
