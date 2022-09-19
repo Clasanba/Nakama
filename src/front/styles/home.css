@@ -18,20 +18,22 @@
   justify-content: center;
 }
 .description{
-  background-color: rgba(236, 217, 198, 0.473);
+  background-color: rgba(230, 219, 208, 0.425);
   box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.39);
   -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.39);
   -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.39);
+  
 }
 .detail{
   color:#002E2C;
   font-weight: bolder;
+ 
 }
 .letters{
   font-weight: bolder;
   font-size: 5rem;
-  color:  #5D8CEB;
-  text-shadow: 2px 2px 2px #4FB8EB;
-
+  color:  #82c75a;
+  text-shadow: 1px 1px 1px #4FB8EB;
+  font-family: "Roboto Mono", monospace;
 }
 /* #4FB8EB; 3C9EEB*/ 
