@@ -14,6 +14,7 @@ import Psychology from "./pages/psychology";
 import Nutrition from "./pages/nutrition";
 import Article from "./pages/article";
 import Profile from "./pages/profile";
+import UseDataModificate from "./pages/user_data_modification";
 
 //create your first component
 const Layout = () => {
@@ -33,6 +34,10 @@ const Layout = () => {
               <Route element={<RegisterUser />} path="/register" />
               <Route element={<LoginView />} path="/login" />
               <Route element={<Profile />} path="/profile" />
+              <Route
+                element={<UseDataModificate />}
+                path="/profile/modificate"
+              />
               <Route element={<Psychology />} path="/psychology" />
               <Route element={<Nutrition />} path="/nutrition" />
               <Route element={<Article />} path="/article" />

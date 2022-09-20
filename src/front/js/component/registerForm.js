@@ -36,22 +36,19 @@ const RegisterForm = () => {
         "La contraseña debe contener entre 8-16 caracteres (mayúsculas,minúsculas y dígito) "
       );
     } else {
-      const res = await fetch(
-        "https://3001-clasanba-nakama-6tel6trqglz.ws-eu64.gitpod.io/api/register",
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            name,
-            first_name: firstName,
-            last_name: lastName,
-            user_name: userName,
-            email,
-            password,
-            image,
-          }),
-        }
-      );
+      const res = await fetch(process.env.BACKEND_URL + "/api/register", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name,
+          first_name: firstName,
+          last_name: lastName,
+          user_name: userName,
+          email,
+          password,
+          image,
+        }),
+      });
       if (res.ok) {
         const data = await res.json();
         navigate("/login");
@@ -119,7 +116,6 @@ const RegisterForm = () => {
                   id="apellido2"
                   placeholder="Segundo apellido"
                 />
-                <div className="invalid-feedback">Apellido incorrecto</div>
               </div>
               <div className="form-group mb-2">
                 <input
@@ -181,20 +177,6 @@ const RegisterForm = () => {
                     className=" btn btn-block send-button tx-tfm btn-success"
                   >
                     Crear Cuenta
-                  </button>
-                </div>
-
-                <div className="col-md-12 ">
-                  <div className="login-or text-center">
-                    <span className="span-or">o</span>
-                  </div>
-                </div>
-                <div className="form-group text-center">
-                  <button
-                    className="btn btn-block g-button btn-danger"
-                    href="#"
-                  >
-                    <i className="fa fa-google"></i> Registro con Google
                   </button>
                 </div>
               </div>

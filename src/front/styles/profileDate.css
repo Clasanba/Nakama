@@ -1,0 +1,10 @@
+.img-profile-date {
+  width: 25%;
+  height: 50%;
+}
+.profile-date {
+  flex-direction: column;
+  align-items: center;
+  padding-top: 1%;
+  border: none;
+}

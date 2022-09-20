@@ -2,12 +2,23 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../../styles/login.css";
 import { saveToken } from "../auth";
+import Visibility from "@material-ui/icons/Visibility";
+import VisibilityOff from "@material-ui/icons/VisibilityOff";
 
 export const Login = () => {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
+  const [values, setValues] = useState({ showPassword: false });
   const [showError, setShowError] = useState(false);
   const navigate = useNavigate();
+
+  const handleClickShowPassword = () => {
+    setValues({ ...values, showPassword: !values.showPassword });
+  };
+
+  const handleMouseDownPassword = (event) => {
+    event.preventDefault();
+  };
 
   const onFormSubmit = (e) => {
     e.preventDefault();
@@ -74,18 +85,29 @@ export const Login = () => {
             </div>
           </div>
 
-          <div className="mb-3">
+          <div className="mb-3 ">
             <label htmlFor="exampleInputPassword1" className="form-label mt-3">
               Contraseña
             </label>
+            <div className="d-flex justify-content-end">
             <input
-              type="password"
+              type={values.showPassword ? "text" : "password"}
               onChange={(e) => setPassword(e.target.value)}
               value={password}
               required
               className="form-control  "
               id="exampleInputPassword1"
             />
+            <span
+                  aria-label="toggle password visibility"
+                  onClick={handleClickShowPassword}
+                  onMouseDown={handleMouseDownPassword}
+                  edge="end"
+                  className="show-pass"
+                >
+                  {values.showPassword ? <Visibility /> : <VisibilityOff />}
+                </span>
+                </div>
           </div>
           <button type="submit" className="btn btn-outline-success">
             Entrar
