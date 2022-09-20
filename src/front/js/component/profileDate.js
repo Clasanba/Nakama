@@ -1,14 +1,41 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "../../styles/index.css";
 import { Context } from "../store/appContext";
 import "../../styles/profileDate.css";
-
+import ModalDeleteUser from "./modalUserDelete";
+import { getToken } from "../auth";
+import { Link } from "react-router-dom";
 const ProfileDate = () => {
+  const [showModal, setShowModal] = useState(false);
   const { store, actions } = useContext(Context);
 
   useEffect(() => {
     actions.getDataProfile();
   }, []);
+
+  const onDeleteButtonClick = () => {
+    fetch(process.env.BACKEND_URL + "/api/profile", {
+      method: "DELETE",
+      headers: {
+        Authorization: "Bearer " + getToken(),
+      },
+    })
+      .then((response) => {
+        if (response.status !== 200) {
+          throw new Error();
+        }
+        return response.json();
+      })
+
+      .then((data) => {
+        console.log("data");
+        setShowModal(true);
+      })
+      .catch(() => {
+        setShowModal(false);
+        console.log("catch");
+      });
+  };
 
   return (
     <>
@@ -18,7 +45,7 @@ const ProfileDate = () => {
           className="avatar rounded-circle img-thumbnail img-profile-date "
           alt="..."
         />
-        <div className="card-body ">
+        <div className="card-body">
           <h5 className="card-title fs-1 text-capitalize mb-4">
             {store.user.user_name}
           </h5>
@@ -38,17 +65,24 @@ const ProfileDate = () => {
           </li>
         </ul>
         <div className="card-body">
-          <button className="btn btn-md btn btn-outline-danger " type="delete">
+          <button
+            className="btn btn-md btn btn-outline-danger "
+            type="delete"
+            onClick={onDeleteButtonClick}
+          >
             Eliminar cuenta
           </button>
-          <button
-            className="btn btn-md btn btn-outline-danger ms-4 "
-            type="button"
-          >
-            Modificar datos de usuario
-          </button>
+          <Link to="/profile/modificate">
+            <button
+              className="btn btn-md btn btn-outline-danger ms-4"
+              type="button"
+            >
+              Modificar datos de usuario
+            </button>
+          </Link>
         </div>
       </div>
+      {showModal && <ModalDeleteUser />}
     </>
   );
 };
