@@ -11,6 +11,7 @@ from  dotenv  import  load_dotenv
 import cloudinary
 import cloudinary.api
 from cloudinary.uploader import upload
+import random, string
 
 api = Blueprint('api', __name__)
 
@@ -75,8 +76,7 @@ def login():
 
     email = request.json.get("email")
     password = request.json.get("password")
-     
-
+    
     # Utilizo query para filtrar el email y contraseña
     user = User.query.filter_by(email=email).first()
     
@@ -106,7 +106,6 @@ def user_profile_update():
     email = request.json.get("email")
     password = request.json.get("password")
     user_name = request.json.get("user_name")
-    # image = cloudinary.uploader.upload(request.files['image'])
     
     pw_hash = encrypt_pwd(password)
     
@@ -114,8 +113,7 @@ def user_profile_update():
     user_update.name = name
     user_update.first_name = first_name
     user_update.last_name = last_name
-    # user_update.image = image['secure_url']
-    
+
     # user_update.email = email -> eliminar para no tener que comprobar y guardar en la base de datos que el email esta libre
     user_update.password = pw_hash
 
@@ -125,7 +123,7 @@ def user_profile_update():
     }
     return jsonify(response_body),200
 
-# User profile image
+# User profile image (ruta privada)
 @api.route('/profile/image', methods=['POST'])
 @jwt_required()
 def upload_image():
@@ -161,3 +159,19 @@ def delete_user_profile():
         "message": "Usuario eliminado correctamente"
     }
     return jsonify(response_body),200
+
+#  Recuperación de contraseña
+@api.route("/recoverypassword", methods=['POST'])
+def recovery_password():
+    body = json.loads(request.data)
+    email = body ["email"]
+    # Genera contraseña aleatoria
+    new_password = ''.join(random.choice(string.ascii_uppercase + string.digits) for x in range(15))
+    # Encriptamos la nueva contraseña
+    pw_hash = encrypt_pwd(new_password)
+    user = User.query.filter_by(email=email).first()
+    # Asigno el pass aleatorio al user
+    if user !=None:
+        user.password = pw_hash
+        db.session.commit()
+    # Aqui comenzaría el envió del mail con la pass 
