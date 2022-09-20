@@ -65,7 +65,7 @@ const RegisterForm = () => {
     <div className="container mt-4">
       <div className="col-md-6 mx-auto text-center ">
         <div className="header-title">
-          <h1 className="wv-heading--title fw-bold mb-4 text-success">
+          <h1 className="wv-heading--title fw-bold mb-4 text-success fs-2 title-register">
             Formulario de Registro
           </h1>
         </div>
@@ -174,7 +174,7 @@ const RegisterForm = () => {
                 <div className="text-center ">
                   <button
                     type="submit"
-                    className=" btn btn-block send-button tx-tfm btn-success"
+                    className=" btn btn-block send-button tx-tfm btn-success mt-2"
                   >
                     Crear Cuenta
                   </button>

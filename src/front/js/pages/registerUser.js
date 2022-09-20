@@ -4,7 +4,7 @@ import RegisterForm from "../component/registerForm";
 
 const RegisterUser = () => {
   return (
-    <div className="container-fluid ">
+    <div className="container-fluid register ">
       <RegisterForm />
     </div>
   );
