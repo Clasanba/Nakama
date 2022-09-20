@@ -12,6 +12,7 @@ const ProfileUser = () => {
   const [showError, setShowError] = useState(false);
   const [imageContent, setImageContent] = useState(undefined);
   const navigate = useNavigate();
+  const [saveImage, setSaveImage] = useState(false);
 
   useEffect(() => {
     if (files) {
@@ -41,7 +42,11 @@ const ProfileUser = () => {
 
     fetch(process.env.BACKEND_URL + "/api/profile/image", options)
       .then((resp) => resp.json())
-      .then((data) => console.log("Success!!!!", data))
+      .then((data) => {
+        console.log("Success!!!!", data);
+        setSaveImage(true);
+      })
+
       .catch((error) => console.error("ERRORRRRRR!!!", error));
   };
   const onFormSubmit = (e) => {
@@ -79,7 +84,6 @@ const ProfileUser = () => {
 
   return (
     <div className="container-fluid justify">
-      
       <div className="row d-flex justify-content-center mt-2">
         <div className="col-md-4">
           <form onSubmit={uploadImage}>
@@ -100,6 +104,11 @@ const ProfileUser = () => {
               />
               <button>Guardar imagen</button>
             </div>
+            {saveImage && (
+              <div className="alert alert-danger" role="alert">
+                Imagen guardada con éxito
+              </div>
+            )}
           </form>
 
           <form
@@ -197,8 +206,6 @@ const ProfileUser = () => {
                   {" "}
                   Guardar
                 </button>
-
-              
               </div>
             </div>
           </form>

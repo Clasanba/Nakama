@@ -26,6 +26,7 @@ const ProfileDate = () => {
         }
         return response.json();
       })
+
       .then((data) => {
         console.log("data");
         setShowModal(true);
