@@ -9,15 +9,15 @@ const Home = () => {
   const hasLogin = isLoggedIn();
 
   return (
-    <div className="d-flex justify-content-center  body-home">
+    <div className="d-flex justify-content-center   body-home">
       <figure className="card border-0  figure-body mt-3" style={{ width: 40 + "rem" }}>
       
         <div className="img-container ">
-        <img
+        {/* <img
           src={logoNakama1}
           className="card-img-top logo_nakamaHome mb-2"
           alt="logo_nakama"
-        />
+        /> */}
         </div>
         <p className="letters text-center m-0">NAKAMA</p>
         <figcaption className="card-body">
