@@ -5,7 +5,10 @@ import "../../styles/modalUserDelete.css";
 
 const ModalDeleteUser = () => {
   const navigate = useNavigate();
-  const goHome = () => navigate("/");
+
+  const goHome = () => {
+    navigate("/");
+  };
   return (
     <>
       <div className="modal d-block modal-position" tabindex="-1">

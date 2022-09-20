@@ -5,6 +5,7 @@ import "../../styles/profileDate.css";
 import ModalDeleteUser from "./modalUserDelete";
 import { getToken } from "../auth";
 import { Link } from "react-router-dom";
+import { deleteToken } from "../auth";
 const ProfileDate = () => {
   const [showModal, setShowModal] = useState(false);
   const { store, actions } = useContext(Context);
@@ -29,6 +30,8 @@ const ProfileDate = () => {
 
       .then((data) => {
         console.log("data");
+        deleteToken();
+        actions.logout();
         setShowModal(true);
       })
       .catch(() => {
