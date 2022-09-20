@@ -65,7 +65,7 @@ const RegisterForm = () => {
     <div className="container mt-4">
       <div className="col-md-6 mx-auto text-center ">
         <div className="header-title">
-          <h1 className="wv-heading--title fw-bold mb-4 text-success fs-2 title-register">
+          <h1 className="fw-bold mb-5 text-success fs-1 title-register">
             Formulario de Registro
           </h1>
         </div>
@@ -86,7 +86,7 @@ const RegisterForm = () => {
                   onChange={(e) => setName(e.target.value)}
                   value={name}
                   name="name"
-                  className="form-control my-input"
+                  className="form-control my-input input-register"
                   id="validationCustom01"
                   placeholder="Nombre"
                   required
@@ -99,7 +99,7 @@ const RegisterForm = () => {
                   onChange={(e) => setFirstName(e.target.value)}
                   value={firstName}
                   name="first_name"
-                  className="form-control my-input"
+                  className="form-control my-input input-register"
                   id="apellido1"
                   placeholder="Primer apellido"
                   required
@@ -112,7 +112,7 @@ const RegisterForm = () => {
                   onChange={(e) => setLastName(e.target.value)}
                   value={lastName}
                   name="last_name"
-                  className="form-control my-input"
+                  className="form-control my-input input-register"
                   id="apellido2"
                   placeholder="Segundo apellido"
                 />
@@ -123,7 +123,7 @@ const RegisterForm = () => {
                   onChange={(e) => setUserName(e.target.value)}
                   value={userName}
                   name="user_name"
-                  className="form-control my-input"
+                  className="form-control my-input input-register"
                   id="username"
                   placeholder="Nombre usuario"
                   required
@@ -138,7 +138,7 @@ const RegisterForm = () => {
                   onChange={(e) => setEmail(e.target.value)}
                   value={email}
                   name="email"
-                  className="form-control my-input"
+                  className="form-control my-input input-register"
                   id="email"
                   placeholder="Correo electrónico"
                   required
@@ -154,7 +154,7 @@ const RegisterForm = () => {
                   value={password}
                   name="password"
                   id="password"
-                  className="form-control my-input"
+                  className="form-control my-input input-register"
                   placeholder="Contraseña"
                   required
                 />

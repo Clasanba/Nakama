@@ -5,7 +5,10 @@
   padding: 0.3rem 1rem 0.5rem;
 }
 .title-register{
-  text-shadow: 2px 2px 2px rgb(7, 61, 7);
+  text-shadow: 2px 2px 2px rgb(237, 243, 237);
+  /* color: rgb(76, 170, 76); */
+  
+  
 }
 
 .register{
@@ -16,4 +19,10 @@
   background-repeat: no-repeat;
   background-position:center;
   background-size: cover;
+
+}
+.input-register{
+  box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.39);
+  -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.39);
+  -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.39);
 }
