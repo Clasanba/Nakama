@@ -34,7 +34,7 @@ useEffect(()=>{
         <img width={medium.width} height={medium.height}
           src={medium.url}
           className="card-img-top"
-          alt="..."
+          alt="training"
         />
         </a>
         <div className="card-body">

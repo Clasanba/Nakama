@@ -1,13 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import logoNakama1 from "/workspace/Nakama/src/front/img/Logo_Nakama1.png";
+import logoNakama1 from "../../img/logo_corregido.png";
 import "../../styles/navBar.css";
 
 export const Navbar = () => {
   return (
     <>
-      <nav className="navbar bg-success bg-gradient">
+      <nav className="navbar bg-success bg-gradient navbar-expand-lg navbar-expand-md navbar-expand-sm  navbar-expand">
         <div className="container-fluid ">
           <Link to="/" className="navbar-brand ">
             <img src={logoNakama1} className="logo_navBar" />
