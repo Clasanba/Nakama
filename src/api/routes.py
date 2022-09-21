@@ -11,6 +11,7 @@ from  dotenv  import  load_dotenv
 import cloudinary
 import cloudinary.api
 from cloudinary.uploader import upload
+from flask_mail import Mail, Message
 import random, string
 
 api = Blueprint('api', __name__)
@@ -174,4 +175,12 @@ def recovery_password():
     if user !=None:
         user.password = pw_hash
         db.session.commit()
-    # Aqui comenzaría el envió del mail con la pass 
+    # Aqui comenzaría el envio del mail con la pass 
+        mail = Mail ()
+        message = Message('Recuperación de contraseña', sender  = 'Nakama', recipients =[user.email])
+        message.body = "Hola " + user.name + " tu nueva contraseña es " + new_password + " recuerda modificarla una vez inicies sesión."
+        message.html ="<h1>Nakama</h1><h2> Hola " + user.name + " </h2> <p> Tu nuevo password es <b> " + new_password + "</b></p><p>Si usted no ha solicitado el cambio de contraseña ignore y elimine este mensaje por favor.</p> <p> Mensaje enviado automáticamente, no responda</p>"
+        mail.send(message)
+        return "Message sent"
+    else:
+        return jsonify({"message":"correo no registrado"}),400
