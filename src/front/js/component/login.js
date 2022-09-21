@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import "../../styles/login.css";
 import { saveToken } from "../auth";
@@ -12,6 +12,7 @@ export const Login = () => {
   const [values, setValues] = useState({ showPassword: false });
   const [showError, setShowError] = useState(false);
   const navigate = useNavigate();
+  const { actions } = useContext(Context);
 
   const handleClickShowPassword = () => {
     setValues({ ...values, showPassword: !values.showPassword });
@@ -28,19 +29,16 @@ export const Login = () => {
     if (!e.target.checkValidity()) {
       return;
     }
-    fetch(
-      "https://3001-clasanba-nakama-6tel6trqglz.ws-eu64.gitpod.io/api/login",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          email,
-          password,
-        }),
-      }
-    )
+    fetch(process.env.BACKEND_URL + "/api/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email,
+        password,
+      }),
+    })
       .then((response) => {
         if (response.status !== 200) {
           throw new Error();
@@ -49,6 +47,7 @@ export const Login = () => {
       })
       .then((data) => {
         saveToken(data.access_token);
+        actions.login();
         navigate("/");
       })
       .catch(() => setShowError(true));
@@ -91,24 +90,24 @@ export const Login = () => {
               Contraseña
             </label>
             <div className="d-flex justify-content-end">
-            <input
-              type={values.showPassword ? "text" : "password"}
-              onChange={(e) => setPassword(e.target.value)}
-              value={password}
-              required
-              className="form-control  "
-              id="exampleInputPassword1"
-            />
-            <span
-                  aria-label="toggle password visibility"
-                  onClick={handleClickShowPassword}
-                  onMouseDown={handleMouseDownPassword}
-                  edge="end"
-                  className="show-pass"
-                >
-                  {values.showPassword ? <Visibility /> : <VisibilityOff />}
-                </span>
-                </div>
+              <input
+                type={values.showPassword ? "text" : "password"}
+                onChange={(e) => setPassword(e.target.value)}
+                value={password}
+                required
+                className="form-control  "
+                id="exampleInputPassword1"
+              />
+              <span
+                aria-label="toggle password visibility"
+                onClick={handleClickShowPassword}
+                onMouseDown={handleMouseDownPassword}
+                edge="end"
+                className="show-pass"
+              >
+                {values.showPassword ? <Visibility /> : <VisibilityOff />}
+              </span>
+            </div>
           </div>
           <button type="submit" className="btn btn-outline-success">
             Entrar
