@@ -89,6 +89,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			],
 			user: [],
+			mailSend: false,
+			mailError:false,
 			
 			
 			
@@ -96,7 +98,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			
 		},
 		actions: {
-			// Use getActions to call a function within a fuction
+			// Trae los datos del usuario guardados en la BBDD
 			getDataProfile: () => {
 				fetch(process.env.BACKEND_URL + "/api/profile",{
 					method: "GET",
@@ -107,24 +109,37 @@ const getState = ({ getStore, getActions, setStore }) => {
 				.then((resp) => resp.json())
 				.then((data)=> setStore({user: data}))
 			},
+			// Recuperación de contraseña
+			RecoveryPassword: async (email) =>{
+				const options = {
+					method: "POST",
+					headers:{
+						"Content-Type":"application/json"
+					},
+					body: JSON.stringify({email : email}),
+				};
+				try {
+					const response = await fetch(
+						process.env.BACKEND_URL + "/api/recoverypassword",options
+					);
+					if (response.status === 200){
+						setStore({mailSend: true});
+					}else {
+						setStore({mailError: true});
+					}
+				} catch (error) {
+					setStore({mailError: true})
+				}
 
+			},
+		
 			
-			changeColor: (index, color) => {
-				//get the store
-				const store = getStore();
 
-				//we have to loop the entire demo array to look for the respective index
-				//and change its color
-				const demo = store.demo.map((elm, i) => {
-					if (i === index) elm.background = color;
-					return elm;
-				});
-
-				//reset the global store
-				setStore({ demo: demo });
+				
+				
 			}
 		}
 	};
-};
+
 
 export default getState;
