@@ -7,9 +7,11 @@ const Training = () => {
 	
 
 	return (
-		<>
+		<div className="d-flex justify-content-center">
+			<div className="row row-cols-2 row-cols-md-4 row-col-lg">
 		<CardTraining/>
-		</>
+		</div>
+		</div>
 	);
 };
 
