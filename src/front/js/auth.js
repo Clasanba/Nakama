@@ -4,6 +4,7 @@
 export function saveToken(token) {
   localStorage.setItem("token", token);
 }
+// Esta borra el token
 export function deleteToken() {
   localStorage.removeItem("token");
 }
