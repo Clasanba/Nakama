@@ -266,3 +266,57 @@ def recovery_password():
         return jsonify(response_body),200
     else:
         return jsonify({"message":"correo no registrado"}),400
+    return jsonify(response_body),200 
+
+# Favorites
+@api.route("/favorite", methods=['PUT'])
+@jwt_required()
+def add_favorite():
+    userEmail = get_jwt_identity()
+    user = User.query.filter_by(email=userEmail).first()
+    if not user : 
+        return jsonify({}),400 
+    
+    url = request.json.get("url")
+    fav = Favorite(user_id = user.id, url = url)
+    
+    db.session.add(fav)
+    db.session.commit()
+     
+    response_body = {
+        "message": "Video añadido correctamente"
+    }
+    return jsonify(response_body),200 
+
+@api.route("/favorite", methods=['DELETE'])
+@jwt_required()
+def delete_favorite():
+    
+    
+    id = request.json.get("id")
+    delete_fav = Favorite.query.filter_by(id = id).first()
+    
+    db.session.delete(delete_fav)
+    db.session.commit()
+    
+    response_body = {
+        "message": "favorito eliminado correctamente"
+    }
+    return jsonify(response_body),200 
+
+@api.route("/favorite", methods=['GET'])
+@jwt_required()
+def read_favorites():
+    userEmail = get_jwt_identity()
+    user = User.query.filter_by(email=userEmail).first()
+    if not user : 
+        return jsonify({}),400 
+    
+    
+    favorites = Favorite.query.filter_by(user_id = user.id)
+    
+    def to_json(fav):
+        return fav.serialize()
+    
+    return jsonify(map(to_json, favorites)),200 
+
