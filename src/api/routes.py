@@ -258,8 +258,11 @@ def recovery_password():
         mail = Mail ()
         message = Message('Recuperación de contraseña', sender  = 'Nakama', recipients =[user.email])
         message.body = "Hola " + user.name + " tu nueva contraseña es " + new_password + " recuerda modificarla una vez inicies sesión."
-        message.html ="<h1>Nakama</h1><h2> Hola " + user.name + " </h2> <p> Tu nuevo password es <b> " + new_password + "</b></p><p>Si usted no ha solicitado el cambio de contraseña ignore y elimine este mensaje por favor.</p> <p> Mensaje enviado automáticamente, no responda</p>"
+        message.html ="<h1>Nakama</h1><h2> Hola " + user.name + " </h2> <p> Tu nuevo password es <b> " + new_password + " recuerda modificarla una vez inicies sesión.</b></p><p>Si usted no ha solicitado el cambio de contraseña ignore y elimine este mensaje por favor.</p> <p> Mensaje enviado automáticamente, no responda</p>"
         mail.send(message)
-        return "Message sent"
+        response_body ={
+            "message":" correo electrónico enviado correctamente"
+        }
+        return jsonify(response_body),200
     else:
         return jsonify({"message":"correo no registrado"}),400

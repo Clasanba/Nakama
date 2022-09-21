@@ -122,7 +122,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       ],
       user: [],
       mailSend: false,
-			mailError:false,
+      mailError: false,
     },
     actions: {
       init: () => {
@@ -162,35 +162,31 @@ const getState = ({ getStore, getActions, setStore }) => {
             setStore({ favorites: data });
           });
       },
-			
-			// Recuperación de contraseña
-			RecoveryPassword: async (email) =>{
-				const options = {
-					method: "POST",
-					headers:{
-						"Content-Type":"application/json"
-					},
-					body: JSON.stringify({email : email}),
-				};
-				try {
-					const response = await fetch(
-						process.env.BACKEND_URL + "/api/recoverypassword",options
-					);
-					if (response.status === 200){
-						setStore({mailSend: true});
-					}else {
-						setStore({mailError: true});
-					}
-				} catch (error) {
-					setStore({mailError: true})
-				}
-
-			},
-		
-				
-			}
-		}
-	};
-
+      // Recuperación de contraseña
+      RecoveryPassword: async (email) => {
+        const options = {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ email: email }),
+        };
+        try {
+          const response = await fetch(
+            process.env.BACKEND_URL + "/api/recoverypassword",
+            options
+          );
+          if (response.status === 200) {
+            setStore({ mailSend: true });
+          } else {
+            setStore({ mailError: true });
+          }
+        } catch (error) {
+          setStore({ mailError: true });
+        }
+      },
+    },
+  };
+};
 
 export default getState;

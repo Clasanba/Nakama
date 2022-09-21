@@ -116,10 +116,8 @@ export const Login = () => {
         <a href="#" data-bs-toggle="modal" data-bs-target="#modalRememberpass">
           <p>¿Olvidaste la contraseña?</p>
         </a>
-        <ModalRecoveryPass/>
-
+        <ModalRecoveryPass />
       </div>
-      
     </>
   );
 };
