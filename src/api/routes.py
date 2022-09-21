@@ -298,7 +298,9 @@ def add_favorite():
         return jsonify({}),400 
     
     url = request.json.get("url")
-    fav = Favorite(user_id = user.id, url = url)
+    url_image = request.json.get("url_image")
+    title = request.json.get("title")
+    fav = Favorite(user_id = user.id, url = url,url_image=url_image,title=title)
     
     db.session.add(fav)
     db.session.commit()
@@ -338,5 +340,5 @@ def read_favorites():
     def to_json(fav):
         return fav.serialize()
     
-    return jsonify(map(to_json, favorites)),200 
+    return jsonify(list(map(to_json, favorites))),200 
 
