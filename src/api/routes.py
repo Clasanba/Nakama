@@ -2,7 +2,7 @@
 This module takes care of starting the API Server, Loading the DB and Adding the endpoints
 """
 from flask import Flask, request, jsonify, url_for, Blueprint, json, current_app
-from api.models import db, User
+from api.models import db, User,Favorite
 from api.utils import generate_sitemap, APIException
 from flask_jwt_extended import create_access_token, get_jwt_identity, jwt_required, JWTManager
 from flask_bcrypt import Bcrypt
@@ -198,7 +198,9 @@ def add_favorite():
         return jsonify({}),400 
     
     url = request.json.get("url")
-    fav = Favorite(user_id = user.id, url = url)
+    url_image = request.json.get("url_image")
+    title = request.json.get("title")
+    fav = Favorite(user_id = user.id, url = url,url_image=url_image,title=title)
     
     db.session.add(fav)
     db.session.commit()
@@ -238,5 +240,5 @@ def read_favorites():
     def to_json(fav):
         return fav.serialize()
     
-    return jsonify(map(to_json, favorites)),200 
+    return jsonify(list(map(to_json, favorites))),200 
 
