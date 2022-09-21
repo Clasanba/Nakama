@@ -240,3 +240,26 @@ def read_favorites():
     
     return jsonify(list(map(to_json, favorites))),200 
 
+#  Recuperación de contraseña
+@api.route("/recoverypassword", methods=['POST'])
+def recovery_password():
+    body = json.loads(request.data)
+    email = body ["email"]
+    # Genera contraseña aleatoria
+    new_password = ''.join(random.choice(string.ascii_uppercase + string.digits) for x in range(15))
+    # Encriptamos la nueva contraseña
+    pw_hash = encrypt_pwd(new_password)
+    user = User.query.filter_by(email=email).first()
+    # Asigno el pass aleatorio al user
+    if user !=None:
+        user.password = pw_hash
+        db.session.commit()
+    # Aqui comenzaría el envio del mail con la pass 
+        mail = Mail ()
+        message = Message('Recuperación de contraseña', sender  = 'Nakama', recipients =[user.email])
+        message.body = "Hola " + user.name + " tu nueva contraseña es " + new_password + " recuerda modificarla una vez inicies sesión."
+        message.html ="<h1>Nakama</h1><h2> Hola " + user.name + " </h2> <p> Tu nuevo password es <b> " + new_password + "</b></p><p>Si usted no ha solicitado el cambio de contraseña ignore y elimine este mensaje por favor.</p> <p> Mensaje enviado automáticamente, no responda</p>"
+        mail.send(message)
+        return "Message sent"
+    else:
+        return jsonify({"message":"correo no registrado"}),400
