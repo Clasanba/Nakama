@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import React, { useState, useEffect, useContext } from "react";
+=======
+import React, { useState, useEffect } from "react";
+>>>>>>> 8a0c477 (start desing training)
 import { Link } from "react-router-dom";
 import "../../styles/card_training.css";
 import { getToken } from "../auth";
@@ -6,8 +10,11 @@ import { Context } from "../store/appContext";
 import classNames from "classnames";
 
 export const CardTraining = () => {
+<<<<<<< HEAD
   const { store, actions } = useContext(Context);
   const favorites = store.favorites;
+=======
+>>>>>>> 8a0c477 (start desing training)
   const YOUTUBE_PLAYLIST =
     "https://www.googleapis.com/youtube/v3/playlistItems";
   const [videos, setVideos] = useState([]);
