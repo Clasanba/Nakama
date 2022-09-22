@@ -122,6 +122,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       user: [],
       mailSend: false,
 			mailError:false,
+      auth:false,
     },
     actions: {
       // Trae los datos del usuario guardados en la BBDD
@@ -165,6 +166,35 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 
 			},
+      loginGoogle: async (user) => {
+        try{
+          const resp = await fetch(process.env.BACKEND_URL + "/api/register_google", {
+          method: "POST",
+          headers:{
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+          body: JSON.stringify({
+            name: user.displayName,
+            email: user.email,
+            photo:user.photoUrl,
+
+
+          }),
+        }
+        );
+        const data = await resp.json ();
+        if (resp.status === 200){
+          setStore({
+            auth:true,
+          });
+          localStorage.setItem("token",data.access_token)
+        }
+        return data
+      }catch (error){
+
+      }
+    },
 		
 				
 			}
