@@ -7,8 +7,8 @@ import VisibilityOff from "@material-ui/icons/VisibilityOff";
 import { Context } from "../store/appContext";
 
 export const Login = () => {
-  const [email, setEmail] = useState();
-  const [password, setPassword] = useState();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [values, setValues] = useState({ showPassword: false });
   const [showError, setShowError] = useState(false);
   const navigate = useNavigate();
