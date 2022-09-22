@@ -233,8 +233,6 @@ def add_favorite():
 @api.route("/favorite", methods=['DELETE'])
 @jwt_required()
 def delete_favorite():
-    
-    
     id = request.json.get("id")
     delete_fav = Favorite.query.filter_by(id = id).first()
     

@@ -3,9 +3,8 @@ import { Link } from "react-router-dom";
 import "../../styles/card_training.css";
 import { getToken } from "../auth";
 
-export const Favorites = () => {
+export const Favorites = ({ refresh, onRefresh, refreshFavs }) => {
   const [favorites, setFavorites] = useState([]);
-  const [refresh, setRefresh] = useState(true);
 
   useEffect(() => {
     if (refresh) {
@@ -23,7 +22,7 @@ export const Favorites = () => {
         })
         .then((data) => {
           setFavorites(data);
-          setRefresh(false);
+          onRefresh();
         })
         .catch(() => setShowError(true));
     }
@@ -34,6 +33,7 @@ export const Favorites = () => {
       method: "DELETE",
       headers: {
         Authorization: "Bearer " + getToken(),
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({ id }),
     })
@@ -45,29 +45,36 @@ export const Favorites = () => {
       })
 
       .then(() => {
-        setRefresh(true);
+        refreshFavs();
       })
       .catch(() => {});
   };
 
   return (
     <>
+      {favorites.length != 0 && <h1>Favoritos</h1>}
       {favorites.map((favorite) => {
         return (
-          <div className="card cardYoutube ">
-            <a href={favorite.url_image} target="_blank"></a>
-            <img className="card-img-top" alt="training" />
+          <div key={favorite.id} className="card cardYoutube">
+            <a href={favorite.url} target="_blank">
+              <img
+                src={favorite.url_image}
+                className="card-img-top"
+                alt="training"
+              />
+            </a>
 
             <div className="card-body">
-              <p className="card-title text-decoration-none titulovideo">
-                {favorite.title}
-              </p>
               <a className="card-text text-dark" href={favorite.url}>
-                {favorite.url}
+                {favorite.title}
               </a>
-              <p className="position-absolute bottom-0 end-0 heart">
-                <i className="fa-regular fa-heart"></i>
-              </p>
+              <button
+                type="button"
+                className="btn btn-warning mt-5"
+                onClick={() => deleteFavorite(favorite.id)}
+              >
+                Borrar favorito
+              </button>
             </div>
           </div>
         );
