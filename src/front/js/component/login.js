@@ -4,7 +4,7 @@ import "../../styles/login.css";
 import { saveToken } from "../auth";
 import Visibility from "@material-ui/icons/Visibility";
 import VisibilityOff from "@material-ui/icons/VisibilityOff";
-import { Context } from "../store/appContext";
+import ModalRecoveryPass from "./modalRecoveryPass";
 
 export const Login = () => {
   const [email, setEmail] = useState("");
@@ -113,10 +113,13 @@ export const Login = () => {
             Entrar
           </button>
         </form>
-        <a href="/">
+        <a href="#" data-bs-toggle="modal" data-bs-target="#modalRememberpass">
           <p>¿Olvidaste la contraseña?</p>
         </a>
+        <ModalRecoveryPass/>
+
       </div>
+      
     </>
   );
 };
