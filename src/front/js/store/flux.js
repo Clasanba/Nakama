@@ -167,6 +167,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			},
       loginGoogle: async (user) => {
+        console.log(user)
         try{
           const resp = await fetch(process.env.BACKEND_URL + "/api/register_google", {
           method: "POST",
@@ -177,7 +178,10 @@ const getState = ({ getStore, getActions, setStore }) => {
           body: JSON.stringify({
             name: user.displayName,
             email: user.email,
-            photo:user.photoUrl,
+            photo: user.photoURL,
+            first_name: "",
+            last_name:"",
+            user_name:""
 
 
           }),
@@ -192,7 +196,7 @@ const getState = ({ getStore, getActions, setStore }) => {
         }
         return data
       }catch (error){
-
+        console.log ("Algo salió mal",error)
       }
     },
 		

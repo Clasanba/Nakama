@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Visibility from "@material-ui/icons/Visibility";
 import VisibilityOff from "@material-ui/icons/VisibilityOff";
@@ -6,6 +6,7 @@ import GoogleButton from 'react-google-button';
 import { auth, provider } from "./firebase";
 import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import firebase from "./firebase"
+import { Context } from "../store/appContext";
 
 import register from "../../styles/register.css";
 
@@ -20,6 +21,7 @@ const RegisterForm = () => {
   const [error, setError] = useState("");
   const image = "imagen por defecto";
   const navigate = useNavigate();
+  const {store, actions} = useContext(Context)
 
   const handleClickShowPassword = () => {
     setValues({ ...values, showPassword: !values.showPassword });
@@ -64,7 +66,18 @@ const RegisterForm = () => {
 
     e.target.classList.add("was-validated");
   };
+  const registerGoogleAsync = async ()=> {
+    const result = await  signInWithPopup(auth,provider);
+    const credential = GoogleAuthProvider.credentialFromResult(result);
+    console.log(credential, "@@")
+    const token = credential.accessToken;
+     // The signed-in user info.
+    const user = result.user; 
 
+    await actions.loginGoogle(user);
+    navigate("/profile");
+
+  }
   const registerGoogle = () =>{
     signInWithPopup(auth,provider)
     .then((result)=>{
@@ -72,17 +85,18 @@ const RegisterForm = () => {
      const credential = GoogleAuthProvider.credentialFromResult(result);
      const token = credential.accessToken;
      // The signed-in user info.
+     console.log(result)
      const user = result.user; 
      // ...
      actions.loginGoogle(user);
-     navigate("/login");
+    //  navigate("/login");
     })
     .catch((error) => {
       // Handle Errors here.
       const errorCode = error.code;
       const errorMessage = error.message;
       // The email of the user's account used.
-      const email = error.customData.email;
+      // const email = error.customData.email;
       // The AuthCredential type that was used.
       const credential = GoogleAuthProvider.credentialFromError(error);
       // ...
@@ -213,7 +227,7 @@ const RegisterForm = () => {
                   </div>
                   </div>
                   <div className="form-group text-center">
-                    <GoogleButton onClick={registerGoogle}/>
+                    <GoogleButton onClick={registerGoogleAsync}/>
                   </div>
               
               </div>
