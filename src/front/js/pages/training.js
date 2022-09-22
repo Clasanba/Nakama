@@ -12,13 +12,17 @@ const Training = () => {
   };
   return (
     <>
-      <Favorites
-        refresh={refresh}
-        onRefresh={onRefresh}
-        refreshFavs={refreshFav}
-      />
-      <h1>Entrenamientos</h1>
-      <CardTraining refreshFavs={refreshFav} />
+      <div className=" card-group">
+        <Favorites
+          refresh={refresh}
+          onRefresh={onRefresh}
+          refreshFavs={refreshFav}
+        />
+      </div>
+      <div className=" card-group ">
+        <h1>Entrenamientos</h1>
+        <CardTraining refreshFavs={refreshFav} />
+      </div>
     </>
   );
 };

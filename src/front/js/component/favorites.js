@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "../../styles/card_training.css";
 import { getToken } from "../auth";
+import "../../styles/card_training.css";
 
 export const Favorites = ({ refresh, onRefresh, refreshFavs }) => {
   const [favorites, setFavorites] = useState([]);
@@ -65,7 +66,10 @@ export const Favorites = ({ refresh, onRefresh, refreshFavs }) => {
             </a>
 
             <div className="card-body">
-              <a className="card-text text-dark" href={favorite.url}>
+              <a
+                className="card-text text-dark text-decoration-none"
+                href={favorite.url}
+              >
                 {favorite.title}
               </a>
               <button
