@@ -3,7 +3,7 @@ import { getToken } from "../auth";
 const getState = ({ getStore, getActions, setStore }) => {
   return {
     store: {
-      //isLoggedIn: true,
+      init: false,
       psychology: [
         {
           id: 1,
@@ -124,7 +124,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 			mailError:false,
     },
     actions: {
-      // Trae los datos del usuario guardados en la BBDD
+      init: () => {
+        setStore({ init: true });
+      },
+      // Use getActions to call a function within a fuction
       getDataProfile: () => {
         fetch(process.env.BACKEND_URL + "/api/profile", {
           method: "GET",

@@ -32,6 +32,7 @@ const injectContext = (PassedComponent) => {
       if (isLoggedIn()) {
         state.actions.login();
       }
+      state.actions.init();
       // <---- calling this function from the flux.js actions
     }, []);
 
