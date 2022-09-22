@@ -187,3 +187,20 @@ def recovery_password():
         return jsonify(response_body),200
     else:
         return jsonify({"message":"correo no registrado"}),400
+    
+    # Autenticación con Google
+@api.route("/register_google", methods = ["POST"])
+def google_login():
+    name = request.json.get("name",None)
+    email = request.json.get("email",None)
+    photo = request.json.get("photo")
+    
+    user = User.query.filter_by(email=email).first()
+    if user is None:
+        pw_hash = current_app.bcrypt.generate_password_hash("google").decode("utf-8")
+        user_google = User(name=name,first_name="auto",email=email, password=pw_hash, image=photo)
+        db.session.add(user_google)
+        db.session.commit()
+        time= timedelta(hours=24)
+        access_token = create_access_token(identity=email, expires_delta=time)
+        return jsonify(access_token=access_token,email=email),200
