@@ -1,55 +1,107 @@
-import React from "react";
-import { Link } from "react-router-dom";
-
+import React, { useContext } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import logoNakama1 from "../../img/logo_corregido.png";
 import "../../styles/navBar.css";
+import { deleteToken } from "../auth";
+import { Context } from "../store/appContext";
 
 export const Navbar = () => {
+  const { store, actions } = useContext(Context);
+  const navigate = useNavigate();
   return (
     <>
-      <nav className="navbar bg-success bg-gradient">
+      <nav className="navbar bg-success bg-gradient navbar-expand-lg navbar-expand-md navbar-expand-sm  navbar-expand">
         <div className="container-fluid ">
           <Link to="/" className="navbar-brand ">
             <img src={logoNakama1} className="logo_navBar" />
           </Link>
-          <form className="d-flex" role="search">
-            <Link to="/register">
-            <button
-              className="bg-success text-white p-2 me-md-3 border-0 bg-opacity-10"
-              type="button"
-            >
-              Registro usuario
-            </button>
-            </Link>
-            <Link to="/login">
-            <button
-              className="bg-success text-white p-2 me-md-3 border-0 bg-opacity-10"
-              type="button"
-            >
-              Inicio sesión
-            </button>
-            </Link>
-          </form>
+          <div className="d-flex" role="search">
+            <ul className="nav ">
+              {store.isLoggedIn ? (
+                <>
+                  <li className="nav-item ">
+                    <Link to="/profile" className="nav-link text-white">
+                      Perfil Usuario
+                    </Link>
+                  </li>
+                  <li className="nav-item ">
+                    <a
+                      href="#"
+                      className="nav-link text-white"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        deleteToken();
+                        actions.logout();
+                        navigate("/");
+                      }}
+                    >
+                      Cierre sesión
+                    </a>
+                  </li>
+                </>
+              ) : (
+                <>
+                  <li className="nav-item ">
+                    <Link to="/register" className="nav-link text-white">
+                      Registro usuario
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/login" className="nav-link text-white">
+                      Inicio sesión
+                    </Link>
+                  </li>
+                </>
+              )}
+            </ul>
+          </div>
         </div>
       </nav>
       <nav className="navbar bg-success p-2 bg-opacity-50 justify-content-center">
         <div className=" ">
           <ul className="nav ">
-            <li className="nav-item ">
-              <Link to="/psychology" className="nav-link text-white" >
-                Psicología
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link to="/nutrition" className="nav-link text-white" >
-                Nutrición
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link to="/article" className="nav-link text-white">
-                Artículos
-              </Link>
-            </li>
+            {store.isLoggedIn ? (
+              <>
+                <li className="nav-item ">
+                  <Link to="/psychology" className="nav-link text-white">
+                    Psicología
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link to="/nutrition" className="nav-link text-white">
+                    Nutrición
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link to="/article" className="nav-link text-white">
+                    Artículos
+                  </Link>
+                </li>
+                <li className="nav-item ">
+                  <Link to="/training" className="nav-link text-white">
+                    Entrenamientos
+                  </Link>
+                </li>
+              </>
+            ) : (
+              <>
+                <li className="nav-item ">
+                  <Link to="/psychology" className="nav-link text-white">
+                    Psicología
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link to="/nutrition" className="nav-link text-white">
+                    Nutrición
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link to="/article" className="nav-link text-white">
+                    Artículos
+                  </Link>
+                </li>
+              </>
+            )}
           </ul>
         </div>
       </nav>

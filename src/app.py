@@ -15,6 +15,8 @@ from api.commands import setup_commands
 from flask_jwt_extended import JWTManager
 #importo libreria para encriptación
 from flask_bcrypt import Bcrypt
+import cloudinary
+from flask_mail import Mail
 
 #from models import Person
 
@@ -36,6 +38,30 @@ db.init_app(app)
 
 # Allow CORS requests to this API
 CORS(app)
+
+# Configuración cloudinary
+app.config['CLOUD_NAME'] = os.environ.get("CLOUD_NAME")
+app.config['CLOUD_API_KEY'] = os.environ.get("CLOUD_API_KEY")
+app.config['CLOUD_API_SECRET'] = os.environ.get("CLOUD_API_SECRET")
+
+
+cloudinary.config( 
+cloud_name = app.config['CLOUD_NAME'] , 
+ api_key = app.config['CLOUD_API_KEY'], 
+ api_secret = app.config['CLOUD_API_SECRET'],
+ secure=True)
+
+# Configuración Flask-Mail
+app.config['MAIL_SERVER']='smtp.mailtrap.io'
+app.config['MAIL_PORT'] = 2525
+app.config['MAIL_USERNAME'] = os.environ.get('MAIL_USERNAME')
+app.config['MAIL_PASSWORD'] = os.environ.get('MAIL_PASSWORD')
+app.config['MAIL_USE_TLS'] = True
+app.config['MAIL_USE_SSL'] = False
+
+mail = Mail()
+mail.init_app(app)
+
 
 # JWT config
 app.config["JWT_SECRET_KEY"] = os.environ.get('JWT_Secret_Key')

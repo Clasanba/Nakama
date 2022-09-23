@@ -14,6 +14,8 @@ import Psychology from "./pages/psychology";
 import Nutrition from "./pages/nutrition";
 import Article from "./pages/article";
 import Profile from "./pages/profile";
+import UseDataModificate from "./pages/user_data_modification";
+import ProtectedRoute from "./component/protectedRouted";
 
 //create your first component
 const Layout = () => {
@@ -22,18 +24,25 @@ const Layout = () => {
   const basename = process.env.BASENAME || "";
 
   return (
-    <div>
+    <div className="layout">
       <BrowserRouter basename={basename}>
         <ScrollToTop>
           <Navbar />
           <main className="layout-main">
             <Routes>
               <Route element={<Home />} path="/" />
-              <Route element={<Training />} path="/training" />
+              <Route element={<ProtectedRoute />}>
+                <Route element={<Training />} path="/training" />
+                <Route element={<Profile />} path="/profile" />
+                <Route
+                  element={<UseDataModificate />}
+                  path="/profile/modificate"
+                />
+              </Route>
               <Route element={<RegisterUser />} path="/register" />
               <Route element={<LoginView />} path="/login" />
-              <Route element={<Profile />} path="/profile" />
-            <Route element={<Psychology />} path="/psychology" />
+
+              <Route element={<Psychology />} path="/psychology" />
               <Route element={<Nutrition />} path="/nutrition" />
               <Route element={<Article />} path="/article" />
               <Route element={<h1>Not found!</h1>} />

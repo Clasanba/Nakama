@@ -1,13 +1,11 @@
-import React from "react"
-import ProfileUser from "../component/profileUser"
+import React from "react";
+import ProfileDate from "../component/profileDate";
 
-const Profile = () =>{
-    return(
-    
-    <main className="container-fluid ">
-      <ProfileUser/>
-    </main>
-
-    )
-}
-export default Profile
+const Profile = () => {
+  return (
+    <div className="col container-fluid row">
+      <ProfileDate />
+    </div>
+  );
+};
+export default Profile;
