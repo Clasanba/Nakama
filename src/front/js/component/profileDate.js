@@ -31,7 +31,7 @@ const ProfileDate = () => {
       .then((data) => {
         console.log("data");
         deleteToken();
-        actions.logout();
+        actions.logout(false);
         setShowModal(true);
       })
       .catch(() => {
