@@ -60,7 +60,6 @@ const RegisterForm = () => {
         setError(error.msg);
       }
     }
-
     e.target.classList.add("was-validated");
   };
   
