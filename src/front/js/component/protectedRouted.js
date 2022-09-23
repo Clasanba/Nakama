@@ -5,7 +5,7 @@ import { Context } from "../store/appContext";
 const ProtectedRoute = () => {
   const { store } = useContext(Context);
 
-  if (!store.isLoggedIn) {
+  if (store.checkAuth && !store.isLoggedIn) {
     return <Navigate to="/login" replace />;
   }
 

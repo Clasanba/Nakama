@@ -3,7 +3,8 @@ import { getToken } from "../auth";
 const getState = ({ getStore, getActions, setStore }) => {
   return {
     store: {
-      //isLoggedIn: true,
+      checkAuth: false,
+      favorites: [],
       psychology: [
         {
           id: 1,
@@ -121,10 +122,13 @@ const getState = ({ getStore, getActions, setStore }) => {
       ],
       user: [],
       mailSend: false,
-			mailError:false,
+      mailError: false,
     },
     actions: {
-      // Trae los datos del usuario guardados en la BBDD
+      init: () => {
+        setStore({ checkAuth: true });
+      },
+      // Use getActions to call a function within a fuction
       getDataProfile: () => {
         fetch(process.env.BACKEND_URL + "/api/profile", {
           method: "GET",
@@ -138,38 +142,51 @@ const getState = ({ getStore, getActions, setStore }) => {
       login: () => {
         setStore({ isLoggedIn: true });
       },
-      logout: () => {
-        setStore({ isLoggedIn: false });
+      logout: (check = true) => {
+        setStore({ isLoggedIn: false, checkAuth: check });
       },
-			
-			// Recuperación de contraseña
-			RecoveryPassword: async (email) =>{
-				const options = {
-					method: "POST",
-					headers:{
-						"Content-Type":"application/json"
-					},
-					body: JSON.stringify({email : email}),
-				};
-				try {
-					const response = await fetch(
-						process.env.BACKEND_URL + "/api/recoverypassword",options
-					);
-					if (response.status === 200){
-						setStore({mailSend: true});
-					}else {
-						setStore({mailError: true});
-					}
-				} catch (error) {
-					setStore({mailError: true})
-				}
-
-			},
-		
-				
-			}
-		}
-	};
-
+      getFavorites: () => {
+        fetch(process.env.BACKEND_URL + "/api/favorite", {
+          method: "GET",
+          headers: {
+            Authorization: "Bearer " + getToken(),
+          },
+        })
+          .then((response) => {
+            if (response.status !== 200) {
+              throw new Error();
+            }
+            return response.json();
+          })
+          .then((data) => {
+            setStore({ favorites: data });
+          });
+      },
+      // Recuperación de contraseña
+      RecoveryPassword: async (email) => {
+        const options = {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ email: email }),
+        };
+        try {
+          const response = await fetch(
+            process.env.BACKEND_URL + "/api/recoverypassword",
+            options
+          );
+          if (response.status === 200) {
+            setStore({ mailSend: true });
+          } else {
+            setStore({ mailError: true });
+          }
+        } catch (error) {
+          setStore({ mailError: true });
+        }
+      },
+    },
+  };
+};
 
 export default getState;
