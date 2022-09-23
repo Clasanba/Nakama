@@ -2,13 +2,10 @@ import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Visibility from "@material-ui/icons/Visibility";
 import VisibilityOff from "@material-ui/icons/VisibilityOff";
-import GoogleButton from 'react-google-button';
-import { auth, provider } from "./firebase";
-import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
-import firebase from "./firebase"
 import { Context } from "../store/appContext";
 
 import register from "../../styles/register.css";
+import ButtonGoogle from "./buttonGoogle";
 
 const RegisterForm = () => {
   const [name, setName] = useState("");
@@ -66,43 +63,7 @@ const RegisterForm = () => {
 
     e.target.classList.add("was-validated");
   };
-  const registerGoogleAsync = async ()=> {
-    const result = await  signInWithPopup(auth,provider);
-    const credential = GoogleAuthProvider.credentialFromResult(result);
-    console.log(credential, "@@")
-    const token = credential.accessToken;
-     // The signed-in user info.
-    const user = result.user; 
-
-    await actions.loginGoogle(user);
-    navigate("/profile");
-
-  }
-  const registerGoogle = () =>{
-    signInWithPopup(auth,provider)
-    .then((result)=>{
-     // This gives you a Google Access Token. You can use it to access the Google API.
-     const credential = GoogleAuthProvider.credentialFromResult(result);
-     const token = credential.accessToken;
-     // The signed-in user info.
-     console.log(result)
-     const user = result.user; 
-     // ...
-     actions.loginGoogle(user);
-    //  navigate("/login");
-    })
-    .catch((error) => {
-      // Handle Errors here.
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      // The email of the user's account used.
-      // const email = error.customData.email;
-      // The AuthCredential type that was used.
-      const credential = GoogleAuthProvider.credentialFromError(error);
-      // ...
-    });
-  }
-
+  
   return (
     <div className="container mt-4">
       <div className="col-md-6 mx-auto text-center ">
@@ -227,7 +188,7 @@ const RegisterForm = () => {
                   </div>
                   </div>
                   <div className="form-group text-center">
-                    <GoogleButton onClick={registerGoogleAsync}/>
+                    <ButtonGoogle/>
                   </div>
               
               </div>

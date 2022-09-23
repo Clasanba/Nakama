@@ -120,6 +120,7 @@ const getState = ({ getStore, getActions, setStore }) => {
         },
       ],
       user: [],
+      init:false,
       mailSend: false,
 			mailError:false,
       auth:false,
