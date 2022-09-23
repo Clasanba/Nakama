@@ -3,7 +3,8 @@ import { getToken } from "../auth";
 const getState = ({ getStore, getActions, setStore }) => {
   return {
     store: {
-      init: false,
+      checkAuth: false,
+      favorites: [],
       psychology: [
         {
           id: 1,
@@ -125,7 +126,7 @@ const getState = ({ getStore, getActions, setStore }) => {
     },
     actions: {
       init: () => {
-        setStore({ init: true });
+        setStore({ checkAuth: true });
       },
       // Use getActions to call a function within a fuction
       getDataProfile: () => {
@@ -141,8 +142,25 @@ const getState = ({ getStore, getActions, setStore }) => {
       login: () => {
         setStore({ isLoggedIn: true });
       },
-      logout: () => {
-        setStore({ isLoggedIn: false });
+      logout: (check = true) => {
+        setStore({ isLoggedIn: false, checkAuth: check });
+      },
+      getFavorites: () => {
+        fetch(process.env.BACKEND_URL + "/api/favorite", {
+          method: "GET",
+          headers: {
+            Authorization: "Bearer " + getToken(),
+          },
+        })
+          .then((response) => {
+            if (response.status !== 200) {
+              throw new Error();
+            }
+            return response.json();
+          })
+          .then((data) => {
+            setStore({ favorites: data });
+          });
       },
 			
 			// Recuperación de contraseña

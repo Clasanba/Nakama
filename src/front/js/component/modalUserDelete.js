@@ -11,7 +11,7 @@ const ModalDeleteUser = () => {
   };
   return (
     <>
-      <div className="modal d-block modal-position" tabindex="-1">
+      <div className="modal d-block modal-position" tabIndex="-1">
         <div className="modal-dialog">
           <div className="modal-content">
             <div className="modal-header">

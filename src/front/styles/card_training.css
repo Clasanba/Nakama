@@ -13,3 +13,9 @@
   color: black;
   font-size: larger;
 }
+.red {
+  color: red;
+}
+.clickable:hover {
+  cursor: pointer;
+}

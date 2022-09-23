@@ -1,9 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import "../../styles/card_training.css";
 import { getToken } from "../auth";
+import { Context } from "../store/appContext";
+import classNames from "classnames";
 
-export const CardTraining = ({ refreshFavs }) => {
+export const CardTraining = () => {
+  const { store, actions } = useContext(Context);
+  const favorites = store.favorites;
   const YOUTUBE_PLAYLIST =
     "https://www.googleapis.com/youtube/v3/playlistItems";
   const [videos, setVideos] = useState([]);
@@ -48,7 +52,7 @@ export const CardTraining = ({ refreshFavs }) => {
         return response.json();
       })
       .then((data) => {
-        refreshFavs();
+        actions.getFavorites();
       })
       .catch(() => setShowError(true));
   };
@@ -57,6 +61,7 @@ export const CardTraining = ({ refreshFavs }) => {
     const { id, snippet = {} } = video;
     const { title, thumbnails = {}, resourceId } = snippet;
     const { medium = {} } = thumbnails;
+    const isFav = favorites.some((fav) => fav.url.includes(resourceId.videoId));
     return (
       <div className="card cardYoutube " key={id}>
         <a
@@ -76,8 +81,16 @@ export const CardTraining = ({ refreshFavs }) => {
           <p className="card-text text-dark">{video.channelTitle}</p>
           <p className="position-absolute bottom-0 end-0 heart">
             <i
-              className="fa-regular fa-heart"
-              onClick={() => addFavorite(video)}
+              className={classNames(
+                {
+                  "fa-regular": !isFav,
+                  "fa-solid": isFav,
+                  red: isFav,
+                  clickable: !isFav,
+                },
+                "fa-heart"
+              )}
+              onClick={() => !isFav && addFavorite(video)}
             ></i>
           </p>
         </div>
