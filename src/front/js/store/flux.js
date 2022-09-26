@@ -182,7 +182,7 @@ const getState = ({ getStore, getActions, setStore }) => {
             photo: user.photoURL,
             first_name: "",
             last_name:"",
-            user_name:""
+            user_name: user.displayName,
 
 
           }),

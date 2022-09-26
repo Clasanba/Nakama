@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import Visibility from "@material-ui/icons/Visibility";
 import VisibilityOff from "@material-ui/icons/VisibilityOff";
 import { Context } from "../store/appContext";
-
 import register from "../../styles/register.css";
 import ButtonGoogle from "./buttonGoogle";
 

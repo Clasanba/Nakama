@@ -199,7 +199,7 @@ def google_login():
     user = User.query.filter_by(email=email).first()
     if user is None:
         pw_hash = current_app.bcrypt.generate_password_hash("google").decode("utf-8")
-        user_google = User(name=name,user_name="",first_name="",last_name="",email=email, password=pw_hash, image=photo)
+        user_google = User(name=name,user_name= "",first_name="",last_name="",email=email, password=pw_hash, image=photo)
         db.session.add(user_google)
         db.session.commit()
         time= timedelta(hours=24)
