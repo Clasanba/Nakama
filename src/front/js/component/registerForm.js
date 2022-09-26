@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Visibility from "@material-ui/icons/Visibility";
 import VisibilityOff from "@material-ui/icons/VisibilityOff";
-
+import { Context } from "../store/appContext";
 import register from "../../styles/register.css";
+import ButtonGoogle from "./buttonGoogle";
 
 const RegisterForm = () => {
   const [name, setName] = useState("");
@@ -16,6 +17,7 @@ const RegisterForm = () => {
   const [error, setError] = useState("");
   const image = "imagen por defecto";
   const navigate = useNavigate();
+  const {store, actions} = useContext(Context)
 
   const handleClickShowPassword = () => {
     setValues({ ...values, showPassword: !values.showPassword });
@@ -60,7 +62,7 @@ const RegisterForm = () => {
 
     e.target.classList.add("was-validated");
   };
-
+  
   return (
     <div className="container mt-4">
       <div className="col-md-6 mx-auto text-center ">
@@ -179,6 +181,15 @@ const RegisterForm = () => {
                     Crear Cuenta
                   </button>
                 </div>
+                <div className="col-md-12 ">
+                  <div className="login-or text-center">
+                    <span className="span-or">o</span>
+                  </div>
+                  </div>
+                  <div className="form-group text-center">
+                    <ButtonGoogle/>
+                  </div>
+              
               </div>
             </form>
           </div>
