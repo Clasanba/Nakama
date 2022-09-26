@@ -10,7 +10,7 @@ export const Navbar = () => {
   const navigate = useNavigate();
   return (
     <>
-      <nav className="navbar bg-success bg-gradient navbar-expand-lg navbar-expand-md navbar-expand-sm  navbar-expand">
+      <nav className="  styleNavbar navbar-expand-lg navbar-expand-md navbar-expand-sm  navbar-expand">
         <div className="container-fluid ">
           <Link to="/" className="navbar-brand ">
             <img src={logoNakama1} className="logo_navBar" />
@@ -64,7 +64,7 @@ export const Navbar = () => {
           </div>
         </div>
       </nav>
-      <nav className="navbar bg-success p-2 bg-opacity-50 justify-content-center">
+      <nav className="navbar styleNavbar p-2 justify-content-center">
         <div className=" ">
           <ul className="nav ">
             {store.isLoggedIn ? (

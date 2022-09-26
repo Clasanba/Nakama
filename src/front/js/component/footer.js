@@ -4,9 +4,12 @@ import "../../styles/footer.css";
 export const Footer = () => {
   return (
     <>
-      <footer className="footer  py-3 text-center bg-success  styleFoot ">
+      <footer className="footer  py-3 text-center   styleFoot ">
         <div className="container-fluid d-flex justify-content-center ">
-          <a href="https://www.facebook.com/profile.php?id=100085517563751" target="_blank">
+          <a
+            href="https://www.facebook.com/profile.php?id=100085517563751"
+            target="_blank"
+          >
             <i className="fa-brands fa-square-facebook me-3 fs-2 text-white "></i>
           </a>
           <a href="https://www.instagram.com/comunidadnakama/" target="_blank">
