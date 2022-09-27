@@ -10,7 +10,7 @@ const ProfileUser = () => {
   const [password, setPassword] = useState("");
   const [files, setFiles] = useState(null);
   const [showError, setShowError] = useState(false);
-  const [imageContent, setImageContent] = useState(undefined);
+  const [imageContent, setImageContent] = useState(null);
   const navigate = useNavigate();
   const [saveImage, setSaveImage] = useState(false);
 
