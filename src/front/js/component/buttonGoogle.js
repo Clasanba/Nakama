@@ -21,7 +21,7 @@ const ButtonGoogle = () => {
 
     await actions.loginGoogle(user);
     actions.login()
-    navigate("/");
+    navigate("/login");
     
     
   };
