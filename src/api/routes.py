@@ -13,6 +13,7 @@ import cloudinary.api
 from cloudinary.uploader import upload
 from flask_mail import Mail, Message
 import random, string
+import re
 
 api = Blueprint('api', __name__)
 
@@ -31,15 +32,20 @@ def register():
     email = request.json.get("email")
     password = request.json.get("password")
     image = request.json.get("image") 
-           
+    
+    regex_letter = re.compile(r'/^[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$/g') ;      
     #Encripta la contraseña
     pw_hash = encrypt_pwd(password)
-    
     # Utilizo query para filtrar el email
     user = User.query.filter_by(email=email).first()
-    
     # Utilizo query para filtrar el username
     username = User.query.filter_by(user_name= user_name).first()
+    
+    if not re.match(regex_letter, name):
+            return jsonify({ "msg": "Nombre inválido"}), 400
+        
+    if not re.match(regex_letter, first_name):
+            return jsonify({ "msg": "Apellido inválido"}), 400    
     
     if user:
         # Comprueba que el email no este en la BBDD

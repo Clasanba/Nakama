@@ -33,7 +33,15 @@ const RegisterForm = () => {
     }
     e.preventDefault();
     const regex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,16}$/gm;
-    if (!password.match(regex)) {
+    const regexName = /^[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$/g;
+    
+    if(!name.match(regexName)){
+      setError("Nombre inválido")
+    }
+    if(!firstName.match(regexName)){
+      setError("Apellido incorrecto")
+    } 
+    if (!password.match(regex) ) {
       setError(
         "La contraseña debe contener entre 8-16 caracteres (mayúsculas,minúsculas y dígito) "
       );
@@ -88,6 +96,7 @@ const RegisterForm = () => {
                   onChange={(e) => setName(e.target.value)}
                   value={name}
                   name="name"
+                  
                   className="form-control my-input input-register"
                   id="validationCustom01"
                   placeholder="Nombre"
