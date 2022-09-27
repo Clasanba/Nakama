@@ -9,7 +9,7 @@ const Home = () => {
   const hasLogin = isLoggedIn();
 
   return (
-    <div className=" body-home bg-gradient  ">
+    <div className=" body-home  ">
       <p className="letters text-light text-left m-0 ">NAKAMA</p>
       <p className="card-text text-center detail">
         Somos una comunidad dirigida a personas relacionadas directa o

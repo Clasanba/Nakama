@@ -2,5 +2,12 @@
   height: 5rem;
 }
 .styleNavbar {
-  background-color: #136335;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  color: whitesmoke;
+}
+.page-nav {
+  flex: 1;
+  justify-content: center;
 }
