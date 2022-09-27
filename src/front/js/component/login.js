@@ -6,6 +6,8 @@ import Visibility from "@material-ui/icons/Visibility";
 import VisibilityOff from "@material-ui/icons/VisibilityOff";
 import ModalRecoveryPass from "./modalRecoveryPass";
 import { Context } from "../store/appContext";
+import { auth, provider } from "./firebase";
+import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 
 export const Login = () => {
   const [email, setEmail] = useState("");
@@ -53,7 +55,6 @@ export const Login = () => {
       })
       .catch(() => setShowError(true));
   };
-
   return (
     <>
       <div className="containerLogin  ">
