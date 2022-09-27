@@ -105,7 +105,7 @@ const ProfileUser = () => {
               <button>Guardar imagen</button>
             </div>
             {saveImage && (
-              <div className="alert alert-danger" role="alert">
+              <div className="alert alert-success mt-1" role="alert">
                 Imagen guardada con éxito
               </div>
             )}
