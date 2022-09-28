@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Visibility from "@material-ui/icons/Visibility";
 import VisibilityOff from "@material-ui/icons/VisibilityOff";
-
+import { Context } from "../store/appContext";
 import register from "../../styles/register.css";
+import ButtonGoogle from "./buttonGoogle";
 
 const RegisterForm = () => {
   const [name, setName] = useState("");
@@ -16,6 +17,7 @@ const RegisterForm = () => {
   const [error, setError] = useState("");
   const image = "imagen por defecto";
   const navigate = useNavigate();
+  const {store, actions} = useContext(Context)
 
   const handleClickShowPassword = () => {
     setValues({ ...values, showPassword: !values.showPassword });
@@ -31,7 +33,15 @@ const RegisterForm = () => {
     }
     e.preventDefault();
     const regex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,16}$/gm;
-    if (!password.match(regex)) {
+    const regexName = /^[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$/g;
+    
+    if(!name.match(regexName)){
+      setError("Nombre inválido")
+    }
+    if(!firstName.match(regexName)){
+      setError("Apellido incorrecto")
+    } 
+    if (!password.match(regex) ) {
       setError(
         "La contraseña debe contener entre 8-16 caracteres (mayúsculas,minúsculas y dígito) "
       );
@@ -59,7 +69,7 @@ const RegisterForm = () => {
     }
     e.target.classList.add("was-validated");
   };
-
+  
   return (
     <div className="container mt-4">
       <div className="col-md-6 mx-auto text-center ">
@@ -85,6 +95,7 @@ const RegisterForm = () => {
                   onChange={(e) => setName(e.target.value)}
                   value={name}
                   name="name"
+                  
                   className="form-control my-input input-register"
                   id="validationCustom01"
                   placeholder="Nombre"
@@ -178,6 +189,15 @@ const RegisterForm = () => {
                     Crear Cuenta
                   </button>
                 </div>
+                <div className="col-md-12 ">
+                  <div className="login-or text-center">
+                    <span className="span-or">o</span>
+                  </div>
+                  </div>
+                  <div className="form-group text-center">
+                    <ButtonGoogle/>
+                  </div>
+              
               </div>
             </form>
           </div>

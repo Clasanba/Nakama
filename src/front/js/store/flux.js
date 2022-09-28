@@ -121,8 +121,10 @@ const getState = ({ getStore, getActions, setStore }) => {
         },
       ],
       user: [],
+      init:false,
       mailSend: false,
-      mailError: false,
+			mailError:false,
+      auth:false,
     },
     actions: {
       init: () => {
@@ -162,31 +164,68 @@ const getState = ({ getStore, getActions, setStore }) => {
             setStore({ favorites: data });
           });
       },
-      // Recuperación de contraseña
-      RecoveryPassword: async (email) => {
-        const options = {
+			
+			// Recuperación de contraseña
+			RecoveryPassword: async (email) =>{
+				const options = {
+					method: "POST",
+					headers:{
+						"Content-Type":"application/json"
+					},
+					body: JSON.stringify({email : email}),
+				};
+				try {
+					const response = await fetch(
+						process.env.BACKEND_URL + "/api/recoverypassword",options
+					);
+					if (response.status === 200){
+						setStore({mailSend: true});
+					}else {
+						setStore({mailError: true});
+					}
+				} catch (error) {
+					setStore({mailError: true})
+				}
+
+			},
+      loginGoogle: async (user) => {
+        console.log(user)
+        try{
+          const resp = await fetch(process.env.BACKEND_URL + "/api/register_google", {
           method: "POST",
-          headers: {
+          headers:{
             "Content-Type": "application/json",
+            Accept: "application/json",
           },
-          body: JSON.stringify({ email: email }),
-        };
-        try {
-          const response = await fetch(
-            process.env.BACKEND_URL + "/api/recoverypassword",
-            options
-          );
-          if (response.status === 200) {
-            setStore({ mailSend: true });
-          } else {
-            setStore({ mailError: true });
-          }
-        } catch (error) {
-          setStore({ mailError: true });
+          body: JSON.stringify({
+            name: user.displayName,
+            email: user.email,
+            photo: user.photoURL,
+            first_name: "",
+            last_name:"",
+            user_name: user.displayName,
+
+
+          }),
         }
-      },
+        );
+        const data = await resp.json ();
+        if (resp.status === 200){
+          setStore({
+            auth:true,
+          });
+          localStorage.setItem("token",data.access_token)
+        }
+        return data
+      }catch (error){
+        console.log ("Algo salió mal",error)
+      }
     },
-  };
-};
+		
+				
+			}
+		}
+	};
+
 
 export default getState;

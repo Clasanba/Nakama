@@ -13,6 +13,7 @@ import cloudinary.api
 from cloudinary.uploader import upload
 from flask_mail import Mail, Message
 import random, string
+import re
 
 api = Blueprint('api', __name__)
 
@@ -31,15 +32,20 @@ def register():
     email = request.json.get("email")
     password = request.json.get("password")
     image = request.json.get("image") 
-           
+    
+    regex_letter = re.compile(r'/^[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$/g') ;      
     #Encripta la contraseña
     pw_hash = encrypt_pwd(password)
-    
     # Utilizo query para filtrar el email
     user = User.query.filter_by(email=email).first()
-    
     # Utilizo query para filtrar el username
     username = User.query.filter_by(user_name= user_name).first()
+    
+    if not re.match(regex_letter, name):
+            return jsonify({ "msg": "Nombre inválido"}), 400
+        
+    if not re.match(regex_letter, first_name):
+            return jsonify({ "msg": "Apellido inválido"}), 400    
     
     if user:
         # Comprueba que el email no este en la BBDD
@@ -187,6 +193,26 @@ def recovery_password():
         return jsonify(response_body),200
     else:
         return jsonify({"message":"correo no registrado"}),400
+    
+    # Autenticación con Google
+@api.route("/register_google", methods = ["POST"])
+def google_login():
+    name = request.json.get("name",None)
+    email = request.json.get("email",None)
+    photo = request.json.get("photo",None)
+    print(photo)
+    print(request.json)
+    user = User.query.filter_by(email=email).first()
+    if user is None:
+        pw_hash = current_app.bcrypt.generate_password_hash("google").decode("utf-8")
+        user_google = User(name=name,user_name= "",first_name="",last_name="",email=email, password=pw_hash, image=photo)
+        db.session.add(user_google)
+        db.session.commit()
+        time= timedelta(hours=24)
+        access_token = create_access_token(identity=email, expires_delta=time)
+        return jsonify({"access_token":access_token,"email":email}),200
+    else:
+        return jsonify({"message":"error"}),400
 
 # Favorites
 @api.route("/favorite", methods=['PUT'])

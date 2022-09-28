@@ -10,7 +10,7 @@ const ProfileUser = () => {
   const [password, setPassword] = useState("");
   const [files, setFiles] = useState(null);
   const [showError, setShowError] = useState(false);
-  const [imageContent, setImageContent] = useState(undefined);
+  const [imageContent, setImageContent] = useState(null);
   const navigate = useNavigate();
   const [saveImage, setSaveImage] = useState(false);
 
@@ -105,7 +105,7 @@ const ProfileUser = () => {
               <button>Guardar imagen</button>
             </div>
             {saveImage && (
-              <div className="alert alert-danger" role="alert">
+              <div className="alert alert-success mt-1" role="alert">
                 Imagen guardada con éxito
               </div>
             )}
