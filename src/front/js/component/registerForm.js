@@ -5,6 +5,7 @@ import VisibilityOff from "@material-ui/icons/VisibilityOff";
 import { Context } from "../store/appContext";
 import register from "../../styles/register.css";
 import ButtonGoogle from "./buttonGoogle";
+import avatar from "../../img/avatar_Nakama.png"
 
 const RegisterForm = () => {
   const [name, setName] = useState("");
@@ -15,7 +16,7 @@ const RegisterForm = () => {
   const [password, setPassword] = useState("");
   const [values, setValues] = useState({ showPassword: false });
   const [error, setError] = useState("");
-  const image = "imagen por defecto";
+  const image = avatar;
   const navigate = useNavigate();
   const {store, actions} = useContext(Context)
 

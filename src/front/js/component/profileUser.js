@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { getToken, saveToken } from "../auth";
 
+
 const ProfileUser = () => {
   const [name, setName] = useState("");
   const [firstName, setFirstName] = useState("");
@@ -91,7 +92,7 @@ const ProfileUser = () => {
               <img
                 src={
                   imageContent ||
-                  "http://ssl.gstatic.com/accounts/ui/avatar_2x.png"
+                  "https://www.pngmart.com/image/326841"
                 }
                 className="avatar rounded-circle img-thumbnail"
                 alt="avatar"
