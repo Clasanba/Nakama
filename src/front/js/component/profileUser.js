@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { getToken, saveToken } from "../auth";
 
 
+
 const ProfileUser = () => {
   const [name, setName] = useState("");
   const [firstName, setFirstName] = useState("");
@@ -14,6 +15,7 @@ const ProfileUser = () => {
   const [imageContent, setImageContent] = useState(null);
   const navigate = useNavigate();
   const [saveImage, setSaveImage] = useState(false);
+  
 
   useEffect(() => {
     if (files) {
@@ -92,7 +94,7 @@ const ProfileUser = () => {
               <img
                 src={
                   imageContent ||
-                  "https://www.pngmart.com/image/326841"
+                  "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
                 }
                 className="avatar rounded-circle img-thumbnail"
                 alt="avatar"
