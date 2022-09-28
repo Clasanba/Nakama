@@ -33,7 +33,7 @@ def register():
     password = request.json.get("password")
     image = request.json.get("image") 
     
-    regex_letter = re.compile(r'/^[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$/g') ;      
+    regex_letter = re.compile(r'^[a-zA-ZñÑáéíóúÁÉÍÓÚ]+$') ;      
     #Encripta la contraseña
     pw_hash = encrypt_pwd(password)
     # Utilizo query para filtrar el email

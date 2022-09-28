@@ -33,7 +33,7 @@ const RegisterForm = () => {
     }
     e.preventDefault();
     const regex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,16}$/gm;
-    const regexName = /^[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$/g;
+    const regexName = "^[a-zA-ZñÑáéíóúÁÉÍÓÚ]+$";
     
     if(!name.match(regexName)){
       setError("Nombre inválido")
