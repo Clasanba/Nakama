@@ -45,6 +45,7 @@ const RegisterForm = () => {
       setError(
         "La contraseña debe contener entre 8-16 caracteres (mayúsculas,minúsculas y dígito) "
       );
+      e.target.classList.add("was-validated");
     } else {
       const res = await fetch(process.env.BACKEND_URL + "/api/register", {
         method: "POST",
@@ -67,7 +68,7 @@ const RegisterForm = () => {
         setError(error.msg);
       }
     }
-    e.target.classList.add("was-validated");
+    
   };
   
   return (
