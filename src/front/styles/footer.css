@@ -1,3 +1,9 @@
-.styleFoot {
+.footer {
   background-color: transparent;
+  margin-left: 80%;
+  display: block;
+}
+
+.item-footer {
+  display: block;
 }

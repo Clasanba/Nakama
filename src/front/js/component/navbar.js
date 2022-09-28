@@ -35,7 +35,7 @@ export const Navbar = () => {
       <nav className="styleNavbar " role="search">
         <div>
           <Link to="/" className="navbar-brand  ">
-            <img src={logoNakama1} className="logo_navBar" />
+            <img src={logoNakama1} className="logo_navBar mt-1 ms-1" />
           </Link>
         </div>
         <ul className="nav ulNavbar page-nav ">
