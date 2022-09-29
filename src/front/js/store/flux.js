@@ -221,8 +221,6 @@ const getState = ({ getStore, getActions, setStore }) => {
         console.log ("Algo salió mal",error)
       }
     },
-		
-				
 			}
 		}
 	};

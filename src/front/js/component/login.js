@@ -55,6 +55,16 @@ export const Login = () => {
       })
       .catch(() => setShowError(true));
   };
+  const loginGoogleAsync = async () => {
+    const result = await signInWithPopup(auth, provider);
+    const credential = GoogleAuthProvider.credentialFromResult(result);
+    console.log(credential, "@@", result);
+    const token = credential.accessToken;
+    const user = result._tokenResponse;
+    console.log(user);
+    await actions.login(user);
+    navigate("/");
+  };
   return (
     <>
       <div className="containerLogin  ">
@@ -114,7 +124,7 @@ export const Login = () => {
           <button type="submit" className="btn btn-outline-success">
             Entrar
           </button>
-          <button className="btn btn-outline-primary ms-2">
+          <button className="btn btn-outline-primary ms-2" onClick={loginGoogleAsync}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="16"
