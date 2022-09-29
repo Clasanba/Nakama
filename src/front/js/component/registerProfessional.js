@@ -96,6 +96,7 @@ const RegisterProfessional = () => {
                   placeholder="Especialización (Psicología, Fisioterapia...)"
                   required
                 />
+                </div>
                 <div className="invalid-feedback">
                   Introduzca Especialización
                 </div>
