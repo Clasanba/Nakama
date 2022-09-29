@@ -12,6 +12,7 @@ const RegisterProfessional = () => {
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
     const [specialization, setSpecialization] = useState("");
+    const [colegiado, setColegiado] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [values, setValues] = useState({ showPassword: false });
@@ -97,6 +98,20 @@ const RegisterProfessional = () => {
                 />
                 <div className="invalid-feedback">
                   Introduzca Especialización
+                </div>
+                <div className="form-group mb-2">
+                <input
+                  type="text"
+                  onChange={(e) => setColegiado(e.target.value)}
+                  value={colegiado}
+                  name="colegiado"
+                  className="form-control my-input input-register"
+                  id="colegiado"
+                  placeholder="Num. colegiado"
+                  required
+                />
+                <div className="invalid-feedback">
+                  Introduzca Num. colegiado
                 </div>
               </div>
               <div className="form-group mb-2">
