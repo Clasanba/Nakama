@@ -1,6 +1,7 @@
 .logo_navBar {
-  height: 5rem;
+  height: 10%;
 }
+
 .styleNavbar {
   background-color: transparent;
   display: flex;
@@ -10,4 +11,7 @@
 .page-nav {
   flex: 1;
   justify-content: center;
+}
+.icon-collapse {
+  font-size: 30%;
 }
