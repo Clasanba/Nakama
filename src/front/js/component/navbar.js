@@ -32,30 +32,46 @@ export const Navbar = () => {
 
   return (
     <>
-      <nav className="styleNavbar " role="search">
-        <div>
-          <Link to="/" className="navbar-brand  ">
+      <nav className="styleNavbar navbar-expand-lg " role="search">
+        <div className="container-fluid">
+          <Link to="/" className="navbar-brand ">
             <img src={logoNakama1} className="logo_navBar mt-1 ms-1" />
           </Link>
+          <button
+            className="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span className="navbar-toggler-icon ">
+              <i className="fa-solid fa-bars fs-1 text-white "></i>
+            </span>
+          </button>
+          <div className="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul className="nav ulNavbar page-nav ">
+              {pages.map((page) => (
+                <li key={page.link} className="nav-item ">
+                  <Link to={page.link} className="nav-link text-white">
+                    {page.title}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+
+            <ul className="nav ulNavbar">
+              {links.map((linkPage) => (
+                <li key={linkPage.link} className="nav-item">
+                  <Link to={linkPage.link} className="nav-link  text-white ">
+                    {linkPage.title}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
-        <ul className="nav ulNavbar page-nav ">
-          {pages.map((page) => (
-            <li key={page.link} className="nav-item ">
-              <Link to={page.link} className="nav-link text-white">
-                {page.title}
-              </Link>
-            </li>
-          ))}
-        </ul>
-        <ul className="nav ulNavbar">
-          {links.map((linkPage) => (
-            <li key={linkPage.link} className="nav-item">
-              <Link to={linkPage.link} className="nav-link  text-white ">
-                {linkPage.title}
-              </Link>
-            </li>
-          ))}
-        </ul>
       </nav>
     </>
   );

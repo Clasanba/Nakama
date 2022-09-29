@@ -1,9 +1,5 @@
 .footer {
   background-color: transparent;
-  margin-left: 80%;
-  display: block;
-}
-
-.item-footer {
-  display: block;
+  display: inline-grid;
+  justify-content: end;
 }
