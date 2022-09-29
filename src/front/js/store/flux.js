@@ -198,10 +198,10 @@ const getState = ({ getStore, getActions, setStore }) => {
             Accept: "application/json",
           },
           body: JSON.stringify({
-            name: user.displayName,
+            name: user.firstName,
             email: user.email,
-            photo: user.photoURL,
-            first_name: "",
+            photo: user.photoUrl,
+            first_name: user.lastName,
             last_name:"",
             user_name: user.displayName,
 

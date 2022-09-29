@@ -15,10 +15,10 @@ const ButtonGoogle = () => {
   const registerGoogleAsync = async () => {
     const result = await signInWithPopup(auth, provider);
     const credential = GoogleAuthProvider.credentialFromResult(result);
-    console.log(credential, "@@");
+    console.log(credential, "@@", result);
     const token = credential.accessToken;
-    const user = result.user;
-
+    const user = result._tokenResponse;    
+    console.log(user)
     await actions.loginGoogle(user);
     actions.login()
     navigate("/login");
