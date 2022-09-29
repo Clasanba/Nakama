@@ -1,4 +1,4 @@
-import React, { useContext} from "react";
+import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import GoogleButton from "react-google-button";
 import { auth, provider } from "./firebase";
@@ -9,23 +9,17 @@ import { Context } from "../store/appContext";
 const ButtonGoogle = () => {
   const { actions } = useContext(Context);
   const navigate = useNavigate();
-  
- 
 
   const registerGoogleAsync = async () => {
     const result = await signInWithPopup(auth, provider);
     const credential = GoogleAuthProvider.credentialFromResult(result);
-    console.log(credential, "@@");
+    console.log(credential, "@@", result);
     const token = credential.accessToken;
-    const user = result.user;
-
+    const user = result._tokenResponse;
+    console.log(user);
     await actions.loginGoogle(user);
-    actions.login()
-    navigate("/");
-    
-    
+    navigate("/login");
   };
-
 
   return (
     <div className="form-group text-center d-flex justify-content-center">
