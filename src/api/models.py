@@ -27,6 +27,32 @@ class User(db.Model):
             "image": self.image,
             "pwd":self.password
         }
+class Professional(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    email = db.Column(db.String(120), unique=True, nullable=False)
+    password = db.Column(db.String(80), unique=False, nullable=False)
+    name = db.Column(db.String(120), unique=False, nullable=False)
+    first_name = db.Column(db.String(120), unique=False, nullable=False)
+    last_name = db.Column(db.String(120), unique=False, nullable=False)
+    specialization = db.Column(db.String(120), unique=False, nullable=False)
+    image = db.Column(db.String(120), unique=False)
+    membership_number=db.Column(db.String(9), unique=False, nullable=False)
+    
+    def __repr__(self):
+        return '<User {self.email}>'
+
+    def serialize(self):
+        return {
+            "id": self.id,
+            "email": self.email,
+            "name": self.name,
+            "first_name": self.first_name,
+            "last_name": self.last_name,
+            "specialization": self.specialization,
+            "image": self.image,
+            "membership_number":self.membership_number
+        }
+        
 class Favorite(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey("user.id"))
