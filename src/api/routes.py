@@ -2,7 +2,7 @@
 This module takes care of starting the API Server, Loading the DB and Adding the endpoints
 """
 from flask import Flask, request, jsonify, url_for, Blueprint, json, current_app
-from api.models import db, User,Favorite
+from api.models import db, User,Favorite, Professional
 from api.utils import generate_sitemap, APIException
 from flask_jwt_extended import create_access_token, get_jwt_identity, jwt_required, JWTManager
 from flask_bcrypt import Bcrypt
@@ -13,6 +13,7 @@ import cloudinary.api
 from cloudinary.uploader import upload
 from flask_mail import Mail, Message
 import random, string
+import re
 
 api = Blueprint('api', __name__)
 
@@ -65,6 +66,51 @@ def register():
 
     return jsonify(response_body), 200 
 
+@api.route('/professional_register', methods=['POST'])
+def professional_register():
+    # Recibe los datos de usuario 
+    name = request.json.get("name")
+    first_name = request.json.get("first_name")
+    last_name = request.json.get("last_name")
+    user_name = request.json.get("user_name")
+    email = request.json.get("email")
+    password = request.json.get("password")
+    image = request.json.get("image")
+    specialization = request.json.get("specialization")
+    membership_number = request.json.get("membership_number")
+    regex_letter = re.compile(r'^[a-zA-ZñÑáéíóúÁÉÍÓÚ]+$');
+           
+    pw_hash = encrypt_pwd(password)
+    professional = Professional.query.filter_by(email=email).first()
+    username_professional = Professional.query.filter_by(user_name= user_name).first()
+    
+    if not re.match(regex_letter, name):
+            return jsonify({ "msg": "Nombre inválido"}), 400
+        
+    if not re.match(regex_letter, first_name):
+            return jsonify({ "msg": "Apellido inválido"}), 400
+    
+    if professional:
+        if email == professional.email:
+            return jsonify({"msg": "Email ya registrado"}),401
+    elif username_professional:
+    
+        if username_professional:
+
+            if user_name == username_professional.user_name:
+                return jsonify({"msg": "Usuario ya registrado"}),402
+        
+    else:
+        new_professional = Professional(name = name,first_name =first_name,last_name =last_name, membership_number = membership_number, email = email, password = pw_hash, image = image, specialization = specialization, user_name=user_name)
+        db.session.add(new_professional)
+        db.session.commit()
+    
+    response_body = {
+        "message": "Usuario registrado correctamente"
+    }
+
+    return jsonify(response_body), 200 
+
 def check_password(hash, password):
     try:
         return current_app.bcrypt.check_password_hash(hash, password)
@@ -80,8 +126,14 @@ def login():
     
     # Utilizo query para filtrar el email y contraseña
     user = User.query.filter_by(email=email).first()
+    professional = Professional.query.filter_by(email=email).first()
     
     if user and check_password(user.password, password):
+        time= timedelta(hours=24)
+        access_token = create_access_token(identity=email, expires_delta=time)
+        return jsonify({"access_token": access_token})
+    
+    if professional and check_password(professional.password, password):
         time= timedelta(hours=24)
         access_token = create_access_token(identity=email, expires_delta=time)
         return jsonify({"access_token": access_token})
@@ -261,3 +313,6 @@ def read_favorites():
         return fav.serialize()
     
     return jsonify(list(map(to_json, favorites))),200 
+
+
+
