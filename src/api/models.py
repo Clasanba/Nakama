@@ -35,6 +35,7 @@ class Professional(db.Model):
     first_name = db.Column(db.String(120), unique=False, nullable=False)
     last_name = db.Column(db.String(120), unique=False, nullable=False)
     specialization = db.Column(db.String(120), unique=False, nullable=False)
+    user_name = db.Column(db.String(120), unique=False, nullable=False)
     image = db.Column(db.String(120), unique=False)
     membership_number=db.Column(db.String(9), unique=False, nullable=False)
     
@@ -50,6 +51,7 @@ class Professional(db.Model):
             "last_name": self.last_name,
             "specialization": self.specialization,
             "image": self.image,
+            "user_name": self.user_name,
             "membership_number":self.membership_number
         }
         

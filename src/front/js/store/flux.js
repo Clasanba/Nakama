@@ -125,6 +125,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       mailSend: false,
 			mailError:false,
       auth:false,
+   
     },
     actions: {
       init: () => {

@@ -7,13 +7,15 @@ import register from "../../styles/register.css";
 import ButtonGoogle from "./buttonGoogle";
 import avatar from "../../img/avatar_Nakama.png"
 
-const RegisterForm = () => {
+const RegisterForm = ({professional}) => {
   const [name, setName] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [userName, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [specialization, setSpecialization] = useState("");
+  const [memberShipNumber, setMemberShipNumber] = useState("");
   const [values, setValues] = useState({ showPassword: false });
   const [error, setError] = useState("");
   const image = avatar;
@@ -39,18 +41,30 @@ const RegisterForm = () => {
         "La contraseña debe contener entre 8-16 caracteres (mayúsculas,minúsculas y dígito) "
       );
     } else {
-      const res = await fetch(process.env.BACKEND_URL + "/api/register", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name,
+      const uri = professional ? "/api/professional_register" : "/api/register"
+      const body = professional ? JSON.stringify({ 
+        name,
           first_name: firstName,
           last_name: lastName,
           user_name: userName,
           email,
           password,
           image,
-        }),
+          specialization,
+          membership_number:memberShipNumber
+      }) : JSON.stringify({
+        name,
+        first_name: firstName,
+        last_name: lastName,
+        user_name: userName,
+        email,
+        password,
+        image,
+      })
+      const res = await fetch(process.env.BACKEND_URL + uri, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: body
       });
       if (res.ok) {
         const data = await res.json();
@@ -135,6 +149,40 @@ const RegisterForm = () => {
                   Introduzca nombre de usuario
                 </div>
               </div>
+              {professional && 
+              <>
+                  <div className="form-group mb-2">
+                  <input
+                    type="text"
+                    onChange={(e) => setSpecialization(e.target.value)}
+                    value={specialization}
+                    name="specialization"
+                    className="form-control my-input input-register"
+                    id="specialization"
+                    placeholder="Especialización (Psicología, Fisioterapia...)"
+                    required
+                  />
+                  </div>
+                  <div className="invalid-feedback">
+                    Introduzca Especialización
+                  </div>
+                  <div className="form-group mb-2">
+                  <input
+                    type="text"
+                    onChange={(e) => setMemberShipNumber(e.target.value)}
+                    value={memberShipNumber}
+                    name="colegiado"
+                    className="form-control my-input input-register"
+                    id="colegiado"
+                    placeholder="Num. colegiado"
+                    required
+                  />
+                  <div className="invalid-feedback">
+                    Introduzca Num. colegiado
+                  </div>
+                </div>
+                </>            
+              }
               <div className="form-group mb-2">
                 <input
                   type="email"
@@ -182,16 +230,21 @@ const RegisterForm = () => {
                     Crear Cuenta
                   </button>
                 </div>
+                {!professional &&
+               <>
                 <div className="col-md-12 ">
                   <div className="login-or text-center">
                     <span className="span-or">o</span>
                   </div>
-                  </div>
-                  <div className="form-group text-center">
+                </div>
+                <div className="form-group text-center">
                     <ButtonGoogle/>
-                  </div>
+                </div>
+               
               
-              </div>
+              </>
+            }
+            </div>
             </form>
           </div>
         </div>

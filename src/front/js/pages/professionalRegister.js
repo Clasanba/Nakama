@@ -1,11 +1,10 @@
 import React from "react";
-
-import RegisterProfessional from "../component/registerProfessional";
+import RegisterForm from "../component/registerForm";
 
 const ProfessionalRegister = () => {
   return (
     <div className="container-fluid register ">
-      <RegisterProfessional />
+      <RegisterForm professional />
     </div>
   );
 };
