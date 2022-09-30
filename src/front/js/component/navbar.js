@@ -41,10 +41,17 @@ export const Navbar = () => {
                 </>
               ) : (
                 <>
-                  <li className="nav-item ">
-                    <Link to="/register" className="nav-link text-white">
-                      Registro usuario
-                    </Link>
+                  <li className="nav-item dropdown">
+                  <a className="nav-link dropdown-toggle link-light" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Registro
+          </a>
+                    <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li><Link to="/register" className="nav-link text-black">Paciente</Link></li>
+                    <li><Link to="/ProfessionalRegister" className="nav-link text-black">Profesional</Link></li>
+                    
+                       
+                    
+                    </ul>
                   </li>
                   <li>
                     <Link to="/login" className="nav-link text-white">
