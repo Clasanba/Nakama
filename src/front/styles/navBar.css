@@ -1,16 +1,16 @@
 .logo_navBar {
-  height: 10%;
+  height: 5rem;
 }
 
 .styleNavbar {
-  background-color: transparent;
+  background-color: #1f5046;
   display: flex;
-  align-items: center;
   color: whitesmoke;
 }
 .page-nav {
   flex: 1;
   justify-content: center;
+  align-items: flex-start;
 }
 .icon-collapse {
   font-size: 30%;

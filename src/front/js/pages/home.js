@@ -10,7 +10,7 @@ const Home = () => {
 
   return (
     <div className=" body-home  ">
-      <p className="letters text-light text-left  align-middle ">NAKAMA</p>
+      <p className="letters text-light align-middle ">NAKAMA</p>
       <div className="paragraph">
         <p className="card-text  detail text-light">
           Somos una comunidad dirigida a personas relacionadas directa o

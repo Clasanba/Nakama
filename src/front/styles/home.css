@@ -10,8 +10,12 @@
 }
 
 .paragraph {
-  width: 40%;
-  margin-left: 10%;
+  width: 30%;
+  margin-left: 5%;
+}
+.title {
+  display: flex;
+  justify-content: center;
 }
 
 /* #4FB8EB; , #82c75a, #0a4b7e,053f6b*/
