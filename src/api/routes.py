@@ -259,3 +259,53 @@ def read_favorites():
         return fav.serialize()
     
     return jsonify(list(map(to_json, favorites))),200 
+
+@api.route('/professional_register', methods=['POST'])
+def professional_register():
+    # Recibe los datos de usuario 
+    name = request.json.get("name")
+    first_name = request.json.get("first_name")
+    last_name = request.json.get("last_name")
+    specialization = request.json.get("specialization")
+    membership_number = request.json.get("membership_number")
+    email = request.json.get("email")
+    password = request.json.get("password")
+    image = request.json.get("image")
+    regex_letter = re.compile(r'^[a-zA-ZñÑáéíóúÁÉÍÓÚ]+$') 
+           
+    pw_hash = encrypt_pwd(password)
+    user = User.query.filter_by(email=email).first()
+    membershipnumber = User.query.filter_by(membership_number= membership_number).first()
+    
+    if not re.match(regex_letter, name):
+            return jsonify({ "msg": "Nombre inválido"}), 400
+        
+    if not re.match(regex_letter, first_name):
+            return jsonify({ "msg": "Apellido inválido"}), 400
+    
+    if user:
+        if email == user.email:
+            return jsonify({"msg": "Email ya registrado"}),401
+    elif membershipnumber:
+    
+        if membershipnumber:
+
+            if membership_number == membershipnumber.membership_number:
+                return jsonify({"msg": "Usuario ya registrado"}),402
+        
+    else:
+        new_professional = User(name = name,first_name =first_name,last_name =last_name, membership_number = membership_number, email = email, password = pw_hash, image = image, specialization = specialization)
+        db.session.add(new_professional)
+        db.session.commit()
+    
+    response_body = {
+        "message": "Usuario registrado correctamente"
+    }
+
+    return jsonify(response_body), 200 
+
+def check_password(hash, password):
+    try:
+        return current_app.bcrypt.check_password_hash(hash, password)
+    except: 
+        return False
