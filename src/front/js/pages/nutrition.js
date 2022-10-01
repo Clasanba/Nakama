@@ -8,7 +8,7 @@ const Nutrition = () => {
   return (
     <>
       <div className="bg-nutrition">
-        <div className="title-nutrition">
+        <div className="title-view-nutrition">
           <h1 className=" text-sm-start mb-1 ms-5">Nutrición</h1>
           <div>
             <p className="text-sm-start ms-5 mb-4">
@@ -21,7 +21,7 @@ const Nutrition = () => {
             </p>
           </div>
         </div>
-        <div className="card-nutrition bg-transparent row row-cols-sm-12 row-cols-md-3 row-cols-lg-5 mt-5">
+        <div className="card-nutrition bg-transparent row row-cols-sm-12 row-cols-md-3 row-cols-lg-4">
           <Cards articles={store.nutrition} />
         </div>
       </div>

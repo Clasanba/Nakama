@@ -1,14 +1,14 @@
-.title-view-nutrition {
-  background-color: rgba(142, 11, 64, 0.812);
+.title-view-articles {
+  background-color: #77a467;
   width: 100%;
 
   color: #f9fbfb;
 }
-.bg-nutrition {
+.bg-articles {
   background-color: whitesmoke;
   width: 100%;
   height: 100%;
 }
-.card-nutrition {
+.card-articles {
   justify-content: center;
 }

@@ -1,14 +1,25 @@
 import React, { useContext } from "react";
 import Cards from "../component/cards";
 import { Context } from "../store/appContext";
+import "../../styles/articles.css";
 
 const Article = () => {
   const { store } = useContext(Context);
   return (
     <>
-      <h1 className="text-success text-center">Artículos</h1>
-      <div className="d-flex">
-        <Cards articles={store.article} />
+      <div className="bg-articles">
+        <div className="title-view-articles">
+          <h1 className="text-sm-start mb-1 ms-5">Artículos</h1>
+          <div>
+            <p className="text-sm-start ms-5 mb-4">
+              En este apartado puede encontrar artículos científicos sobre el
+              cáncer y los últimos tratamientos.
+            </p>
+          </div>
+        </div>
+        <div className="card-articles bg-transparent row row-cols-sm-12 row-cols-md-3 row-cols-lg-4">
+          <Cards articles={store.article} />
+        </div>
       </div>
     </>
   );
