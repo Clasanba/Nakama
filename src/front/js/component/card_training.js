@@ -63,36 +63,40 @@ export const CardTraining = () => {
     const { medium = {} } = thumbnails;
     const isFav = favorites.some((fav) => fav.url.includes(resourceId.videoId));
     return (
-      <div className="card cardYoutube " key={id}>
-        <a
-          href={`https://www.youtube.com/watch?v=${resourceId.videoId}`}
-          target="_blank"
-        >
-          <img
-            width={medium.width}
-            height={medium.height}
-            src={medium.url}
-            className="card-img-top"
-            alt="training"
-          />
-        </a>
-        <div className="card-body">
-          <p className="card-title text-decoration-none titulovideo">{title}</p>
-          <p className="card-text text-dark">{video.channelTitle}</p>
-          <p className="position-absolute bottom-0 end-0 heart">
-            <i
-              className={classNames(
-                {
-                  "fa-regular": !isFav,
-                  "fa-solid": isFav,
-                  red: isFav,
-                  clickable: !isFav,
-                },
-                "fa-heart"
-              )}
-              onClick={() => !isFav && addFavorite(video)}
-            ></i>
-          </p>
+      <div className=" " key={id}>
+        <div className=" card-training-css">
+          <a
+            href={`https://www.youtube.com/watch?v=${resourceId.videoId}`}
+            target="_blank"
+          >
+            <img
+              width={medium.width}
+              height={medium.height}
+              src={medium.url}
+              className=" img-training "
+              alt="training"
+            />
+          </a>
+          <div className="card-body">
+            <p className="card-title text-decoration-none titulovideo">
+              {title}
+            </p>
+            <p className="card-text text-dark">{video.channelTitle}</p>
+            <p className="position-absolute bottom-0 end-0 heart">
+              <i
+                className={classNames(
+                  {
+                    "fa-regular": !isFav,
+                    "fa-solid": isFav,
+                    red: isFav,
+                    clickable: !isFav,
+                  },
+                  "fa-heart"
+                )}
+                onClick={() => !isFav && addFavorite(video)}
+              ></i>
+            </p>
+          </div>
         </div>
       </div>
     );
