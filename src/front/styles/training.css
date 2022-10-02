@@ -1,0 +1,13 @@
+.title-view-training {
+  background-color: #f7af13;
+  width: 100%;
+  color: #f9fbfb;
+}
+.bg-training {
+  background-color: #f7af13;
+  width: 100%;
+  height: 100%;
+}
+.card-training {
+  justify-content: space-between;
+}
