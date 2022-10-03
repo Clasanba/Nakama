@@ -1,8 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
-import "../../styles/card_training.css";
 import { getToken } from "../auth";
-import "../../styles/card_training.css";
+import "../../styles/favorites.css";
 import { Context } from "../store/appContext";
 
 export const Favorites = () => {
@@ -37,32 +36,45 @@ export const Favorites = () => {
 
   return (
     <>
-      {favorites.length != 0 && <h1>Favoritos</h1>}
+      {favorites.length != 0 && (
+        <div className=" ">
+          <div className="title-view-favorite">
+            <h1 className=" text-sm-start mb-1 ms-5">Favoritos</h1>
+            <div>
+              <p className="text-sm-start ms-5 mb-4">
+                Aquí puedes consultar tus videos favoritos y borrarlos.
+              </p>
+            </div>
+          </div>
+        </div>
+      )}
       {favorites.map((favorite) => {
         return (
-          <div key={favorite.id} className="card cardYoutube">
-            <a href={favorite.url} target="_blank">
-              <img
-                src={favorite.url_image}
-                className="card-img-top"
-                alt="training"
-              />
-            </a>
-
-            <div className="card-body">
-              <a
-                className="card-text text-dark text-decoration-none"
-                href={favorite.url}
-              >
-                {favorite.title}
+          <div key={favorite.id} className="">
+            <div className="card-favorite-css">
+              <a href={favorite.url} target="_blank">
+                <img
+                  src={favorite.url_image}
+                  className=" img-favorite "
+                  alt="training"
+                />
               </a>
-              <button
-                type="button"
-                className="btn btn-warning mt-5"
-                onClick={() => deleteFavorite(favorite.id)}
-              >
-                Borrar favorito
-              </button>
+
+              <div className="card-body">
+                <a
+                  className="card-title text-decoration-none titulovideo"
+                  href={favorite.url}
+                >
+                  {favorite.title}
+                </a>
+                <button
+                  type="button"
+                  className="btn btn-warning mt-5"
+                  onClick={() => deleteFavorite(favorite.id)}
+                >
+                  Borrar favorito
+                </button>
+              </div>
             </div>
           </div>
         );

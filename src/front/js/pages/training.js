@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { CardTraining } from "../component/card_training";
 import { Favorites } from "../component/favorites";
 import "../../styles/training.css";
+import "../../styles/favorites.css";
 
 const Training = () => {
   const [refresh, setRefresh] = useState(true);
@@ -13,7 +14,7 @@ const Training = () => {
   };
   return (
     <>
-      <div className="">
+      <div className="bg-favorite row row-cols-sm-12 row-cols-md-3 row-cols-lg-4">
         <Favorites />
       </div>
       <div className=" bg-training">
