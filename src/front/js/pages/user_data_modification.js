@@ -6,7 +6,7 @@ const UseDataModificate = () => {
   return (
     <main className="container-fluid row">
       <div className="col ">
-        <ProfileUser />
+        <ProfileUser  />
       </div>
     </main>
   );
