@@ -16,6 +16,7 @@ import Article from "./pages/article";
 import Profile from "./pages/profile";
 import UseDataModificate from "./pages/user_data_modification";
 import ProtectedRoute from "./component/protectedRouted";
+import ProfessionalRegister from "./pages/professionalRegister.js";
 
 //create your first component
 const Layout = () => {
@@ -40,6 +41,7 @@ const Layout = () => {
                 />
               </Route>
               <Route element={<RegisterUser />} path="/register" />
+              <Route element={<ProfessionalRegister />} path="/ProfessionalRegister" />
               <Route element={<LoginView />} path="/login" />
               <Route element={<Psychology />} path="/psychology" />
               <Route element={<Nutrition />} path="/nutrition" />
