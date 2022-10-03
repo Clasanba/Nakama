@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: b8244551da79
+Revision ID: cf14ad5dcb7f
 Revises: 
-Create Date: 2022-09-26 17:15:48.705046
+Create Date: 2022-10-03 16:22:52.422201
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = 'b8244551da79'
+revision = 'cf14ad5dcb7f'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -33,6 +33,19 @@ def upgrade():
     sa.Column('url', sa.String(length=120), nullable=False),
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('image')
+    )
+    op.create_table('professional',
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('email', sa.String(length=120), nullable=False),
+    sa.Column('password', sa.String(length=80), nullable=False),
+    sa.Column('name', sa.String(length=120), nullable=False),
+    sa.Column('first_name', sa.String(length=120), nullable=False),
+    sa.Column('last_name', sa.String(length=120), nullable=False),
+    sa.Column('specialization', sa.String(length=120), nullable=False),
+    sa.Column('image', sa.String(length=120), nullable=True),
+    sa.Column('membership_number', sa.String(length=9), nullable=False),
+    sa.PrimaryKeyConstraint('id'),
+    sa.UniqueConstraint('email')
     )
     op.create_table('psychology',
     sa.Column('id', sa.Integer(), nullable=False),
@@ -71,6 +84,7 @@ def downgrade():
     op.drop_table('favorite')
     op.drop_table('user')
     op.drop_table('psychology')
+    op.drop_table('professional')
     op.drop_table('nutrition')
     op.drop_table('article')
     # ### end Alembic commands ###
