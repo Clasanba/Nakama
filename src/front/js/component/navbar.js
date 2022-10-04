@@ -33,14 +33,19 @@ export const Navbar = () => {
         },
       ]
     : [
-        { link: "/register", title: "Registro de usuario" },
-        { link: "/ProfessionalRegister", title: "Registro de profesional" },
+        {
+          title: "Registro",
+          children: [
+            { link: "/register", title: "Usuario" },
+            { link: "/ProfessionalRegister", title: "Profesional" },
+          ],
+        },
         { link: "/login", title: "Inicio de sesión" },
       ];
 
   return (
     <>
-      <nav className="styleNavbar navbar-expand-lg " role="search">
+      <nav className="styleNavbar navbar navbar-expand-lg " role="search">
         <div className="container-fluid">
           <Link to="/" className="navbar-brand ">
             <img src={logoNakama1} className="logo_navBar mt-1 ms-1" />
@@ -59,7 +64,7 @@ export const Navbar = () => {
             </span>
           </button>
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul className="nav ulNavbar page-nav ">
+            <ul className="navbar-nav page-nav flex-grow-1">
               {pages.map((page) => (
                 <li key={page.link} className="nav-item ">
                   <Link to={page.link} className="nav-link text-white">
@@ -69,21 +74,52 @@ export const Navbar = () => {
               ))}
             </ul>
 
-            <ul className="nav ulNavbar">
+            <ul className="navbar-nav page-nav">
               {links.map((linkPage, index) => {
                 if (!linkPage.link) {
-                  return (
-                    <li key={index} className="nav-item">
-                      <a
-                        key={index}
-                        href="#"
-                        className="nav-link text-white"
-                        onClick={linkPage.onclick}
-                      >
-                        {linkPage.title}
-                      </a>
-                    </li>
-                  );
+                  if (linkPage.onclick) {
+                    return (
+                      <li key={index} className="nav-item">
+                        <a
+                          href="#"
+                          className="nav-link text-white"
+                          onClick={linkPage.onclick}
+                        >
+                          {linkPage.title}
+                        </a>
+                      </li>
+                    );
+                  }
+
+                  if (linkPage.children) {
+                    return (
+                      <li key={index} className="nav-item dropdown">
+                        <a
+                          className="nav-link dropdown-toggle text-end  text-white"
+                          href="#"
+                          role="button"
+                          data-bs-toggle="dropdown"
+                          aria-expanded="false"
+                        >
+                          {linkPage.title}
+                        </a>
+                        <ul className="dropdown-menu">
+                          {linkPage.children.map((child) => {
+                            return (
+                              <li key={child.link}>
+                                <Link
+                                  to={child.link}
+                                  className="dropdown-item nav-link text-black"
+                                >
+                                  {child.title}
+                                </Link>
+                              </li>
+                            );
+                          })}
+                        </ul>
+                      </li>
+                    );
+                  }
                 }
 
                 return (
