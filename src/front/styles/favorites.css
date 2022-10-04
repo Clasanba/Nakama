@@ -5,7 +5,6 @@
   border-radius: 0.25rem 0.25rem 0 0;
 }
 .card-favorite-css {
-  min-width: 150px;
   height: 250px;
   display: flex;
   flex-direction: column;
@@ -16,23 +15,30 @@
   margin-bottom: 10px;
 }
 .titulovideo {
-  color: #f7af13;
+  color: rgb(88, 74, 74) /*#f7af13*/;
   font-size: medium;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   text-overflow: ellipsis;
   overflow: hidden;
   -webkit-box-orient: vertical;
+  padding: 5px;
 }
 .title-view-favorite {
   background-color: #e48201;
   padding: 10px 0;
-  color: #f9fbfb;
+  color: whitesmoke;
   margin-bottom: 20px;
+  width: 80%;
+  margin-left: 10%;
 }
 .bg-favorite {
-  background-color: black;
+  background-color: white;
 }
 .card-favorite {
   justify-content: space-between;
+}
+.buton-delete {
+  color: rgb(88, 74, 74);
+  background-color: #ffbf6c;
 }

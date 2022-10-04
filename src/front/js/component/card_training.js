@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
-import "../../styles/card_training.css";
+import "../../styles/training.css";
 import { getToken } from "../auth";
 import { Context } from "../store/appContext";
 import classNames from "classnames";
@@ -63,40 +63,43 @@ export const CardTraining = () => {
     const { medium = {} } = thumbnails;
     const isFav = favorites.some((fav) => fav.url.includes(resourceId.videoId));
     return (
-      <div className=" " key={id}>
+      <div className="col" key={id}>
         <div className=" card-training-css">
-          <a
-            href={`https://www.youtube.com/watch?v=${resourceId.videoId}`}
-            target="_blank"
-          >
-            <img
-              width={medium.width}
-              height={medium.height}
-              src={medium.url}
-              className=" img-training "
-              alt="training"
-            />
-          </a>
-          <div className="card-body">
-            <p className="card-title text-decoration-none titulovideo">
+          <div>
+            <a
+              href={`https://www.youtube.com/watch?v=${resourceId.videoId}`}
+              target="_blank"
+            >
+              <img
+                width={medium.width}
+                height={medium.height}
+                src={medium.url}
+                className=" img-training "
+                alt="training"
+              />
+            </a>
+            <a
+              className="card-title text-decoration-none titulovideo"
+              href={`https://www.youtube.com/watch?v=${resourceId.videoId}`}
+            >
               {title}
-            </p>
-            <p className="card-text text-dark">{video.channelTitle}</p>
-            <p className="position-absolute bottom-0 end-0 heart">
-              <i
-                className={classNames(
-                  {
-                    "fa-regular": !isFav,
-                    "fa-solid": isFav,
-                    red: isFav,
-                    clickable: !isFav,
-                  },
-                  "fa-heart"
-                )}
-                onClick={() => !isFav && addFavorite(video)}
-              ></i>
-            </p>
+              <p className="card-text text-dark">{video.channelTitle}</p>
+            </a>
           </div>
+          <p className="  heart">
+            <i
+              className={classNames(
+                {
+                  "fa-regular": !isFav,
+                  "fa-solid": isFav,
+                  red: isFav,
+                  clickable: !isFav,
+                },
+                "fa-heart"
+              )}
+              onClick={() => !isFav && addFavorite(video)}
+            ></i>
+          </p>
         </div>
       </div>
     );

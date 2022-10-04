@@ -46,38 +46,41 @@ export const Favorites = () => {
           Aquí puedes consultar tus videos favoritos y borrarlos.
         </p>
       </div>
-      <div className="row row-cols-sm-12 row-cols-md-3 row-cols-lg-4">
-        {favorites.map((favorite) => {
-          return (
-            <div key={favorite.id} className="">
-              <div className="card-favorite-css">
-                <div>
-                  <a href={favorite.url} target="_blank">
-                    <img
-                      src={favorite.url_image}
-                      className=" img-favorite "
-                      alt="training"
-                    />
-                  </a>
 
-                  <a
-                    className="card-title text-decoration-none titulovideo"
-                    href={favorite.url}
+      <div className="container">
+        <div className="row row-cols-1 row-cols-md-3 row-cols-lg-4">
+          {favorites.map((favorite) => {
+            return (
+              <div key={favorite.id} className="col">
+                <div className="card-favorite-css">
+                  <div>
+                    <a href={favorite.url} target="_blank">
+                      <img
+                        src={favorite.url_image}
+                        className=" img-favorite "
+                        alt="training"
+                      />
+                    </a>
+
+                    <a
+                      className="card-title text-decoration-none titulovideo"
+                      href={favorite.url}
+                    >
+                      {favorite.title}
+                    </a>
+                  </div>
+                  <button
+                    type="button"
+                    className="btn  buton-delete btn-outline-warning"
+                    onClick={() => deleteFavorite(favorite.id)}
                   >
-                    {favorite.title}
-                  </a>
+                    Eliminar
+                  </button>
                 </div>
-                <button
-                  type="button"
-                  className="btn btn-warning"
-                  onClick={() => deleteFavorite(favorite.id)}
-                >
-                  Borrar favorito
-                </button>
               </div>
-            </div>
-          );
-        })}
+            );
+          })}
+        </div>
       </div>
     </div>
   );
