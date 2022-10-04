@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import logoNakama1 from "../../img/logo_corregido.png";
 import "../../styles/navBar.css";
-import { deleteToken, isLoggedIn } from "../auth";
+import { deleteToken } from "../auth";
 import { Context } from "../store/appContext";
 
 export const Navbar = () => {
@@ -22,7 +22,15 @@ export const Navbar = () => {
   const links = store.isLoggedIn
     ? [
         { link: "/profile", title: "Perfil de usuario" },
-        { link: "/logout", title: "Cierre de sesión" },
+        {
+          title: "Cierre de sesión",
+          onclick: (e) => {
+            e.preventDefault();
+            deleteToken();
+            actions.logout();
+            navigate("/");
+          },
+        },
       ]
     : [
         { link: "/register", title: "Registro de usuario" },
@@ -62,13 +70,30 @@ export const Navbar = () => {
             </ul>
 
             <ul className="nav ulNavbar">
-              {links.map((linkPage) => (
-                <li key={linkPage.link} className="nav-item">
-                  <Link to={linkPage.link} className="nav-link  text-white ">
-                    {linkPage.title}
-                  </Link>
-                </li>
-              ))}
+              {links.map((linkPage, index) => {
+                if (!linkPage.link) {
+                  return (
+                    <li key={index} className="nav-item">
+                      <a
+                        key={index}
+                        href="#"
+                        className="nav-link text-white"
+                        onClick={linkPage.onclick}
+                      >
+                        {linkPage.title}
+                      </a>
+                    </li>
+                  );
+                }
+
+                return (
+                  <li key={linkPage.link} className="nav-item">
+                    <Link to={linkPage.link} className="nav-link  text-white ">
+                      {linkPage.title}
+                    </Link>
+                  </li>
+                );
+              })}
             </ul>
           </div>
         </div>

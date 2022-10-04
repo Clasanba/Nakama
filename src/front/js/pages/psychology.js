@@ -20,8 +20,10 @@ const Psychology = () => {
             </p>
           </div>
         </div>
-        <div className=" card-psychology bg-transparent row row-cols-sm-12 row-cols-md-3 row-cols-lg-4  ">
-          <Cards articles={store.psychology} />
+        <div className="container">
+          <div className="card-psychology bg-transparent row row-cols-1 row-cols-md-3 row-cols-lg-4 ">
+            <Cards articles={store.psychology} />
+          </div>
         </div>
       </div>
     </>

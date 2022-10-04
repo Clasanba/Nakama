@@ -7,7 +7,7 @@ const Cards = ({ articles }) => {
   const location = useLocation();
   return articles.map((item) => {
     return (
-      <article className="m-2" key={item.id}>
+      <article className="m-2 col" key={item.id}>
         <div className=" card-css">
           <a href={item.url} target="_blank">
             <img src={item.image} className=" image-card card-img-top" />
