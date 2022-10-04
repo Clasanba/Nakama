@@ -51,7 +51,7 @@ export const Navbar = () => {
             <img src={logoNakama1} className="logo_navBar mt-1 ms-1" />
           </Link>
           <button
-            className="navbar-toggler"
+            className="navbar-toggler text-with-color"
             type="button"
             data-bs-toggle="collapse"
             data-bs-target="#navbarSupportedContent"
@@ -60,14 +60,14 @@ export const Navbar = () => {
             aria-label="Toggle navigation"
           >
             <span className="navbar-toggler-icon ">
-              <i className="fa-solid fa-bars fs-1 text-white "></i>
+              <i className="fa-solid fa-bars fs-1 "></i>
             </span>
           </button>
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav page-nav flex-grow-1">
               {pages.map((page) => (
                 <li key={page.link} className="nav-item ">
-                  <Link to={page.link} className="nav-link text-white">
+                  <Link to={page.link} className="nav-link text-with-color">
                     {page.title}
                   </Link>
                 </li>
@@ -82,7 +82,7 @@ export const Navbar = () => {
                       <li key={index} className="nav-item">
                         <a
                           href="#"
-                          className="nav-link text-white"
+                          className="nav-link text-with-color"
                           onClick={linkPage.onclick}
                         >
                           {linkPage.title}
@@ -95,7 +95,7 @@ export const Navbar = () => {
                     return (
                       <li key={index} className="nav-item dropdown">
                         <a
-                          className="nav-link dropdown-toggle text-end  text-white"
+                          className="nav-link dropdown-toggle text-end text-with-color"
                           href="#"
                           role="button"
                           data-bs-toggle="dropdown"
@@ -109,7 +109,7 @@ export const Navbar = () => {
                               <li key={child.link}>
                                 <Link
                                   to={child.link}
-                                  className="dropdown-item nav-link text-black"
+                                  className="dropdown-item nav-link text-with-color"
                                 >
                                   {child.title}
                                 </Link>
@@ -124,7 +124,10 @@ export const Navbar = () => {
 
                 return (
                   <li key={linkPage.link} className="nav-item">
-                    <Link to={linkPage.link} className="nav-link  text-white ">
+                    <Link
+                      to={linkPage.link}
+                      className="nav-link  text-with-color "
+                    >
                       {linkPage.title}
                     </Link>
                   </li>

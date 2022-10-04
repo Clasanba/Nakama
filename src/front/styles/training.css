@@ -16,7 +16,7 @@
 }
 .heart {
   font-size: 20px;
-  margin-left: 90%;
+  text-align: right;
 }
 .titulovideo {
   color: rgb(88, 74, 74) /*#f7af13*/;

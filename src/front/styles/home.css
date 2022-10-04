@@ -1,26 +1,37 @@
 .letters {
-  margin-top: 10%;
-  margin-left: 10%;
   font-weight: bolder;
   font-size: 4rem;
-  color: #023112;
-  text-shadow: 1px 1px 1px #114e3a;
-  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
-}
-
-.paragraph {
-  width: 30%;
-  margin-left: 5%;
+  color: #1f5046;
+  text-shadow: 1px 1px 1px #1f5046;
 }
 .title {
   display: flex;
   justify-content: center;
 }
-.body-home {
-  background-image: url("https://images.unsplash.com/photo-1587979730756-177fc57770ea?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=688&q=80");
+.main-image {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: -1;
+  bottom: 0;
+  right: 0;
 }
-
+.main-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.main-intro {
+  /*background-color: rgb(31 80 70 / 50%);*/
+  width: 50%;
+  height: 80vh;
+}
+.main-intro p {
+  font-weight: 700;
+  background-color: rgb(214 167 59 / 85%);
+  padding: 10px;
+  color: #1f5046;
+}
 /* #4FB8EB; , #82c75a, #0a4b7e,053f6b*/
 
 /* https://images.pexels.com/photos/807598/pexels-photo-807598.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1 */
