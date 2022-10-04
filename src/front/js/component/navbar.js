@@ -46,7 +46,7 @@ export const Navbar = () => {
                   Registro
           </a>
                     <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <li><Link to="/register" className="nav-link text-black">Paciente</Link></li>
+                    <li><Link to="/register" className="nav-link text-black">Usuario</Link></li>
                     <li><Link to="/ProfessionalRegister" className="nav-link text-black">Profesional</Link></li>
                     
                        
