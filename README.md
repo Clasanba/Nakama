@@ -1,99 +1,81 @@
-# WebApp boilerplate with React JS and Flask API
+# NAKAMA
+
+## Tabla de Contenido.
+1. [Descripción](#descripción)
+2. [Tecnologías](#tecnologías)
+3. [Instalación](#Instalación)
+
+### Descripción
+El proyecto nace con la idea de crear una comunidad dirigida a personas relacionadas directa o indirectamente con el cáncer, a través de la cual, puedan aprender aspectos sobre el día a día de la enfermedad.
+- Finalidad: 
+   * Que las personas puedan aprender a vivir CON la enfermedad, en vez de vivir PARA ella.
+   * Poder mejorar la calidad de vida de los afectados.
+   * Reforzar la idea de que el paciente es mucho más que un diagnóstico.
+- Utilidad:
+    * Que las personas puedan tener acceso a información verificada y contrastada a tráves de la biblioteca de psicología, nutrición e investigaciones científicas, ya que hoy en día la búsqueda de información puede ser abrumadora y peligrosa al mismo tiempo.
+    * Acercar el deporte a sus vidas ya que la evidencia científica demuestra que la práctica de actividad física regular disminuye tanto el riesgo de padecer cáncer como de mortalidad por el mismo.
+    * Construir una red de apoyo con personas en la misma situación y prefesionales de la salud.
+- Objetivo:
+    * Contribuir a la mejora de la calidad de vida de las personas.
+    * Donar en un futuro la aplicación a alguna organización o asociación.
+    * Crear una aplicación versátil.
+
+Actualmente el proyecto se encuentra en desarrollo, estamos trabajando en el perfil profesional, que en el futuro será el encargado de subir la información de la biblioteca y quién personalizará los entrenamientos de los pacientes.
+Una vez tengamos esa parte implementada el siguiente paso será la creación de la red social.    
+
+### Tecnologías
+
+- Front-End
+
+ <img src="/workspace/Nakama/src/front/img/front.png"/>
+
+- Back-End 
+
+<img src="/workspace/Nakama/src/front/img/back.png"/>
+
+
+
 
 [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io#https://github.com/4GeeksAcademy/react-flask-hello.git)
 
-> Documentation: https://start.4geeksacademy.com/
 
-<p align="center">
-<a href="https://www.loom.com/share/f37c6838b3f1496c95111e515e83dd9b"><img src="https://github.com/4GeeksAcademy/flask-rest-hello/blob/main/docs/assets/how-to.png?raw=true?raw=true" /></a>
-</p>
 
-- React.js front end and python/flask backend for your web application.
-- Extensive documentation [here](https://start.4geeksacademy.com/).
-- Integrated with Pipenv for package managing.
-- Fast deloyment to heroku [in just a few steps here](https://start.4geeksacademy.com/backend/deploy-heroku-posgres).
-- Use of .env file.
-- SQLAlchemy integration for database abstraction.
+### Instalación:
 
-### Styles
+#### Instalación Back-End:
 
-You can update the `styles/index.scss` or create new `.scss` files inside `styles/` and import them into your current scss or js files depending on your needs.
+Es recomendable instalar primero el back-end, asegurate de tener Python 3.8, Pipenv y un motor de base de datos (se recomienda Posgress)
 
-### Components
-
-Add more files into your `./src/js/components` or styles folder as you need them and import them into your current files as needed.
-
-💡Note: There is an example using the Context API inside `views/demo.js`;
-
-### Views (Components)
-
-Add more files into your `./src/js/views` and import them in `./src/js/layout.jsx`.
-
-### Context
-
-This boilerplate comes with a centralized general Context API. The file `./src/js/store/flux.js` has a base structure for the store, we encourage you to change it and adapt it to your needs.
-
-React Context [docs](https://reactjs.org/docs/context.html)
-BreathCode Lesson [view](https://content.breatheco.de/lesson/react-hooks-explained)
-
-The `Provider` is already set. You can consume from any component using the useContext hook to get the `store` and `actions` from the Context. Check `/views/demo.js` to see a demo.
-
-```jsx
-import { Context } from "../store/appContext";
-const MyComponentSuper = () => {
-    //here you use useContext to get store and actions
-    const { store, actions } = useContext(Context);
-    return <div>{/* you can use your actions or store inside the html */}</div>;
-};
-```
-
-### Back-End Manual Installation:
-
-It is recomended to install the backend first, make sure you have Python 3.8, Pipenv and a database engine (Posgress recomended)
-
-1. Install the python packages: `$ pipenv install`
-2. Create a .env file based on the .env.example: `$ cp .env.example .env`
-3. Install your database engine and create your database, depending on your database you have to create a DATABASE_URL variable with one of the possible values, make sure yo replace the valudes with your database information:
+1. Instalar los paquetes de python: `$ pipenv install`
+2. Crear un archivo .env basado en el .env.example: `$ cp .env.example .env`
+3. Instala tu motor de base de datos y crea tu base de datos, dependiendo de tu base de datos tienes que crear una variable DATABASE_URL con uno de los posibles valores, asegúrate de reemplazar con la información de tu base de datos:
 
 | Engine    | DATABASE_URL                                        |
 | --------- | --------------------------------------------------- |
 | SQLite    | sqlite:////test.db                                  |
 | MySQL     | mysql://username:password@localhost:port/example    |
 | Postgress | postgres://username:password@localhost:5432/example |
+ 
+ ###
 
-4. Migrate the migrations: `$ pipenv run migrate` (skip if you have not made changes to the models on the `./src/api/models.py`)
-5. Run the migrations: `$ pipenv run upgrade`
-6. Run the application: `$ pipenv run start`
+4. Migrar las migraciones: `$ pipenv run migrate` (omitir si no ha realizado cambios en los modelos `./src/api/models.py`)
+5. Ejecutar las migraciones: `$ pipenv run upgrade`
+6. Instalar JWT : `$ pipenv install Flask-JWT`
+7. Instalar Bcrypt: `$ pipenv install flask-bcrypt`
+8. Instalar Flask-Mail: `$ pipenv install Flask-Mail`
+9. Ejecutar la aplicación: `$ pipenv run start`
 
-### Backend Populate Table Users
 
-To insert test users in the database execute the following command:
+#### Instalación Front-End:
 
-```sh
-$ flask insert-test-users 5
-```
+-   Asegúrate de que utilizas la versión 14+ de Node y de que ya has instalado y ejecutado con éxito el backend.
 
-And you will see the following message:
+1. Instalar los paquetes: `$ npm install`
+2. Instalar biblioteca MUI : `$ npm install @material-ui/core` 
+3. Instalar paquete iconos : `$ npm install @material-ui/icons`
+4. Instalar Firebase : `$ npm install firebase`
+5. Instalar React Button : `$ npm install --save react-google-button`
+6. Instalar classNames : `$ npm classnames`
+7. Start coding! start the webpack dev server `$ npm run start`
 
-```
-  Creating test users
-  test_user1@test.com created.
-  test_user2@test.com created.
-  test_user3@test.com created.
-  test_user4@test.com created.
-  test_user5@test.com created.
-  Users created successfully!
-```
 
-To update with all yours tables you can edit the file app.py and go to the line 80 to insert the code to populate others tables
-
-### Front-End Manual Installation:
-
--   Make sure you are using node version 14+ and that you have already successfully installed and runned the backend.
-
-1. Install the packages: `$ npm install`
-2. Start coding! start the webpack dev server `$ npm run start`
-
-## Publish your website!
-
-This boilerplate it's 100% integrated with Herkou, [follow this tutorial](https://start.4geeksacademy.com/backend/deploy-heroku-posgres) and just by pushing your changes to the heroku repository will deploy the website afterwards.
