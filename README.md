@@ -5,7 +5,7 @@
 2. [Tecnologías](#tecnologías)
 3. [Instalación](#Instalación)
 
-### Descripción
+### 📝 Descripción
 El proyecto nace con la idea de crear una comunidad dirigida a personas relacionadas directa o indirectamente con el cáncer, a través de la cual, puedan aprender aspectos sobre el día a día de la enfermedad.
 - Finalidad: 
    * Que las personas puedan aprender a vivir CON la enfermedad, en vez de vivir PARA ella.
@@ -23,7 +23,7 @@ El proyecto nace con la idea de crear una comunidad dirigida a personas relacion
 Actualmente el proyecto se encuentra en desarrollo, estamos trabajando en el perfil profesional, que en el futuro será el encargado de subir la información de la biblioteca y quién personalizará los entrenamientos de los pacientes.
 Una vez tengamos esa parte implementada el siguiente paso será la creación de la red social.    
 
-### Tecnologías
+### 💻 Tecnologías
 
 - Front-End
 
@@ -40,7 +40,7 @@ Una vez tengamos esa parte implementada el siguiente paso será la creación de 
 
 
 
-### Instalación:
+### 💾 Instalación:
 
 #### Instalación Back-End:
 
@@ -77,5 +77,10 @@ Es recomendable instalar primero el back-end, asegurate de tener Python 3.8, Pip
 5. Instalar React Button : `$ npm install --save react-google-button`
 6. Instalar classNames : `$ npm classnames`
 7. Start coding! start the webpack dev server `$ npm run start`
+###
+
+
+## 🚀 Proyecto desplegado :
+
 
 
