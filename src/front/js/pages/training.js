@@ -7,9 +7,8 @@ import "../../styles/favorites.css";
 const Training = () => {
   return (
     <>
-      <div className="bg-favorite row row-cols-sm-12 row-cols-md-3 row-cols-lg-4">
-        <Favorites />
-      </div>
+      <Favorites />
+
       <div className=" bg-training">
         <div className="title-view-training">
           <h1 className=" text-sm-start mb-1 ms-5">Entrenamientos</h1>

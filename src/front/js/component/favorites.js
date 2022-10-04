@@ -34,51 +34,51 @@ export const Favorites = () => {
       .catch(() => {});
   };
 
-  return (
-    <>
-      {favorites.length != 0 && (
-        <div className=" ">
-          <div className="title-view-favorite">
-            <h1 className=" text-sm-start mb-1 ms-5">Favoritos</h1>
-            <div>
-              <p className="text-sm-start ms-5 mb-4">
-                Aquí puedes consultar tus videos favoritos y borrarlos.
-              </p>
-            </div>
-          </div>
-        </div>
-      )}
-      {favorites.map((favorite) => {
-        return (
-          <div key={favorite.id} className="">
-            <div className="card-favorite-css">
-              <a href={favorite.url} target="_blank">
-                <img
-                  src={favorite.url_image}
-                  className=" img-favorite "
-                  alt="training"
-                />
-              </a>
+  if (favorites.length === 0) {
+    return null;
+  }
 
-              <div className="card-body">
-                <a
-                  className="card-title text-decoration-none titulovideo"
-                  href={favorite.url}
-                >
-                  {favorite.title}
-                </a>
+  return (
+    <div className="bg-favorite">
+      <div className="title-view-favorite">
+        <h1 className=" text-sm-start mb-1 ms-5">Favoritos</h1>
+        <p className="text-sm-start ms-5 mb-4">
+          Aquí puedes consultar tus videos favoritos y borrarlos.
+        </p>
+      </div>
+      <div className="row row-cols-sm-12 row-cols-md-3 row-cols-lg-4">
+        {favorites.map((favorite) => {
+          return (
+            <div key={favorite.id} className="">
+              <div className="card-favorite-css">
+                <div>
+                  <a href={favorite.url} target="_blank">
+                    <img
+                      src={favorite.url_image}
+                      className=" img-favorite "
+                      alt="training"
+                    />
+                  </a>
+
+                  <a
+                    className="card-title text-decoration-none titulovideo"
+                    href={favorite.url}
+                  >
+                    {favorite.title}
+                  </a>
+                </div>
                 <button
                   type="button"
-                  className="btn btn-warning mt-5"
+                  className="btn btn-warning"
                   onClick={() => deleteFavorite(favorite.id)}
                 >
                   Borrar favorito
                 </button>
               </div>
             </div>
-          </div>
-        );
-      })}
-    </>
+          );
+        })}
+      </div>
+    </div>
   );
 };
