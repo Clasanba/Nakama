@@ -27,11 +27,11 @@ Una vez tengamos esa parte implementada el siguiente paso será la creación de 
 
 - Front-End
 
- <img src="/workspace/Nakama/src/front/img/front.png"/>
+ <img src="./src/front/img/front.png"/>
 
 - Back-End 
 
-<img src="/workspace/Nakama/src/front/img/back.png"/>
+<img src="./src/front/img/back.png"/>
 
 
 
