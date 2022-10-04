@@ -3,8 +3,8 @@
 }
 
 .styleNavbar {
-  background-color: #1f5046;
-  color: whitesmoke;
+  color: #1f5046;
+  font-weight: 700;
 }
 .page-nav {
   justify-content: center;
@@ -20,4 +20,7 @@
   .dropdown-item {
     text-align: right;
   }
+}
+.dropdown-item:active {
+  background-color: #47c4ab;
 }

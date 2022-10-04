@@ -86,7 +86,7 @@ export const CardTraining = () => {
               <p className="card-text text-dark">{video.channelTitle}</p>
             </a>
           </div>
-          <p className="  heart">
+          <div className="heart">
             <i
               className={classNames(
                 {
@@ -99,7 +99,7 @@ export const CardTraining = () => {
               )}
               onClick={() => !isFav && addFavorite(video)}
             ></i>
-          </p>
+          </div>
         </div>
       </div>
     );
