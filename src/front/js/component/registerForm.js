@@ -83,7 +83,6 @@ const RegisterForm = () => {
       <div className="row">
         <div className="col-md-4 mx-auto">
           <div className="myform form">
-            {error && <p className="text-danger">{error}</p>}
             <form
               onSubmit={onFormSubmit}
               name="register"
@@ -101,7 +100,9 @@ const RegisterForm = () => {
                   placeholder="Nombre"
                   required
                 />
-                <div className="invalid-feedback">Nombre incorrecto</div>
+                <div className="invalid-feedback bg-danger bg-opacity-75 border-danger rounded p-2 text-white">
+                  Nombre incorrecto
+                </div>
               </div>
               <div className="form-group mb-2">
                 <input
@@ -114,7 +115,9 @@ const RegisterForm = () => {
                   placeholder="Primer apellido"
                   required
                 />
-                <div className="invalid-feedback">Apellido incorrecto</div>
+                <div className="invalid-feedback bg-danger bg-opacity-75 border-danger rounded p-2 text-white">
+                  Apellido incorrecto
+                </div>
               </div>
               <div className="form-group mb-2">
                 <input
@@ -138,7 +141,7 @@ const RegisterForm = () => {
                   placeholder="Nombre usuario"
                   required
                 />
-                <div className="invalid-feedback">
+                <div className="invalid-feedback bg-danger bg-opacity-75 border-danger rounded p-2 text-white">
                   Introduzca nombre de usuario
                 </div>
               </div>
@@ -153,7 +156,9 @@ const RegisterForm = () => {
                   placeholder="Correo electrónico"
                   required
                 />
-                <div className="invalid-feedback">Email incorrecto</div>
+                <div className="invalid-feedback bg-danger bg-opacity-75 border-danger rounded p-2 text-white">
+                  Email incorrecto
+                </div>
               </div>
               <div className="form-group mb-2 d-flex justify-content-end">
                 <input
@@ -164,7 +169,7 @@ const RegisterForm = () => {
                   value={password}
                   name="password"
                   id="password"
-                  className="form-control my-input input-register"
+                  className="form-control my-input input-register "
                   placeholder="Contraseña"
                   required
                 />
@@ -179,6 +184,11 @@ const RegisterForm = () => {
                   {values.showPassword ? <Visibility /> : <VisibilityOff />}
                 </span>
               </div>
+              {error && (
+                <p className="text-danger bg-danger bg-opacity-75 border-danger rounded p-2 text-white">
+                  {error}
+                </p>
+              )}
 
               <div className="container-btn ">
                 <div className="text-center ">
