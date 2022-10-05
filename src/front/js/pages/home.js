@@ -8,9 +8,15 @@ const Home = () => {
       <div className="main-image">
         <img src={fondo} />
       </div>
-      <div className="container">
+
+      <div className="container main-home">
         <div className="main-intro p-2">
-          <div className="letters">NAKAMA</div>
+          
+          <div className="letters text-center">NAKAMA</div>
+          <p className="slogan fst-italic text-black">
+          "La realidad no es lo que nos sucede, sino lo que hacemos con lo que
+          nos sucede"
+        </p>
           <p>
             Somos una comunidad dirigida a personas relacionadas directa o
             indirectamente con el cáncer, a través de la cual, puedan aprender
@@ -19,6 +25,7 @@ const Home = () => {
             aspectos psicológicos, avances médicos e investigaciones y
             entrenamientos para favorecer una mejor calidad de vida.
           </p>
+          
         </div>
       </div>
     </>

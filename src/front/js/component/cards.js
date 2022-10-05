@@ -1,5 +1,5 @@
 import React from "react";
-import cards from "../../styles/cards.css";
+import "../../styles/cards.css";
 import { Link, useLocation } from "react-router-dom";
 import classNames from "classnames";
 

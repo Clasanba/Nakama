@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import logoNakama1 from "../../img/logo_corregido.png";
+import logoconsombra from "../../img/logoconsombra.png"
 import "../../styles/navBar.css";
 import { deleteToken } from "../auth";
 import { Context } from "../store/appContext";
@@ -48,7 +49,7 @@ export const Navbar = () => {
       <nav className="styleNavbar navbar navbar-expand-lg " role="search">
         <div className="container-fluid">
           <Link to="/" className="navbar-brand ">
-            <img src={logoNakama1} className="logo_navBar mt-1 ms-1" />
+            <img src={logoconsombra} className="logo_navBar mt-1 ms-1" />
           </Link>
           <button
             className="navbar-toggler text-with-color"

@@ -1,12 +1,8 @@
 .letters {
   font-weight: bolder;
-  font-size: 4rem;
+  font-size: calc(2em + 3vw);
   color: #1f5046;
   text-shadow: 1px 1px 1px #1f5046;
-}
-.title {
-  display: flex;
-  justify-content: center;
 }
 .main-image {
   position: absolute;
@@ -22,16 +18,27 @@
   object-fit: cover;
 }
 .main-intro {
-  /*background-color: rgb(31 80 70 / 50%);*/
-  width: 50%;
-  height: 80vh;
+  width: 60%;
+  font-size: calc(0.5em + 0.5vw);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 70vh;
 }
 .main-intro p {
   font-weight: 700;
-  background-color: rgb(214 167 59 / 85%);
+  background-color: rgb(214 167 59 / 45%);
   padding: 10px;
   color: #1f5046;
+  
+  
 }
-/* #4FB8EB; , #82c75a, #0a4b7e,053f6b*/
-
-/* https://images.pexels.com/photos/807598/pexels-photo-807598.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1 */
+.main-home .slogan{
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  font-size: calc(0.6em + 0.5vw);
+  background-color: rgb(214 167 59 / 45%);
+  width: 80%;
+  
+}

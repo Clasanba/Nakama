@@ -3,3 +3,6 @@
   display: inline-grid;
   justify-content: end;
 }
+.icons-footer:hover{
+  -webkit-transform:scale(1.3);transform:scale(1.3)
+}

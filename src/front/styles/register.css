@@ -3,13 +3,20 @@
   display: block;
   text-align: center;
   padding: 0.3rem 1rem 0.5rem;
+  
 }
 .title-register {
   text-shadow: 2px 2px 2px rgb(237, 243, 237);
   color: #1f5046;
-  /* color: rgb(76, 170, 76); */
 }
-
+.MuiSvgIcon-root {
+  color: #1f5046;
+  
+}
+.MuiSvgIcon-root:hover {
+  color: #47c4ab;
+  
+}
 .register {
   display: flex;
   align-items: center;
