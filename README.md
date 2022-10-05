@@ -76,11 +76,11 @@ Es recomendable instalar primero el back-end, asegurate de tener Python 3.8, Pip
 4. Instalar Firebase : `$ npm install firebase`
 5. Instalar React Button : `$ npm install --save react-google-button`
 6. Instalar classNames : `$ npm classnames`
-7. Start coding! start the webpack dev server `$ npm run start`
+7. Comienza a codificar! inicia el servidor de desarrollo de webpack `$ npm run start`
 ###
 
 
 ## 🚀 Proyecto desplegado :
 
 
-
+https://proyectonakama.herokuapp.com/
