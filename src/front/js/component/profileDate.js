@@ -46,7 +46,7 @@ const ProfileDate = () => {
         
         <img
           src={store.user.image}
-          className="avatar rounded-circle img-thumbnail img-profile-date img-fluid mt-2"
+          className="avatar rounded-circle img-thumbnail img-profile-date img-fluid mt-2 mb-3"
           alt="..."
         />
         
@@ -55,7 +55,7 @@ const ProfileDate = () => {
             {store.user.user_name}
           </h5>
         </div>
-        <ul className="list-group list-group-flush list-body-main mt-4">
+        <ul className="list-group list-group-flush list-body-main mt-4 ">
           <li className="list-group-item text-capitalize list-body">
             <strong>Nombre</strong>: {store.user.name}
           </li>
@@ -69,7 +69,7 @@ const ProfileDate = () => {
           <strong>Correo electrónico</strong>: {store.user.email}
           </li>
         </ul>
-        <div className="card-body ">
+        <div className="btn-group mt-2 mb-2">
           <button
             className="btn btn-md btn btn-danger "
             type="delete"
