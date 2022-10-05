@@ -4,25 +4,31 @@
   text-align: center;
   padding: 0.3rem 1rem 0.5rem;
 }
-.title-register{
+.title-register {
   text-shadow: 2px 2px 2px rgb(237, 243, 237);
+  color: #1f5046;
   /* color: rgb(76, 170, 76); */
-  
-  
 }
 
-.register{
+.register {
   display: flex;
   align-items: center;
   height: 100%;
-  background: url(https://images.pexels.com/photos/7657393/pexels-photo-7657393.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1);
+  background: url("/images/fondo-nakama-sin-mujer.jpg");
   background-repeat: no-repeat;
-  background-position:center;
+  background-position: center;
   background-size: cover;
-
 }
-.input-register{
-  box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.39);
-  -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.39);
-  -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.39);
+.input-register {
+  box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.39);
+  -webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.39);
+  -moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.39);
+}
+.button-create {
+  background-color: #1f5046;
+  color: aliceblue;
+}
+.button-create:hover {
+  background-color: #47c4ab;
+  color: aliceblue;
 }

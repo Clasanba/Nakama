@@ -1,40 +1,39 @@
-import React, { useContext, useState }  from "react";
+import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Context } from "../store/appContext";
 import Visibility from "@material-ui/icons/Visibility";
 import VisibilityOff from "@material-ui/icons/VisibilityOff";
-import avatar from "../../img/avatar_Nakama.png"
+import avatar from "../../img/avatar_Nakama.png";
 import register from "../../styles/register.css";
 
-
 const RegisterProfessional = () => {
-    const [name, setName] = useState("");
-    const [firstName, setFirstName] = useState("");
-    const [lastName, setLastName] = useState("");
-    const [specialization, setSpecialization] = useState("");
-    const [colegiado, setColegiado] = useState("");
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const [values, setValues] = useState({ showPassword: false });
-    const [error, setError] = useState("");
-    const image = avatar;
-    const navigate = useNavigate();
-    const {store, actions} = useContext(Context)
+  const [name, setName] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [specialization, setSpecialization] = useState("");
+  const [colegiado, setColegiado] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [values, setValues] = useState({ showPassword: false });
+  const [error, setError] = useState("");
+  const image = avatar;
+  const navigate = useNavigate();
+  const { store, actions } = useContext(Context);
 
-    const handleClickShowPassword = () => {
-        setValues({ ...values, showPassword: !values.showPassword });
-      };
-    
-      const handleMouseDownPassword = (event) => {
-        event.preventDefault();
-      };
+  const handleClickShowPassword = () => {
+    setValues({ ...values, showPassword: !values.showPassword });
+  };
 
-    return (
-        <div className="container mt-4">
+  const handleMouseDownPassword = (event) => {
+    event.preventDefault();
+  };
+
+  return (
+    <div className="container mt-4">
       <div className="col-md-6 mx-auto text-center ">
         <div className="header-title">
-          <h1 className="fw-bold mb-5 text-success fs-1 title-register">
-            Formulario de Registro
+          <h1 className="fw-bold mb-5 fs-1 title-register">
+            Registro de Profesional
           </h1>
         </div>
       </div>
@@ -43,7 +42,7 @@ const RegisterProfessional = () => {
           <div className="myform form ">
             {error && <p className="text-danger">{error}</p>}
             <form
-            //   onSubmit={onFormSubmit}
+              //   onSubmit={onFormSubmit}
               name="register"
               className="needs-validation"
               noValidate
@@ -51,7 +50,7 @@ const RegisterProfessional = () => {
               <div className="form-group mb-2 ">
                 <input
                   type="text"
-                  onChange={(e)=>setName(e.target.value)}
+                  onChange={(e) => setName(e.target.value)}
                   value={name}
                   name="name"
                   className="form-control my-input input-register"
@@ -64,7 +63,7 @@ const RegisterProfessional = () => {
               <div className="form-group mb-2">
                 <input
                   type="text"
-                  onChange={(e)=>setFirstName(e.target.value)}
+                  onChange={(e) => setFirstName(e.target.value)}
                   value={firstName}
                   name="first_name"
                   className="form-control my-input input-register"
@@ -96,11 +95,9 @@ const RegisterProfessional = () => {
                   placeholder="Especialización (Psicología, Fisioterapia...)"
                   required
                 />
-                </div>
-                <div className="invalid-feedback">
-                  Introduzca Especialización
-                </div>
-                <div className="form-group mb-2">
+              </div>
+              <div className="invalid-feedback">Introduzca Especialización</div>
+              <div className="form-group mb-2">
                 <input
                   type="text"
                   onChange={(e) => setColegiado(e.target.value)}
@@ -157,20 +154,18 @@ const RegisterProfessional = () => {
                 <div className="text-center ">
                   <button
                     type="submit"
-                    className=" btn btn-block send-button tx-tfm btn-success mt-2"
+                    className=" btn btn-block send-button tx-tfm button-create mt-2"
                   >
                     Crear Cuenta
                   </button>
                 </div>
-                
-              
               </div>
             </form>
           </div>
         </div>
       </div>
     </div>
-    )
-}
+  );
+};
 
-export default RegisterProfessional
+export default RegisterProfessional;
