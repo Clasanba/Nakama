@@ -19,12 +19,11 @@
 }
 .main-intro {
   width: 60%;
-  height: 80vh;
   font-size: calc(0.5em + 0.5vw);
   display: flex;
   flex-direction: column;
   justify-content: center;
-  height: 70vh;
+  height: 80vh;
 }
 .main-intro p {
   font-weight: 700;
@@ -34,17 +33,12 @@
   
   
 }
-.main-home{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  
-}
 .main-home .slogan{
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-self: center;
   font-size: calc(0.6em + 0.5vw);
   background-color: rgb(214 167 59 / 85%);
-  width: 60%;
+  width: 80%;
   
 }

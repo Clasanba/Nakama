@@ -11,8 +11,12 @@ const Home = () => {
 
       <div className="container main-home">
         <div className="main-intro p-2">
-          <div></div>
+          
           <div className="letters text-center">NAKAMA</div>
+          <p className="fw-bold slogan fst-italic text-black">
+          "La realidad no es lo que nos sucede, sino lo que hacemos con lo que
+          nos sucede"
+        </p>
           <p>
             Somos una comunidad dirigida a personas relacionadas directa o
             indirectamente con el cáncer, a través de la cual, puedan aprender
@@ -23,10 +27,6 @@ const Home = () => {
           </p>
           
         </div>
-        <p className="fw-bold slogan fst-italic text-black">
-          "La realidad no es lo que nos sucede, sino lo que hacemos con lo que
-          nos sucede"
-        </p>
       </div>
     </>
   );
