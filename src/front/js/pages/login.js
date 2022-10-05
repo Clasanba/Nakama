@@ -4,7 +4,7 @@ import { Login } from "../component/login";
 
 const LoginView = () => {
   return (
-    <div className="container-fluid ">
+    <div className="container-fluid body-view">
       <Login />
     </div>
   );
