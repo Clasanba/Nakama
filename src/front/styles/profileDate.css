@@ -1,10 +1,38 @@
 .img-profile-date {
-  width: 25%;
-  height: 50%;
+  width: 12rem;
+  height: 12rem;
 }
 .profile-date {
   flex-direction: column;
   align-items: center;
   padding-top: 1%;
   border: none;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  background: url("/images/fondo-nakama-sin-mujer.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.list-body {
+  color: #1f5046;
+}
+.list-body-main{
+  box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.39);
+  -webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.39);
+  -moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.39);
+}
+.user {
+  color: #1f5046;
+  height: 20px;
+}
+.btn-profile {
+  background-color: #1f5046;
+  color: aliceblue;
+}
+.btn-profile:hover {
+  background-color: #47c4ab;
+  color: aliceblue;
 }
