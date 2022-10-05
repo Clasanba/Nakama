@@ -5,7 +5,7 @@ import VisibilityOff from "@material-ui/icons/VisibilityOff";
 import { Context } from "../store/appContext";
 import register from "../../styles/register.css";
 import ButtonGoogle from "./buttonGoogle";
-import avatar from "../../img/avatar_Nakama.png"
+import avatar from "../../img/avatar_Nakama.png";
 
 const RegisterForm = () => {
   const [name, setName] = useState("");
@@ -18,7 +18,7 @@ const RegisterForm = () => {
   const [error, setError] = useState("");
   const image = avatar;
   const navigate = useNavigate();
-  const {store, actions} = useContext(Context)
+  const { store, actions } = useContext(Context);
 
   const handleClickShowPassword = () => {
     setValues({ ...values, showPassword: !values.showPassword });
@@ -35,14 +35,14 @@ const RegisterForm = () => {
     e.preventDefault();
     const regex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,16}$/gm;
     const regexName = "^[a-zA-ZñÑáéíóúÁÉÍÓÚ]+$";
-    
-    if(!name.match(regexName)){
-      setError("Nombre inválido")
+
+    if (!name.match(regexName)) {
+      setError("Nombre inválido");
     }
-    if(!firstName.match(regexName)){
-      setError("Apellido incorrecto")
-    } 
-    if (!password.match(regex) ) {
+    if (!firstName.match(regexName)) {
+      setError("Apellido incorrecto");
+    }
+    if (!password.match(regex)) {
       setError(
         "La contraseña debe contener entre 8-16 caracteres (mayúsculas,minúsculas y dígito) "
       );
@@ -69,21 +69,20 @@ const RegisterForm = () => {
         setError(error.msg);
       }
     }
-    
   };
-  
+
   return (
     <div className="container mt-4">
-      <div className="col-md-6 mx-auto text-center ">
+      <div className="col-md-6 mx-auto text-center">
         <div className="header-title">
-          <h1 className="fw-bold mb-5 text-success fs-1 title-register">
-            Formulario de Registro
+          <h1 className="fw-bold mb-5 fs-1 title-register">
+            Registro de Usuario
           </h1>
         </div>
       </div>
       <div className="row">
         <div className="col-md-4 mx-auto">
-          <div className="myform form ">
+          <div className="myform form">
             {error && <p className="text-danger">{error}</p>}
             <form
               onSubmit={onFormSubmit}
@@ -97,8 +96,7 @@ const RegisterForm = () => {
                   onChange={(e) => setName(e.target.value)}
                   value={name}
                   name="name"
-                  
-                  className="form-control my-input input-register"
+                  className="form-control my-input input-register "
                   id="validationCustom01"
                   placeholder="Nombre"
                   required
@@ -186,7 +184,7 @@ const RegisterForm = () => {
                 <div className="text-center ">
                   <button
                     type="submit"
-                    className=" btn btn-block send-button tx-tfm btn-success mt-2"
+                    className=" btn btn-block send-button tx-tfm  button-create mt-2"
                   >
                     Crear Cuenta
                   </button>
@@ -195,11 +193,10 @@ const RegisterForm = () => {
                   <div className="login-or text-center">
                     <span className="span-or">o</span>
                   </div>
-                  </div>
-                  <div className="form-group text-center">
-                    <ButtonGoogle/>
-                  </div>
-              
+                </div>
+                <div className="form-group text-center">
+                  <ButtonGoogle />
+                </div>
               </div>
             </form>
           </div>
