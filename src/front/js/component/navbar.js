@@ -21,9 +21,9 @@ export const Navbar = () => {
 
   const links = store.isLoggedIn
     ? [
-        { link: "/profile", title: "Perfil de usuario" },
+        { link: "/profile", title: "Perfil usuario" },
         {
-          title: "Cierre de sesión",
+          title: "Cierre sesión",
           onclick: (e) => {
             e.preventDefault();
             deleteToken();
@@ -40,7 +40,7 @@ export const Navbar = () => {
             { link: "/ProfessionalRegister", title: "Profesional" },
           ],
         },
-        { link: "/login", title: "Inicio de sesión" },
+        { link: "/login", title: "Inicio sesión" },
       ];
 
   return (
