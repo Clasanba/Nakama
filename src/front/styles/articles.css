@@ -10,5 +10,5 @@
   height: 100%;
 }
 .card-articles {
-  justify-content: center;
+  justify-content: space-evenly;
 }

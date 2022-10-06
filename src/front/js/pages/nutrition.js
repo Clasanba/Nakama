@@ -21,7 +21,7 @@ const Nutrition = () => {
             </p>
           </div>
         </div>
-        <div className="card-nutrition bg-transparent row row-cols-sm-12 row-cols-md-3 row-cols-lg-4">
+        <div className="card-nutrition bg-transparent row row-cols-sm-12 row-cols-md-3 row-cols-lg-4 ">
           <Cards articles={store.nutrition} />
         </div>
       </div>
