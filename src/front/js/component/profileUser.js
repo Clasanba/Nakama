@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { getToken, saveToken } from "../auth";
-import profileUser from "../../styles/profileUser.css";
+import "../../styles/profileUser.css";
 
 const ProfileUser = () => {
   const [name, setName] = useState("");
@@ -29,8 +29,8 @@ const ProfileUser = () => {
 
   const uploadImage = (evt) => {
     evt.preventDefault();
-    // we are about to send this to the backend.
-    console.log("This are the files", files);
+   
+    
     let body = new FormData();
     body.append("profile_image", files[0]);
     const options = {
@@ -40,12 +40,11 @@ const ProfileUser = () => {
         Authorization: "Bearer " + getToken(),
       },
     };
-    // you need to have the user_id in the localStorage
 
     fetch(process.env.BACKEND_URL + "/api/profile/image", options)
       .then((resp) => resp.json())
       .then((data) => {
-        console.log("Success!!!!", data);
+        
         setSaveImage(true);
       })
 

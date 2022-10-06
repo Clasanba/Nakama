@@ -202,8 +202,8 @@ def google_login():
     photo = request.json.get("photo",None)
     first_name = request.json.get("first_name",None)
     user_name = request.json.get("user_name",None)
-    print(photo)
-    print(request.json)
+    
+    
     user = User.query.filter_by(email=email).first()
     if user is None:
         pw_hash = current_app.bcrypt.generate_password_hash("google").decode("utf-8")

@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import logoNakama1 from "../../img/logo_corregido.png";
 import logoconsombra from "../../img/logoconsombra.png"
 import "../../styles/navBar.css";
 import { deleteToken } from "../auth";

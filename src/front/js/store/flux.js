@@ -1,6 +1,6 @@
 import { getToken } from "../auth";
 
-const getState = ({ getStore, getActions, setStore }) => {
+const getState = ({ setStore }) => {
   return {
     store: {
       checkAuth: false,
@@ -188,7 +188,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       init: () => {
         setStore({ checkAuth: true });
       },
-      // Use getActions to call a function within a fuction
+      
       getDataProfile: () => {
         fetch(process.env.BACKEND_URL + "/api/profile", {
           method: "GET",
@@ -247,7 +247,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			},
       loginGoogle: async (user) => {
-        console.log(user)
+        
         try{
           const resp = await fetch(process.env.BACKEND_URL + "/api/register_google", {
           method: "POST",

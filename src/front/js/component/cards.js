@@ -1,6 +1,6 @@
 import React from "react";
 import "../../styles/cards.css";
-import { Link, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import classNames from "classnames";
 
 const Cards = ({ articles }) => {
@@ -34,6 +34,4 @@ const Cards = ({ articles }) => {
 
 export default Cards;
 
-/*
 
-*/

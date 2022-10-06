@@ -11,8 +11,8 @@
 		"build": "webpack --config webpack.prod.js"
 	},
 	"author": {
-		"name": "Alejandro Sanchez",
-		"url": "http://alesanchezr.com/"
+		"name": "Claudia Sandubete Bautista y Noemi Sola Corrochano",
+		"url": "https://github.com/Clasanba/Nakama"
 	},
 	"contributors": [
 		{

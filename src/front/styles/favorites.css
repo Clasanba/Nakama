@@ -15,7 +15,7 @@
   margin-bottom: 10px;
 }
 .titulovideo {
-  color: rgb(88, 74, 74) /*#f7af13*/;
+  color: rgb(88, 74, 74);
   font-size: medium;
   display: -webkit-box;
   -webkit-line-clamp: 2;
