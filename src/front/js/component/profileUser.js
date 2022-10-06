@@ -102,7 +102,7 @@ const ProfileUser = () => {
               <button
                 type="button"
                 onClick={() => fileInputRef.current?.click()}
-                className="text-center center-block file-upload  button-save-img p-2"
+                className="text-center center-block file-upload bg-gradient button-save-img p-2"
               >
                 Selecciona una imagen
               </button>
@@ -113,7 +113,10 @@ const ProfileUser = () => {
                 className="d-none"
               />
 
-              <button type="submit" className="button-save-img p-2">
+              <button
+                type="submit"
+                className="button-save-img  bg-gradient p-2"
+              >
                 Guardar imagen
               </button>
             </div>
@@ -204,7 +207,10 @@ const ProfileUser = () => {
 
             <div className="form-group ">
               <div className=" d-flex justify-content-evenly mb-3">
-                <button className="btn mx-5 button-save-img" type="submit">
+                <button
+                  className="btn mx-5  bg-gradient button-save-img"
+                  type="submit"
+                >
                   {" "}
                   Guardar
                 </button>

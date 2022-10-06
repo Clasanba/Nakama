@@ -127,12 +127,15 @@ export const Login = () => {
                   </span>
                 </div>
               </div>
-              <button type="submit" className="btn button-login mb-3">
+              <button
+                type="submit"
+                className="btn button-login mb-3 bg-gradient"
+              >
                 Entrar
               </button>
             </form>
             <button
-              className="btn button-login-google mb-3"
+              className="btn button-login-google mb-3 bg-gradient"
               onClick={loginGoogleAsync}
             >
               <svg

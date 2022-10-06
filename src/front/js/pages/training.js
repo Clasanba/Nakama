@@ -7,11 +7,10 @@ import "../../styles/favorites.css";
 const Training = () => {
   return (
     <>
-      <Favorites />
       <div className=" bg-training">
-        <div className="title-view-training">
-          <h1 className=" text-sm-start mb-1 ms-5">Entrenamientos</h1>
-          <p className="text-sm-start ms-5 mb-4">
+        <div className="title-view-training bg-gradient border  rounded rounder-4">
+          <h1 className=" text-sm-start mb-3 ms-4 ">Entrenamientos</h1>
+          <p className="text-sm-start ms-5 mb-3">
             En este apartado podrás encontrar entrenamientos para que puedas
             hacer ejercicio desde cualquier parte del mundo. Puedes guardar en
             favoritos todos los entrenamientos que quieras, pinchando en el
@@ -25,6 +24,7 @@ const Training = () => {
           </div>
         </div>
       </div>
+      <Favorites />
     </>
   );
 };

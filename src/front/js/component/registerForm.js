@@ -193,7 +193,7 @@ const RegisterForm = () => {
                 <div className="text-center ">
                   <button
                     type="submit"
-                    className=" btn btn-block send-button tx-tfm  button-create mt-2"
+                    className=" btn btn-block send-button tx-tfm  button-create  bg-gradient mt-2"
                   >
                     Crear Cuenta
                   </button>

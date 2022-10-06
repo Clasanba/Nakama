@@ -8,8 +8,8 @@ const Psychology = () => {
   return (
     <>
       <div className="bg-psychology">
-        <div className="title-view-psychology">
-          <h1 className=" text-sm-start mb-1 ms-5">Psicología</h1>
+        <div className="title-view-psychology bg-gradient border  rounded rounder-4">
+          <h1 className=" text-sm-start mb-3 ms-4">Psicología</h1>
           <div>
             <p className="text-sm-start ms-5 mb-4">
               Es normal sentir muchas emociones diferentes cuando tienes cáncer,

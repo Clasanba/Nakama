@@ -25,15 +25,13 @@
   justify-content: center;
   height: 75vh;
 }
-.main-intro p {
+.main-intro .parrafo {
   font-weight: 700;
   background-color: rgb(214 167 59 / 45%);
   padding: 10px;
   color: #1f5046;
-  
-  
 }
-@media only screen and (max-width: 1400px){
+@media only screen and (max-width: 1400px) {
   .main-image {
     position: absolute;
     left: 0;
@@ -41,12 +39,10 @@
     z-index: -1;
     bottom: 0;
     right: 0;
-    
   }
 }
 
-
-.main-home .slogan{
+.main-home .slogan {
   display: flex;
   flex-direction: column;
   align-self: center;
@@ -54,4 +50,7 @@
   background-color: rgb(214 167 59 / 45%);
   width: 80%;
   margin-bottom: 12px;
+}
+.slogan-css {
+  color: rgb(145, 11, 64);
 }

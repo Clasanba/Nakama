@@ -15,6 +15,7 @@
 
 a.text-with-color:hover,
 a.text-with-color:focus {
-  color:#1f5046;
-  -webkit-transform:scale(1.1);transform:scale(1.1)
+  color: #1f5046;
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
 }

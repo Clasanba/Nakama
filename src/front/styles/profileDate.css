@@ -19,7 +19,7 @@
 .list-body {
   color: #1f5046;
 }
-.list-body-main{
+.list-body-main {
   box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.39);
   -webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.39);
   -moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.39);
@@ -33,6 +33,14 @@
   color: aliceblue;
 }
 .btn-profile:hover {
+  background-color: #47c4ab;
+  color: aliceblue;
+}
+.button-dlt {
+  background-color: rgba(142, 11, 64, 0.812);
+  color: aliceblue;
+}
+.button-dlt:hover {
   background-color: #47c4ab;
   color: aliceblue;
 }

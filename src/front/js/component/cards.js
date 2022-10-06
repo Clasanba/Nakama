@@ -15,11 +15,14 @@ const Cards = ({ articles }) => {
           <div className="card-body ">
             <a href={item.url} target="_blank" className="text-decoration-none">
               <h5
-                className={classNames({
-                  "title-nutrition": location.pathname === "/nutrition",
-                  "title-psychology": location.pathname === "/psychology",
-                  "title-articles": location.pathname === "/article",
-                })}
+                className={classNames(
+                  {
+                    "title-nutrition": location.pathname === "/nutrition",
+                    "title-psychology": location.pathname === "/psychology",
+                    "title-articles": location.pathname === "/article",
+                  },
+                  "bg-gradient"
+                )}
               >
                 {item.title}
               </h5>

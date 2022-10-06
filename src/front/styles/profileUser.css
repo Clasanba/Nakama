@@ -19,7 +19,7 @@
   border: none;
 }
 .button-save-img:hover {
-  background-color: #47c4ab;
+  background-color: rgba(142, 11, 64, 0.812); /*#47c4ab;*/
   color: aliceblue;
 }
 .image {
