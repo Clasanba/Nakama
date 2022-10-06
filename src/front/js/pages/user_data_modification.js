@@ -4,9 +4,9 @@ import ProfileUser from "../component/profileUser";
 
 const UseDataModificate = () => {
   return (
-    <main className="container-fluid row">
+    <main className="body-view-registerForm">
       <div className="col ">
-        <ProfileUser  />
+        <ProfileUser />
       </div>
     </main>
   );

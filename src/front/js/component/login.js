@@ -73,18 +73,21 @@ export const Login = () => {
             <h1 className="fw-bold mb-5 fs-1 title-register">Inicio sesión</h1>
 
             {showError && (
-              <div className="alert alert-danger" role="alert">
+              <div
+                className="alert alert-danger bg-danger bg-opacity-75 border-danger rounded p-2 text-white"
+                role="alert"
+              >
                 Email y/o contraseña incorrecta.
               </div>
             )}
 
             <form
-              className="needs-validation"
+              className="needs-validation "
               noValidate
               onSubmit={onFormSubmit}
             >
               <div className=" mb-3">
-                <div className="input-group has-validation">
+                <div className="input-group has-validation ">
                   <input
                     type="email"
                     onChange={(e) => setEmail(e.target.value)}
@@ -95,7 +98,7 @@ export const Login = () => {
                     id="exampleInputEmail1"
                     aria-describedby="emailHelp"
                   />
-                  <div className="invalid-feedback">
+                  <div className="invalid-feedback bg-danger bg-opacity-75 border-danger rounded p-2 text-white">
                     Por favor,introduzca un email
                   </div>
                 </div>
@@ -146,6 +149,7 @@ export const Login = () => {
             </button>
             <a
               href="#"
+              className="password"
               data-bs-toggle="modal"
               data-bs-target="#modalRememberpass"
             >

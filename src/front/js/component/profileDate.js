@@ -6,6 +6,7 @@ import ModalDeleteUser from "./modalUserDelete";
 import { getToken } from "../auth";
 import { Link } from "react-router-dom";
 import { deleteToken } from "../auth";
+
 const ProfileDate = () => {
   const [showModal, setShowModal] = useState(false);
   const { store, actions } = useContext(Context);

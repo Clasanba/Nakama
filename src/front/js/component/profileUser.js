@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { getToken, saveToken } from "../auth";
-
-
+import profileUser from "../../styles/profileUser.css";
 
 const ProfileUser = () => {
   const [name, setName] = useState("");
@@ -15,7 +14,7 @@ const ProfileUser = () => {
   const [imageContent, setImageContent] = useState(null);
   const navigate = useNavigate();
   const [saveImage, setSaveImage] = useState(false);
-  
+  const fileInputRef = useRef();
 
   useEffect(() => {
     if (files) {
@@ -87,26 +86,39 @@ const ProfileUser = () => {
 
   return (
     <div className="container-fluid justify">
-      <div className="row d-flex justify-content-center mt-2">
+      <div className="row justify-content-center">
         <div className="col-md-4">
           <form onSubmit={uploadImage}>
-            <div className="text-center">
+            <div className="image-position">
               <img
                 src={
                   imageContent ||
                   "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
                 }
-                className="avatar rounded-circle img-thumbnail"
+                className="avatar rounded-circle image img-thumbnail"
                 alt="avatar"
               />
-
+            </div>
+            <div className="position-buttons">
+              <button
+                type="button"
+                onClick={() => fileInputRef.current?.click()}
+                className="text-center center-block file-upload  button-save-img p-2"
+              >
+                Selecciona una imagen
+              </button>
               <input
+                ref={fileInputRef}
                 type="file"
                 onChange={(e) => setFiles(e.target.files)}
-                className="text-center center-block file-upload mt-2"
+                className="d-none"
               />
-              <button>Guardar imagen</button>
+
+              <button type="submit" className="button-save-img p-2">
+                Guardar imagen
+              </button>
             </div>
+
             {saveImage && (
               <div className="alert alert-success mt-1" role="alert">
                 Imagen guardada con éxito
@@ -126,86 +138,74 @@ const ProfileUser = () => {
                 No se ha podido actualizar los datos de usuario
               </div>
             )}
+
             <div className="form-group d-flex justify-content-center">
               <div className="col-md-6">
-                <label htmlFor="name">
-                  <h4 className="text-success mt-2">Nombre</h4>
-                </label>
                 <input
                   type="text"
                   onChange={(e) => setName(e.target.value)}
                   value={name}
-                  className="form-control"
+                  className="form-control input-profileUser mb-2"
                   name="name"
                   id="name"
+                  placeholder="Nombre"
                 />
               </div>
             </div>
             <div className="form-group d-flex justify-content-center">
               <div className="col-md-6">
-                <label htmlFor="first_name">
-                  <h4 className="text-success">Primer apellido</h4>
-                </label>
                 <input
                   type="text"
                   onChange={(e) => setFirstName(e.target.value)}
                   value={firstName}
-                  className="form-control"
+                  className="form-control input-profileUser mb-2"
                   name="firstName"
+                  placeholder="Primer apellido"
                 />
               </div>
             </div>
             <div className="form-group d-flex justify-content-center">
               <div className="col-md-6">
-                <label htmlFor="last_name">
-                  <h4 className="text-success">Segundo apellido</h4>
-                </label>
                 <input
                   type="text"
                   onChange={(e) => setLastName(e.target.value)}
                   value={lastName}
-                  className="form-control"
+                  className="form-control input-profileUser mb-2"
                   name="firstName"
+                  placeholder="Segundo apellido"
                 />
               </div>
             </div>
 
             <div className="form-group d-flex justify-content-center">
               <div className="col-md-6">
-                <label htmlFor="email">
-                  <h4 className="text-success">Correo electrónico </h4>
-                </label>
                 <input
                   type="email"
                   onChange={(e) => setEmail(e.target.value)}
                   value={email}
-                  className="form-control"
+                  className="form-control input-profileUser mb-2"
                   name="email"
+                  placeholder="Correo electrónico"
                 />
               </div>
             </div>
 
             <div className="form-group d-flex justify-content-center">
               <div className="col-lg-6">
-                <label htmlFor="password">
-                  <h4 className="text-success">Contraseña</h4>
-                </label>
                 <input
                   type="password"
                   onChange={(e) => setPassword(e.target.value)}
                   value={password}
-                  className="form-control mb-3"
+                  className="form-control mb-3 input-profileUser mb-2"
                   name="password"
+                  placeholder="Contraseña"
                 />
               </div>
             </div>
 
             <div className="form-group ">
               <div className=" d-flex justify-content-evenly mb-3">
-                <button
-                  className="btn btn-lg btn btn-outline-success mx-5"
-                  type="submit"
-                >
+                <button className="btn mx-5 button-save-img" type="submit">
                   {" "}
                   Guardar
                 </button>
