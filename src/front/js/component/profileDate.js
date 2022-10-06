@@ -44,13 +44,12 @@ const ProfileDate = () => {
   return (
     <>
       <div className="card profile-date mt-4">
-        
         <img
           src={store.user.image}
           className="avatar rounded-circle img-thumbnail img-profile-date img-fluid mt-2 mb-3"
           alt="..."
         />
-        
+
         <div className="card-body-h5 mb-3">
           <h5 className="card-title fs-1 text-capitalize user">
             {store.user.user_name}
@@ -61,18 +60,18 @@ const ProfileDate = () => {
             <strong>Nombre</strong>: {store.user.name}
           </li>
           <li className="list-group-item text-capitalize list-body">
-          <strong>Primer apellido</strong>: {store.user.first_name}
+            <strong>Primer apellido</strong>: {store.user.first_name}
           </li>
           <li className="list-group-item text-capitalize list-body">
-          <strong>Segundo apellido</strong>: {store.user.last_name}
+            <strong>Segundo apellido</strong>: {store.user.last_name}
           </li>
           <li className="list-group-item list-body">
-          <strong>Correo electrónico</strong>: {store.user.email}
+            <strong>Correo electrónico</strong>: {store.user.email}
           </li>
         </ul>
         <div className="btn-group mt-4  mb-2">
           <button
-            className="btn btn-md btn btn-danger rounded"
+            className="btn btn-md btn button-dlt bg-gradient rounded"
             type="delete"
             onClick={onDeleteButtonClick}
           >
@@ -80,7 +79,7 @@ const ProfileDate = () => {
           </button>
           <Link to="/profile/modificate">
             <button
-              className="btn btn-md btn btn-profile ms-4"
+              className="btn btn-md btn btn-profile bg-gradient  ms-4"
               type="button"
             >
               Modificar datos de usuario
