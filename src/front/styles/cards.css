@@ -14,3 +14,8 @@
 .title-articles {
   color: #7bb466;
 }
+.image-card:hover{
+  filter: sepia(60%)
+ 
+}
+

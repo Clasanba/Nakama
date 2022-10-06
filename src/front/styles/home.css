@@ -1,17 +1,13 @@
 .letters {
   font-weight: bolder;
-  font-size: 4rem;
+  font-size: calc(2em + 3vw);
   color: #1f5046;
   text-shadow: 1px 1px 1px #1f5046;
-}
-.title {
-  display: flex;
-  justify-content: center;
 }
 .main-image {
   position: absolute;
   left: 0;
-  top: 0;
+  top: 1;
   z-index: -1;
   bottom: 0;
   right: 0;
@@ -22,16 +18,39 @@
   object-fit: cover;
 }
 .main-intro {
-  /*background-color: rgb(31 80 70 / 50%);*/
-  width: 50%;
-  height: 80vh;
+  width: 60%;
+  font-size: calc(0.5em + 0.5vw);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 75vh;
 }
-.main-intro p {
+.main-intro .parrafo {
   font-weight: 700;
-  background-color: rgb(214 167 59 / 85%);
+  background-color: rgb(214 167 59 / 45%);
   padding: 10px;
   color: #1f5046;
 }
-/* #4FB8EB; , #82c75a, #0a4b7e,053f6b*/
+@media only screen and (max-width: 1400px) {
+  .main-image {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: -1;
+    bottom: 0;
+    right: 0;
+  }
+}
 
-/* https://images.pexels.com/photos/807598/pexels-photo-807598.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1 */
+.main-home .slogan {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  font-size: calc(0.6em + 0.5vw);
+  background-color: rgb(214 167 59 / 45%);
+  width: 80%;
+  margin-bottom: 12px;
+}
+.slogan-css {
+  color: rgb(145, 11, 64);
+}

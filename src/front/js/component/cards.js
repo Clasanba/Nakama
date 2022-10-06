@@ -1,6 +1,6 @@
 import React from "react";
-import cards from "../../styles/cards.css";
-import { Link, useLocation } from "react-router-dom";
+import "../../styles/cards.css";
+import { useLocation } from "react-router-dom";
 import classNames from "classnames";
 
 const Cards = ({ articles }) => {
@@ -15,11 +15,14 @@ const Cards = ({ articles }) => {
           <div className="card-body ">
             <a href={item.url} target="_blank" className="text-decoration-none">
               <h5
-                className={classNames({
-                  "title-nutrition": location.pathname === "/nutrition",
-                  "title-psychology": location.pathname === "/psychology",
-                  "title-articles": location.pathname === "/article",
-                })}
+                className={classNames(
+                  {
+                    "title-nutrition": location.pathname === "/nutrition",
+                    "title-psychology": location.pathname === "/psychology",
+                    "title-articles": location.pathname === "/article",
+                  },
+                  "bg-gradient"
+                )}
               >
                 {item.title}
               </h5>
@@ -34,6 +37,4 @@ const Cards = ({ articles }) => {
 
 export default Cards;
 
-/*
 
-*/

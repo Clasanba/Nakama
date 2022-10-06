@@ -8,11 +8,11 @@ const Article = () => {
   return (
     <>
       <div className="bg-articles">
-        <div className="title-view-articles">
-          <h1 className="text-sm-start mb-1 ms-5">Artículos</h1>
+        <div className="title-view-articles bg-gradient border  rounded rounder-4">
+          <h1 className="text-sm-start mb-3 ms-4">Artículos</h1>
           <div>
             <p className="text-sm-start ms-5 mb-4">
-              En este apartado puede encontrar artículos científicos sobre el
+              En este apartado puedes encontrar artículos científicos sobre el
               cáncer y los últimos tratamientos.
             </p>
           </div>

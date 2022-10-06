@@ -2,11 +2,48 @@
   margin-left: 30%;
   margin-right: 30%;
   margin-top: 5%;
-  color: rgba(12, 121, 59, 0.856);
 }
 .show-pass {
   position: absolute;
   display: block;
   text-align: center;
   padding: 0.3rem 1rem 0.5rem;
+  color: #1f5046;
+}
+.body-view {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  background: url("/images/fondo-nakama-sin-mujer.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+.input-login {
+  box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.39);
+  -webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.39);
+  -moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.39);
+}
+.button-login {
+  background-color: #1f5046;
+  color: aliceblue;
+}
+.button-login:hover {
+  background-color: #47c4ab;
+  color: aliceblue;
+}
+.title-register {
+  text-shadow: 2px 2px 2px rgb(237, 243, 237);
+  color: #1f5046;
+}
+.button-login-google {
+  background-color: #1f5046;
+  color: aliceblue;
+}
+.button-login-google:hover {
+  background-color: #47c4ab;
+  color: aliceblue;
+}
+.password {
+  color: #1f5046;
 }

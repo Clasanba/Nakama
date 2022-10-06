@@ -1,9 +1,10 @@
 import React from "react";
 import ProfileDate from "../component/profileDate";
+import  "../../styles/profile.css"
 
 const Profile = () => {
   return (
-    <div className="col container-fluid row">
+    <div className="container-fluid profile-main p-0">
       <ProfileDate />
     </div>
   );

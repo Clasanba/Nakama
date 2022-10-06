@@ -8,22 +8,22 @@ const Psychology = () => {
   return (
     <>
       <div className="bg-psychology">
-        <div className="title-view-psychology">
-          <h1 className=" text-sm-start mb-1 ms-5">Psicología</h1>
+        <div className="title-view-psychology bg-gradient border  rounded rounder-4">
+          <h1 className=" text-sm-start mb-3 ms-4">Psicología</h1>
           <div>
             <p className="text-sm-start ms-5 mb-4">
-              Es normal sentir muchas emociones diferentes cuando tiene cáncer,
-              cuando alguien cercano a usted tiene cáncer o está en un período
-              de transición, como cuando una persona comienza o finaliza el
-              tratamiento. En este apartado encontrará información psicologica,
-              procedente de profesionales, donde podrá resolver todas sus dudas.
+              Es normal sentir muchas emociones diferentes cuando tienes cáncer,
+              cuando alguien cercano a ti lo padece o está en un período de
+              transición, como cuando una persona comienza o finaliza el
+              tratamiento. En este apartado encontrarás información psicológica,
+              procedente de profesionales, donde podrás resolver todas sus
+              dudas.
             </p>
           </div>
         </div>
-        <div className="container">
-          <div className="card-psychology bg-transparent row row-cols-1 row-cols-md-3 row-cols-lg-4 ">
-            <Cards articles={store.psychology} />
-          </div>
+
+        <div className="card-psychology bg-transparent row row-cols-sm-12 row-cols-md-3 row-cols-lg-4 ">
+          <Cards articles={store.psychology} />
         </div>
       </div>
     </>

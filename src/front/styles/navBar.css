@@ -1,10 +1,10 @@
 .logo_navBar {
-  height: 5rem;
+  height: 6.6rem;
 }
-
 .styleNavbar {
-  color: #1f5046;
+  /*color: #1f5046;*/
   font-weight: 700;
+  font-size: 1.3em;
 }
 .page-nav {
   justify-content: center;

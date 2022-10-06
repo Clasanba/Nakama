@@ -9,16 +9,13 @@
 .layout-main {
   flex-grow: 1;
 }
-/*body {
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-image: url(https://cdn.pixabay.com/photo/2016/03/09/09/30/woman-1245817_960_720.jpg);
-}*/
 .text-with-color {
   color: #1f5046;
 }
 
 a.text-with-color:hover,
 a.text-with-color:focus {
-  color: #47c4ab;
+  color: #1f5046;
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
 }
