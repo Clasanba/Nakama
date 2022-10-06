@@ -7,7 +7,7 @@
 .main-image {
   position: absolute;
   left: 0;
-  top: 0;
+  top: 1;
   z-index: -1;
   bottom: 0;
   right: 0;
@@ -23,7 +23,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  height: 70vh;
+  height: 75vh;
 }
 .main-intro p {
   font-weight: 700;
