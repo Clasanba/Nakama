@@ -16,6 +16,6 @@
 }
 .image-card:hover{
   filter: sepia(60%)
-  /* filter: opacity(.5) */
+ 
 }
 
