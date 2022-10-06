@@ -58,10 +58,10 @@ export const Login = () => {
   const loginGoogleAsync = async () => {
     const result = await signInWithPopup(auth, provider);
     const credential = GoogleAuthProvider.credentialFromResult(result);
-    console.log(credential, "@@", result);
+    
     const token = credential.accessToken;
     const user = result._tokenResponse;
-    console.log(user);
+    
     await actions.login(user);
     navigate("/");
   };

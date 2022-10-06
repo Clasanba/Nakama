@@ -30,7 +30,7 @@ const ProfileUser = () => {
   const uploadImage = (evt) => {
     evt.preventDefault();
    
-    console.log("This are the files", files);
+    
     let body = new FormData();
     body.append("profile_image", files[0]);
     const options = {
@@ -44,7 +44,7 @@ const ProfileUser = () => {
     fetch(process.env.BACKEND_URL + "/api/profile/image", options)
       .then((resp) => resp.json())
       .then((data) => {
-        console.log("Success!!!!", data);
+        
         setSaveImage(true);
       })
 

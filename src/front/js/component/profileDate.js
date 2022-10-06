@@ -30,14 +30,14 @@ const ProfileDate = () => {
       })
 
       .then((data) => {
-        console.log("data");
+        
         deleteToken();
         actions.logout(false);
         setShowModal(true);
       })
       .catch(() => {
         setShowModal(false);
-        console.log("catch");
+        
       });
   };
 
