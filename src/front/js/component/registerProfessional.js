@@ -42,7 +42,7 @@ const RegisterProfessional = () => {
           <div className="myform form ">
             {error && <p className="text-danger">{error}</p>}
             <form
-              //   onSubmit={onFormSubmit}
+              
               name="register"
               className="needs-validation"
               noValidate

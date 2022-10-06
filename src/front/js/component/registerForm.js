@@ -1,9 +1,8 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Visibility from "@material-ui/icons/Visibility";
 import VisibilityOff from "@material-ui/icons/VisibilityOff";
-import { Context } from "../store/appContext";
-import register from "../../styles/register.css";
+import  "../../styles/register.css";
 import ButtonGoogle from "./buttonGoogle";
 import avatar from "../../img/avatar_Nakama.png";
 
@@ -18,7 +17,7 @@ const RegisterForm = () => {
   const [error, setError] = useState("");
   const image = avatar;
   const navigate = useNavigate();
-  const { store, actions } = useContext(Context);
+  
 
   const handleClickShowPassword = () => {
     setValues({ ...values, showPassword: !values.showPassword });

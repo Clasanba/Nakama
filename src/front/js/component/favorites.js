@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useContext } from "react";
-import { Link } from "react-router-dom";
 import { getToken } from "../auth";
 import "../../styles/favorites.css";
 import { Context } from "../store/appContext";
