@@ -4,7 +4,7 @@ import  "../../styles/profile.css"
 
 const Profile = () => {
   return (
-    <div className="container-fluid profile-main">
+    <div className="container-fluid profile-main p-0">
       <ProfileDate />
     </div>
   );

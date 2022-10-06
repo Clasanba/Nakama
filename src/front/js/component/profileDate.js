@@ -55,7 +55,7 @@ const ProfileDate = () => {
             {store.user.user_name}
           </h5>
         </div>
-        <ul className="list-group list-group-flush list-body-main mt-4 ">
+        <ul className="list-group list-group-flush list-body-main mt-4 rounded">
           <li className="list-group-item text-capitalize list-body">
             <strong>Nombre</strong>: {store.user.name}
           </li>
@@ -69,9 +69,9 @@ const ProfileDate = () => {
           <strong>Correo electrónico</strong>: {store.user.email}
           </li>
         </ul>
-        <div className="btn-group mt-2 mb-2">
+        <div className="btn-group mt-4  mb-2">
           <button
-            className="btn btn-md btn btn-danger "
+            className="btn btn-md btn btn-danger rounded"
             type="delete"
             onClick={onDeleteButtonClick}
           >
