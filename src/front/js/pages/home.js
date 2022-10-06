@@ -13,9 +13,8 @@ const Home = () => {
         <div className="main-intro p-2">
           
           <div className="letters text-center">NAKAMA</div>
-          <p className="slogan fst-italic text-black">
-          "La realidad no es lo que nos sucede, sino lo que hacemos con lo que
-          nos sucede"
+          <p className="slogan fst-italic text-black text-center">
+          "El miedo se hace más pequeño en compañía"
         </p>
           <p>
             Somos una comunidad dirigida a personas relacionadas directa o
