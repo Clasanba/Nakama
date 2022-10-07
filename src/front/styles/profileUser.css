@@ -24,18 +24,17 @@
 }
 .image {
   height: 12rem;
-  margin-bottom: 50px;
+  margin-bottom: 25px;
 }
 .image-position {
   display: flex;
   justify-content: center;
 }
 .position-buttons {
-  display: flex;
+  display: grid;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: center;
   margin-bottom: 50px;
-  margin-right: 60px;
 }
 .button-save {
   background-color: #1f5046;

@@ -100,9 +100,9 @@ const ProfileUser = () => {
               <button
                 type="button"
                 onClick={() => fileInputRef.current?.click()}
-                className="text-center center-block file-upload bg-gradient button-save-img p-2"
+                className="  mb-2 text-center center-block file-upload bg-gradient button-save-img p-3"
               >
-                Selecciona una imagen
+                Selecciona imagen
               </button>
               <input
                 ref={fileInputRef}
@@ -113,12 +113,11 @@ const ProfileUser = () => {
 
               <button
                 type="submit"
-                className="button-save-img  bg-gradient p-2"
+                className=" text-center center-block file-upload button-save-img bg-gradient p-3"
               >
                 Guardar imagen
               </button>
             </div>
-
             {saveImage && (
               <div className="alert alert-success mt-1" role="alert">
                 Imagen guardada con éxito
@@ -206,7 +205,7 @@ const ProfileUser = () => {
             <div className="form-group ">
               <div className=" d-flex justify-content-evenly mb-3">
                 <button
-                  className="btn mx-5  bg-gradient button-save"
+                  className="btn mx-5 p-2 bg-gradient button-save"
                   type="submit"
                 >
                   {" "}
