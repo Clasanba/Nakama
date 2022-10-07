@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import logoconsombra from "../../img/logoconsombra.png"
+import logoconsombra from "../../img/logoconsombra.png";
 import "../../styles/navBar.css";
 import { deleteToken } from "../auth";
 import { Context } from "../store/appContext";
@@ -21,9 +21,9 @@ export const Navbar = () => {
 
   const links = store.isLoggedIn
     ? [
-        { link: "/profile", title: "Perfil de usuario" },
+        { link: "/profile", title: "Perfil usuario" },
         {
-          title: "Cierre de sesión",
+          title: "Cierre sesión",
           onclick: (e) => {
             e.preventDefault();
             deleteToken();
@@ -40,7 +40,7 @@ export const Navbar = () => {
             { link: "/ProfessionalRegister", title: "Profesional" },
           ],
         },
-        { link: "/login", title: "Inicio de sesión" },
+        { link: "/login", title: "Inicio sesión" },
       ];
 
   return (

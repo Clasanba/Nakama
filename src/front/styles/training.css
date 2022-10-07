@@ -4,6 +4,9 @@
   object-fit: fill;
   border-radius: 0.25rem 0.25rem 0 0;
 }
+.img-training:hover {
+  filter: opacity(60%);
+}
 .card-training-css {
   height: 250px;
   display: flex;

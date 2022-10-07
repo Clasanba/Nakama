@@ -4,6 +4,9 @@
   object-fit: fill;
   border-radius: 0.25rem 0.25rem 0 0;
 }
+.img-favorite:hover {
+  filter: opacity(60%);
+}
 .card-favorite-css {
   height: 250px;
   display: flex;
@@ -39,6 +42,6 @@
   justify-content: space-between;
 }
 .buton-delete {
-  color: rgb(88, 74, 74);
-  background-color: #ffbf6c;
+  color: white /*rgb(88, 74, 74)*/;
+  background-color: #e48201;
 }

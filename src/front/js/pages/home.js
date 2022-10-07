@@ -1,21 +1,23 @@
 import React from "react";
 import "../../styles/home.css";
+import "../../styles/index.css";
 import fondo from "../../img/fondo-nakama.jpg";
 
 const Home = () => {
   return (
     <>
+      {/*
       <div className="main-image">
         <img src={fondo} />
       </div>
-
-      <div className="container main-home">
+  */}
+      <div className="container ">
         <div className="main-intro p-2">
           <div className="letters text-center ">NAKAMA</div>
           <p className="slogan fst-italic bg-gradient rounded-pill slogan-css text-center fw-bold">
             "El miedo se hace más pequeño en compañía"
           </p>
-          <p className="section">
+          <p className="section rounded rounded-5 ">
             Nakama nace con el fin de brindar un lugar acogedor a personas
             relacionadas directa o indirectamente con el cáncer. Aquí puedes
             obtener información sobre nutrición, aspectos psicológicos de la
