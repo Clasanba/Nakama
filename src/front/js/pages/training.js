@@ -14,8 +14,9 @@ const Training = () => {
             En este apartado podrás encontrar entrenamientos para que puedas
             hacer ejercicio desde cualquier parte del mundo. Puedes guardar en
             favoritos todos los entrenamientos que quieras, pinchando en el
-            corazón. Una vez añadidos, aparecerán en la parte superior del
-            apartado entrenamientos y permanecerán ahí mientras no los borres.
+            corazón. Una vez añadidos, aparecerán en la parte inferior de esta
+            misma página de entrenamientos y permanecerán ahí mientras no los
+            borres.
           </p>
         </div>
         <div className="container">

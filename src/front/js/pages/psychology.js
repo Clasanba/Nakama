@@ -12,12 +12,11 @@ const Psychology = () => {
           <h1 className=" text-sm-start mb-3 ms-4">Psicología</h1>
           <div>
             <p className="text-sm-start ms-5 mb-4">
-              Es normal sentir muchas emociones diferentes cuando tienes cáncer,
-              cuando alguien cercano a ti lo padece o está en un período de
-              transición, como cuando una persona comienza o finaliza el
-              tratamiento. En este apartado encontrarás información psicológica,
-              procedente de profesionales, donde podrás resolver todas sus
-              dudas.
+              Cuando el cáncer aparece en nuestras vidas, es normal sentirse
+              abrumado y no saber como actuar ante ciertas circunstancias o como
+              gestionar nuestras emociones. Para ayudarte con ello, en este
+              apartado podrás encontrar información psicológica, procedente de
+              profesionales, para que puedas resolver todas tus dudas.
             </p>
           </div>
         </div>

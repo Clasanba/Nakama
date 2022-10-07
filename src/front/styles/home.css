@@ -25,9 +25,9 @@
   justify-content: center;
   height: 75vh;
 }
-.main-intro .parrafo {
+.main-intro .section {
   font-weight: 700;
-  background-color: rgb(214 167 59 / 45%);
+  background-color: rgb(214 167 59 / 50%);
   padding: 10px;
   color: #1f5046;
 }
