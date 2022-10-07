@@ -21,7 +21,7 @@ const Cards = ({ articles }) => {
                     "title-psychology": location.pathname === "/psychology",
                     "title-articles": location.pathname === "/article",
                   },
-                  "bg-gradient"
+                  "bg-gradient hover"
                 )}
               >
                 {item.title}
@@ -36,5 +36,3 @@ const Cards = ({ articles }) => {
 };
 
 export default Cards;
-
-

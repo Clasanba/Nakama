@@ -13,17 +13,18 @@
   -moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.39);
 }
 .button-save-img {
-  background-color: #1f5046;
+  background-color: rgba(142, 11, 64, 0.812);
   color: aliceblue;
   border-radius: 5px;
   border: none;
 }
 .button-save-img:hover {
-  background-color: rgba(142, 11, 64, 0.812); /*#47c4ab;*/
+  background-color: #47c4ab;
   color: aliceblue;
 }
 .image {
   height: 12rem;
+  margin-bottom: 50px;
 }
 .image-position {
   display: flex;
@@ -33,5 +34,14 @@
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  margin: 10px;
+  margin-bottom: 50px;
+  margin-right: 60px;
+}
+.button-save {
+  background-color: #1f5046;
+  color: white;
+}
+.button-save:hover {
+  background-color: #47c4ab;
+  color: aliceblue;
 }

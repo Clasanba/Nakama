@@ -12,8 +12,9 @@ const Article = () => {
           <h1 className="text-sm-start mb-3 ms-4">Artículos</h1>
           <div>
             <p className="text-sm-start ms-5 mb-4">
-              En este apartado puedes encontrar artículos científicos sobre el
-              cáncer y los últimos tratamientos.
+              Como el saber no ocupa lugar, te ofrecemos los últimos
+              descubrimientos sobre el cáncer para que puedas estar actualizado
+              en todo momento.
             </p>
           </div>
         </div>

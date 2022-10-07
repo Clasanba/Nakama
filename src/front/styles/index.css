@@ -19,3 +19,13 @@ a.text-with-color:focus {
   -webkit-transform: scale(1.1);
   transform: scale(1.1);
 }
+.main-home {
+  background-image: url("/images/fondo-nakama.jpg");
+  background-size: cover;
+  background-position: center;
+}
+@media (max-width: 576px) {
+  .main-home {
+    overflow: auto;
+  }
+}

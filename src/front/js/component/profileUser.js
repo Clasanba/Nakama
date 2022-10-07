@@ -29,8 +29,7 @@ const ProfileUser = () => {
 
   const uploadImage = (evt) => {
     evt.preventDefault();
-   
-    
+
     let body = new FormData();
     body.append("profile_image", files[0]);
     const options = {
@@ -44,7 +43,6 @@ const ProfileUser = () => {
     fetch(process.env.BACKEND_URL + "/api/profile/image", options)
       .then((resp) => resp.json())
       .then((data) => {
-        
         setSaveImage(true);
       })
 
@@ -98,7 +96,7 @@ const ProfileUser = () => {
                 alt="avatar"
               />
             </div>
-            <div className="position-buttons">
+            <div className="position-buttons ">
               <button
                 type="button"
                 onClick={() => fileInputRef.current?.click()}
@@ -208,7 +206,7 @@ const ProfileUser = () => {
             <div className="form-group ">
               <div className=" d-flex justify-content-evenly mb-3">
                 <button
-                  className="btn mx-5  bg-gradient button-save-img"
+                  className="btn mx-5  bg-gradient button-save"
                   type="submit"
                 >
                   {" "}
