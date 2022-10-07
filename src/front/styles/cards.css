@@ -1,6 +1,7 @@
 .image-card {
   height: 300px;
   object-fit: cover;
+  transition: 0.1s;
 }
 .card-css {
   min-width: 300px;
@@ -14,8 +15,9 @@
 .title-articles {
   color: #7bb466;
 }
-.image-card:hover{
-  filter: sepia(60%)
- 
+.image-card:hover {
+  filter: opacity(60%);
 }
-
+.hover:hover {
+  color: rgb(0, 54, 126);
+}

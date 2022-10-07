@@ -29,8 +29,7 @@ const ProfileUser = () => {
 
   const uploadImage = (evt) => {
     evt.preventDefault();
-   
-    
+
     let body = new FormData();
     body.append("profile_image", files[0]);
     const options = {
@@ -44,7 +43,6 @@ const ProfileUser = () => {
     fetch(process.env.BACKEND_URL + "/api/profile/image", options)
       .then((resp) => resp.json())
       .then((data) => {
-        
         setSaveImage(true);
       })
 
@@ -98,13 +96,13 @@ const ProfileUser = () => {
                 alt="avatar"
               />
             </div>
-            <div className="position-buttons">
+            <div className="position-buttons ">
               <button
                 type="button"
                 onClick={() => fileInputRef.current?.click()}
-                className="text-center center-block file-upload bg-gradient button-save-img p-2"
+                className="  mb-2 text-center center-block file-upload bg-gradient button-save-img p-3"
               >
-                Selecciona una imagen
+                Selecciona imagen
               </button>
               <input
                 ref={fileInputRef}
@@ -115,12 +113,11 @@ const ProfileUser = () => {
 
               <button
                 type="submit"
-                className="button-save-img  bg-gradient p-2"
+                className=" text-center center-block file-upload button-save-img bg-gradient p-3"
               >
                 Guardar imagen
               </button>
             </div>
-
             {saveImage && (
               <div className="alert alert-success mt-1" role="alert">
                 Imagen guardada con éxito
@@ -208,7 +205,7 @@ const ProfileUser = () => {
             <div className="form-group ">
               <div className=" d-flex justify-content-evenly mb-3">
                 <button
-                  className="btn mx-5  bg-gradient button-save-img"
+                  className="btn mx-5 p-2 bg-gradient button-save"
                   type="submit"
                 >
                   {" "}

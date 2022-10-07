@@ -70,7 +70,7 @@ export const Favorites = () => {
                   </div>
                   <button
                     type="button"
-                    className="btn  buton-delete btn-outline-warning"
+                    className="btn bg-gradient buton-delete "
                     onClick={() => deleteFavorite(favorite.id)}
                   >
                     Eliminar
