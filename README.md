@@ -1,4 +1,5 @@
 # NAKAMA
+<img src="./src/front/img/preview_nakama.png"/>
 
 ## Tabla de Contenido.
 1. [Descripción](#descripción)
