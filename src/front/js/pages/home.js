@@ -15,13 +15,14 @@ const Home = () => {
           <p className="slogan fst-italic bg-gradient rounded-pill slogan-css text-center fw-bold">
             "El miedo se hace más pequeño en compañía"
           </p>
-          <p className=" parrafo">
-            Somos una comunidad dirigida a personas relacionadas directa o
-            indirectamente con el cáncer, a través de la cual, puedan aprender
-            aspectos sobre el día a día de la enfermedad más allá del propio
-            diagnóstico. Aquí encontraran información sobre alimentación,
-            aspectos psicológicos, avances médicos e investigaciones y
-            entrenamientos para favorecer una mejor calidad de vida.
+          <p className="section">
+            Nakama nace con el fin de brindar un lugar acogedor a personas
+            relacionadas directa o indirectamente con el cáncer. Aquí puedes
+            obtener información sobre nutrición, aspectos psicológicos de la
+            enfermedad y artículos científicos con los últimos descubrimientos.
+            Además, si te registras podrás obtener planes de entrenamientos
+            personalizados. Todo orientado a facilitar la adaptación al nuevo
+            estilo de vida de los pacientes y sus cuidadores.
           </p>
         </div>
       </div>

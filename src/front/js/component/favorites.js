@@ -42,7 +42,7 @@ export const Favorites = () => {
       <div className="title-view-favorite bg-gradient border rounded rounder-4">
         <h1 className=" text-sm-start mb-1 ms-5 ">Favoritos</h1>
         <p className="text-sm-start ms-5 mb-2">
-          Aquí puedes consultar tus videos favoritos y borrarlos.
+          Aquí puedes consultar y borrar tus videos favoritos.
         </p>
       </div>
 
