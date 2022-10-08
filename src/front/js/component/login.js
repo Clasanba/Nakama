@@ -186,7 +186,7 @@ export const Login = () => {
                 data-bs-toggle="modal"
                 data-bs-target="#modalRememberpass"
               >
-                <p className="pb-3">¿Olvidaste la contraseña?</p>
+                <p className="pb-3 pt-2">¿Olvidaste la contraseña?</p>
               </a>
               <ModalRecoveryPass />
             </div>
