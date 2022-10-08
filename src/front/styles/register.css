@@ -39,3 +39,11 @@
   background-color: #47c4ab;
   color: aliceblue;
 }
+.reset-btn{
+  color:#1f5046;
+  cursor: pointer;
+  
+}
+.reset-btn:hover{
+  -webkit-transform:scale(1.3);transform:scale(1.3)
+}

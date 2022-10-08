@@ -72,12 +72,7 @@ Es recomendable instalar primero el back-end, asegurate de tener Python 3.8, Pip
 -   Asegúrate de que utilizas la versión 14+ de Node y de que ya has instalado y ejecutado con éxito el backend.
 
 1. Instalar los paquetes: `$ npm install`
-2. Instalar biblioteca MUI : `$ npm install @material-ui/core` 
-3. Instalar paquete iconos : `$ npm install @material-ui/icons`
-4. Instalar Firebase : `$ npm install firebase`
-5. Instalar React Button : `$ npm install --save react-google-button`
-6. Instalar classNames : `$ npm classnames`
-7. Comienza a codificar! inicia el servidor de desarrollo de webpack `$ npm run start`
+2. Comienza a codificar! inicia el servidor de desarrollo de webpack `$ npm run start`
 ###
 
 
