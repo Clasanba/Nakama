@@ -15,7 +15,7 @@
 
 a.text-with-color:hover,
 a.text-with-color:focus {
-  color: #1f5046;
+  color: rgb(145, 11, 64);
   -webkit-transform: scale(1.1);
   transform: scale(1.1);
 }
@@ -27,5 +27,14 @@ a.text-with-color:focus {
 @media (max-width: 576px) {
   .main-home {
     overflow: auto;
+  }
+}
+.main-home .bg-nav-home {
+  background-color: rgb(214 167 59 / 60%);
+  border-radius: 50rem !important;
+}
+@media (max-width: 991px) {
+  .main-home .bg-nav-home {
+    background-color: transparent;
   }
 }
