@@ -221,11 +221,7 @@ const RegisterForm = () => {
                     />
                   </svg>
                 </div>
-                <div className="col-md-12 ">
-                  {/* <div className="login-or text-center">
-                    <span className="span-or">o</span>
-                  </div> */}
-                </div>
+             
                 <div className="form-group text-center mb-2 mt-2">
                   <ButtonGoogle />
                 </div>
