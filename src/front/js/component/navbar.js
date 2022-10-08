@@ -21,7 +21,10 @@ export const Navbar = () => {
 
   const links = store.isLoggedIn
     ? [
-        { link: "/profile", title: "Perfil usuario" },
+        {
+          link: "/profile",
+          title: "Perfil",
+        },
         {
           title: "Cierre sesión",
           onclick: (e) => {
@@ -48,7 +51,7 @@ export const Navbar = () => {
       <nav className="styleNavbar navbar navbar-expand-lg " role="search">
         <div className="container-fluid">
           <Link to="/" className="navbar-brand ">
-            <img src={logoconsombra} className="logo_navBar mt-1 ms-1" />
+            <img src={logoconsombra} className="logo_navBar mt-1 " />
           </Link>
           <button
             className="navbar-toggler text-with-color"
@@ -63,11 +66,17 @@ export const Navbar = () => {
               <i className="fa-solid fa-bars fs-1 "></i>
             </span>
           </button>
-          <div className="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul className="navbar-nav page-nav flex-grow-1">
+          <div
+            className="collapse navbar-collapse bg-nav-home"
+            id="navbarSupportedContent"
+          >
+            <ul className="navbar-nav page-nav flex-grow-1 ">
               {pages.map((page) => (
-                <li key={page.link} className="nav-item ">
-                  <Link to={page.link} className="nav-link text-with-color">
+                <li key={page.link} className="nav-item">
+                  <Link
+                    to={page.link}
+                    className="nav-link text-with-color me-4"
+                  >
                     {page.title}
                   </Link>
                 </li>
@@ -82,7 +91,7 @@ export const Navbar = () => {
                       <li key={index} className="nav-item">
                         <a
                           href="#"
-                          className="nav-link text-with-color"
+                          className="nav-link text-with-color ms-4 me-2"
                           onClick={linkPage.onclick}
                         >
                           {linkPage.title}
