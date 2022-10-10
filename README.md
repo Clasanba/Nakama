@@ -28,12 +28,15 @@ Una vez tengamos esa parte implementada el siguiente paso será la creación de 
 
 - Front-End
 
- <img src="./src/front/img/front.png"/>
+ <img src="./src/front/img/stack-front.png"/>
 
 - Back-End 
 
-<img src="./src/front/img/back.png"/>
+<img src="./src/front/img/stack-back.png"/>
 
+- Otros
+
+<img src="./src/front/img/otros-stack.png"/>
 
 
 
