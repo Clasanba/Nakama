@@ -1,8 +1,15 @@
 .footer {
   color: #1f5046;
-  display: inline-grid;
-  justify-content: end;
+  
 }
 .icons-footer:hover{
   -webkit-transform:scale(1.3);transform:scale(1.3)
+}
+.item-footer{
+  float: right;
+}
+.copy-name{
+  
+  float: left;
+  font-size: calc(0.4em + 0.5vw)
 }
