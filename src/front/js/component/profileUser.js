@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
 import { Context } from "../store/appContext"
 import { useNavigate } from "react-router-dom";
-import { getToken, saveToken } from "../auth";
+import { getToken} from "../auth";
 import "../../styles/profileUser.css";
 
 const ProfileUser = () => {
@@ -11,12 +11,12 @@ const ProfileUser = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [files, setFiles] = useState(null);
-  const [showError, setShowError] = useState(false);
   const [imageContent, setImageContent] = useState(null);
   const navigate = useNavigate();
   const [saveImage, setSaveImage] = useState(false);
   const fileInputRef = useRef();
-  const {store, actions} = useContext(Context)
+  const {store, actions} = useContext(Context);
+  const [error, setError] = useState("")
 
   useEffect(() => {
     actions.getDataProfile();
@@ -60,14 +60,20 @@ const ProfileUser = () => {
 
       .catch((error) => console.error("ERRORRRRRR!!!", error));
   };
-  const onFormSubmit = (e) => {
-    e.preventDefault();
-    e.stopPropagation();
-    e.target.classList.add("was-validated");
+  const onFormSubmit = async (e) => {
     if (!e.target.checkValidity()) {
-      return;
+      e.preventDefault();
+      e.stopPropagation();
     }
-    fetch(process.env.BACKEND_URL + "/api/profile", {
+    e.preventDefault();
+    const regex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,16}$/gm;
+    if (!password.match(regex)) {
+      setError(
+        "La contraseña debe contener entre 8-16 caracteres (mayúsculas,minúsculas y dígito) "
+      );
+      e.target.classList.add("was-validated");
+    } else {
+      const res = await fetch(process.env.BACKEND_URL + "/api/profile", {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -81,17 +87,15 @@ const ProfileUser = () => {
         password,
       }),
     })
-      .then((response) => {
-        if (response.status !== 200) {
-          throw new Error();
-        }
-        return response.json();
-      })
-      .then((data) => {
+    if (res.ok) {
+      const data = await res.json();
         navigate("/profile");
-      })
-      .catch(() => setShowError(true));
-  };
+      } else {
+        const error = await res.json();
+        setError(error.msg);
+      }
+  }
+};
 
   return (
     <div className="container-fluid justify">
@@ -138,15 +142,16 @@ const ProfileUser = () => {
           </form>
 
           <form
-            className="form"
+            className="form needs-validation"
             action="##"
             method="post"
             id="registrationForm"
             onSubmit={onFormSubmit}
+            noValidate
           >
-            {showError && (
+            {error && (
               <div className="alert alert-danger" role="alert">
-                No se ha podido actualizar los datos de usuario
+                No se han podido actualizar los datos
               </div>
             )}
 
@@ -160,7 +165,11 @@ const ProfileUser = () => {
                   name="name"
                   id="name"
                   placeholder="Nombre"
+                  required
                 />
+                <div className="invalid-feedback bg-danger bg-opacity-75 border-danger rounded p-2 text-white mb-2">
+                  Nombre incorrecto
+                </div>
               </div>
             </div>
             <div className="form-group d-flex justify-content-center">
@@ -172,7 +181,11 @@ const ProfileUser = () => {
                   className="form-control input-profileUser mb-2"
                   name="firstName"
                   placeholder="Primer apellido"
+                  required
                 />
+                <div className="invalid-feedback bg-danger bg-opacity-75 border-danger rounded p-2 text-white mb-2">
+                  Apellido incorrecto
+                </div>
               </div>
             </div>
             <div className="form-group d-flex justify-content-center">
@@ -197,7 +210,11 @@ const ProfileUser = () => {
                   className="form-control input-profileUser mb-2"
                   name="email"
                   placeholder="Correo electrónico"
+                  required
                 />
+                <div className="invalid-feedback bg-danger bg-opacity-75 border-danger rounded p-2 text-white mb-2">
+                  Email incorrecto
+                </div>
               </div>
             </div>
 
@@ -205,15 +222,23 @@ const ProfileUser = () => {
               <div className="col-lg-6">
                 <input
                   type="password"
+                  minLength="8"
+                  maxLength="16"
                   onChange={(e) => setPassword(e.target.value)}
                   value={password}
                   className="form-control mb-3 input-profileUser mb-2"
                   name="password"
                   placeholder="Contraseña"
+                  required
                 />
+                
               </div>
             </div>
-
+            {error && (
+                <p className="text-danger bg-danger bg-opacity-75 border-danger rounded p-2 text-white">
+                  {error}
+                </p>
+              )}
             <div className="form-group ">
               <div className=" d-flex justify-content-evenly mb-3">
                 <button
