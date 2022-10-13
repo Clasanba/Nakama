@@ -1,4 +1,5 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
+import { Context } from "../store/appContext"
 import { useNavigate } from "react-router-dom";
 import { getToken, saveToken } from "../auth";
 import "../../styles/profileUser.css";
@@ -15,6 +16,11 @@ const ProfileUser = () => {
   const navigate = useNavigate();
   const [saveImage, setSaveImage] = useState(false);
   const fileInputRef = useRef();
+  const {store, actions} = useContext(Context)
+
+  useEffect(() => {
+    actions.getDataProfile();
+  }, []);
 
   useEffect(() => {
     if (files) {
@@ -143,7 +149,7 @@ const ProfileUser = () => {
                 <input
                   type="text"
                   onChange={(e) => setName(e.target.value)}
-                  value={name}
+                  defaultValue={store.user.name}
                   className="form-control input-profileUser mb-2"
                   name="name"
                   id="name"
@@ -156,7 +162,7 @@ const ProfileUser = () => {
                 <input
                   type="text"
                   onChange={(e) => setFirstName(e.target.value)}
-                  value={firstName}
+                  defaultValue={store.user.first_name}
                   className="form-control input-profileUser mb-2"
                   name="firstName"
                   placeholder="Primer apellido"
@@ -168,7 +174,7 @@ const ProfileUser = () => {
                 <input
                   type="text"
                   onChange={(e) => setLastName(e.target.value)}
-                  value={lastName}
+                  defaultValue={store.user.last_name}
                   className="form-control input-profileUser mb-2"
                   name="firstName"
                   placeholder="Segundo apellido"
@@ -181,7 +187,7 @@ const ProfileUser = () => {
                 <input
                   type="email"
                   onChange={(e) => setEmail(e.target.value)}
-                  value={email}
+                  defaultValue={store.user.email}
                   className="form-control input-profileUser mb-2"
                   name="email"
                   placeholder="Correo electrónico"
