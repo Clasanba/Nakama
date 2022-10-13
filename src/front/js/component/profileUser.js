@@ -21,6 +21,12 @@ const ProfileUser = () => {
   useEffect(() => {
     actions.getDataProfile();
   }, []);
+  useEffect(() => {
+    setName(store.user.name);
+    setFirstName(store.user.first_name)
+    setLastName(store.user.last_name)
+    setEmail(store.user.email)
+  }, [store, actions]);
 
   useEffect(() => {
     if (files) {
