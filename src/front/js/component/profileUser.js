@@ -102,7 +102,7 @@ const ProfileUser = () => {
       <div className="row justify-content-center">
         <div className="col-md-4">
           <form onSubmit={uploadImage}>
-            <div className="image-position">
+            <div className="image-position mt-2">
               <img
                 src={
                   imageContent ||
@@ -112,11 +112,11 @@ const ProfileUser = () => {
                 alt="avatar"
               />
             </div>
-            <div className="position-buttons ">
+            <div className="position-buttons mt-2 mb-4">
               <button
                 type="button"
                 onClick={() => fileInputRef.current?.click()}
-                className="  mb-2 text-center center-block file-upload bg-gradient button-save-img p-3"
+                className="  mb-2 text-center center-block file-upload bg-gradient button-save-img p-2"
               >
                 Selecciona imagen
               </button>
@@ -129,7 +129,7 @@ const ProfileUser = () => {
 
               <button
                 type="submit"
-                className=" text-center center-block file-upload button-save-img bg-gradient p-3"
+                className=" text-center center-block file-upload button-save-img bg-gradient p-2"
               >
                 Guardar imagen
               </button>
@@ -156,7 +156,7 @@ const ProfileUser = () => {
             )}
 
             <div className="form-group d-flex justify-content-center">
-              <div className="col-md-6">
+              <div className="col-md-6 mb-2" >
                 <input
                   type="text"
                   onChange={(e) => setName(e.target.value)}
@@ -173,7 +173,7 @@ const ProfileUser = () => {
               </div>
             </div>
             <div className="form-group d-flex justify-content-center">
-              <div className="col-md-6">
+              <div className="col-md-6 mb-2">
                 <input
                   type="text"
                   onChange={(e) => setFirstName(e.target.value)}
@@ -189,7 +189,7 @@ const ProfileUser = () => {
               </div>
             </div>
             <div className="form-group d-flex justify-content-center">
-              <div className="col-md-6">
+              <div className="col-md-6 mb-2">
                 <input
                   type="text"
                   onChange={(e) => setLastName(e.target.value)}
@@ -202,7 +202,7 @@ const ProfileUser = () => {
             </div>
 
             <div className="form-group d-flex justify-content-center">
-              <div className="col-md-6">
+              <div className="col-md-6 mb-2">
                 <input
                   type="email"
                   onChange={(e) => setEmail(e.target.value)}
