@@ -3,13 +3,13 @@
   
 }
 .icons-footer:hover{
-  -webkit-transform:scale(1.3);transform:scale(1.3)
+  -webkit-transform:scale(1.3);transform:scale(1.3);
+  color:rgb(145, 11, 64);
 }
 .item-footer{
   float: right;
 }
 .copy-name{
-  
   float: left;
-  font-size: calc(0.4em + 0.5vw)
+  font-size: calc(0.55em + 0.5vw)
 }
