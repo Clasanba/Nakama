@@ -50,13 +50,13 @@ const ProfileDate = () => {
           alt="..."
         />
 
-        <div className="card-body-h5 mb-3">
-          <h5 className="card-title fs-1 text-capitalize user">
+        <div className="card-body-h5 mb-4 mt-2">
+          <h5 className="card-title fs-1 text-capitalize user font-bolder">
             {store.user.user_name}
           </h5>
         </div>
-        <ul className="list-group list-group-flush list-body-main mt-4 rounded">
-          <li className="list-group-item text-capitalize list-body">
+        <ul className="list-group list-group-flush list-body-main mt-4 mb-4 rounded">
+          <li className="list-group-item text-capitalize list-body ">
             <strong>Nombre</strong>: {store.user.name}
           </li>
           <li className="list-group-item text-capitalize list-body">
