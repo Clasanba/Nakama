@@ -6,7 +6,7 @@ export const Footer = () => {
     <>
       <footer className="  py-3 text-center  footer container-fluid">
       <div className="copy-name ">
-          <p className=" fw-bold  m-0 mt-2"> &copy; Claudia Sandubete & Noe Sola  </p>
+          <p className=" fw-bold  m-0 mt-2"> &copy; <a href="https://www.linkedin.com/in/claudia-sandubete-bautista-76287b53/" target="_blank" className="linkedin">Claudia Sandubete </a> & <a href="https://www.linkedin.com/in/noe-sola/" target="_blank" className="linkedin"> Noe Sola</a>  </p>
         </div>
         <div className="item-footer ">
           <a
