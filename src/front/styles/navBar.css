@@ -38,4 +38,9 @@
 }
 .geist-icon:hover {
   stroke: rgb(145, 11, 64);
+  
+}
+.bi-person-circle{
+  
+  margin-right: 1rem;
 }
