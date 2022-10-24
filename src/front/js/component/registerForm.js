@@ -70,13 +70,12 @@ const RegisterForm = () => {
   };
   const handleResetForm = () => {
     setName(""),
-    setLastName(""),
-    setFirstName(""),
-    setEmail(""),
-    setUserName(""),
-    setPassword("")
-
-  }
+      setLastName(""),
+      setFirstName(""),
+      setEmail(""),
+      setUserName(""),
+      setPassword("");
+  };
 
   return (
     <div className="container mt-4">
@@ -96,7 +95,7 @@ const RegisterForm = () => {
               className="needs-validation"
               noValidate
             >
-              <div className="form-group mb-2 ">
+              <div className="form-group mb-3 ">
                 <input
                   type="text"
                   onChange={(e) => setName(e.target.value)}
@@ -111,7 +110,7 @@ const RegisterForm = () => {
                   Nombre incorrecto
                 </div>
               </div>
-              <div className="form-group mb-2">
+              <div className="form-group mb-3">
                 <input
                   type="text"
                   onChange={(e) => setFirstName(e.target.value)}
@@ -126,7 +125,7 @@ const RegisterForm = () => {
                   Apellido incorrecto
                 </div>
               </div>
-              <div className="form-group mb-2">
+              <div className="form-group mb-3">
                 <input
                   type="text"
                   onChange={(e) => setLastName(e.target.value)}
@@ -137,7 +136,7 @@ const RegisterForm = () => {
                   placeholder="Segundo apellido"
                 />
               </div>
-              <div className="form-group mb-2">
+              <div className="form-group mb-3">
                 <input
                   type="text"
                   onChange={(e) => setUserName(e.target.value)}
@@ -152,7 +151,7 @@ const RegisterForm = () => {
                   Introduzca nombre de usuario
                 </div>
               </div>
-              <div className="form-group mb-2">
+              <div className="form-group mb-3">
                 <input
                   type="email"
                   onChange={(e) => setEmail(e.target.value)}
@@ -201,7 +200,7 @@ const RegisterForm = () => {
                 <div className="text-center ">
                   <button
                     type="submit"
-                    className=" btn btn-block send-button tx-tfm  button-create  bg-gradient mt-2"
+                    className=" btn btn-block send-button  button-create  bg-gradient mt-2 mb-2"
                   >
                     Crear Cuenta
                   </button>
@@ -221,7 +220,7 @@ const RegisterForm = () => {
                     />
                   </svg>
                 </div>
-             
+
                 <div className="form-group text-center mb-2 mt-2">
                   <ButtonGoogle />
                 </div>

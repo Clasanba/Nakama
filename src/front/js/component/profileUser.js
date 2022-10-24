@@ -1,6 +1,7 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
+import { Context } from "../store/appContext"
 import { useNavigate } from "react-router-dom";
-import { getToken, saveToken } from "../auth";
+import { getToken} from "../auth";
 import "../../styles/profileUser.css";
 
 const ProfileUser = () => {
@@ -10,11 +11,22 @@ const ProfileUser = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [files, setFiles] = useState(null);
-  const [showError, setShowError] = useState(false);
   const [imageContent, setImageContent] = useState(null);
   const navigate = useNavigate();
   const [saveImage, setSaveImage] = useState(false);
   const fileInputRef = useRef();
+  const {store, actions} = useContext(Context);
+  const [error, setError] = useState("")
+
+  useEffect(() => {
+    actions.getDataProfile();
+  }, []);
+  useEffect(() => {
+    setName(store.user.name);
+    setFirstName(store.user.first_name)
+    setLastName(store.user.last_name)
+    setEmail(store.user.email)
+  }, [store, actions]);
 
   useEffect(() => {
     if (files) {
@@ -48,14 +60,20 @@ const ProfileUser = () => {
 
       .catch((error) => console.error("ERRORRRRRR!!!", error));
   };
-  const onFormSubmit = (e) => {
-    e.preventDefault();
-    e.stopPropagation();
-    e.target.classList.add("was-validated");
+  const onFormSubmit = async (e) => {
     if (!e.target.checkValidity()) {
-      return;
+      e.preventDefault();
+      e.stopPropagation();
     }
-    fetch(process.env.BACKEND_URL + "/api/profile", {
+    e.preventDefault();
+    const regex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,16}$/gm;
+    if (!password.match(regex)) {
+      setError(
+        "La contraseña debe contener entre 8-16 caracteres (mayúsculas,minúsculas y dígito) "
+      );
+      e.target.classList.add("was-validated");
+    } else {
+      const res = await fetch(process.env.BACKEND_URL + "/api/profile", {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -69,24 +87,22 @@ const ProfileUser = () => {
         password,
       }),
     })
-      .then((response) => {
-        if (response.status !== 200) {
-          throw new Error();
-        }
-        return response.json();
-      })
-      .then((data) => {
+    if (res.ok) {
+      const data = await res.json();
         navigate("/profile");
-      })
-      .catch(() => setShowError(true));
-  };
+      } else {
+        const error = await res.json();
+        setError(error.msg);
+      }
+  }
+};
 
   return (
     <div className="container-fluid justify">
       <div className="row justify-content-center">
         <div className="col-md-4">
           <form onSubmit={uploadImage}>
-            <div className="image-position">
+            <div className="image-position mt-2">
               <img
                 src={
                   imageContent ||
@@ -96,11 +112,11 @@ const ProfileUser = () => {
                 alt="avatar"
               />
             </div>
-            <div className="position-buttons ">
+            <div className="position-buttons mt-2 mb-4">
               <button
                 type="button"
                 onClick={() => fileInputRef.current?.click()}
-                className="  mb-2 text-center center-block file-upload bg-gradient button-save-img p-3"
+                className="  mb-2 text-center center-block file-upload bg-gradient button-save-img p-2"
               >
                 Selecciona imagen
               </button>
@@ -113,7 +129,7 @@ const ProfileUser = () => {
 
               <button
                 type="submit"
-                className=" text-center center-block file-upload button-save-img bg-gradient p-3"
+                className=" text-center center-block file-upload button-save-img bg-gradient p-2"
               >
                 Guardar imagen
               </button>
@@ -126,49 +142,58 @@ const ProfileUser = () => {
           </form>
 
           <form
-            className="form"
+            className="form needs-validation"
             action="##"
             method="post"
             id="registrationForm"
             onSubmit={onFormSubmit}
+            noValidate
           >
-            {showError && (
+            {error && (
               <div className="alert alert-danger" role="alert">
-                No se ha podido actualizar los datos de usuario
+                No se han podido actualizar los datos
               </div>
             )}
 
             <div className="form-group d-flex justify-content-center">
-              <div className="col-md-6">
+              <div className="col-md-6 mb-2" >
                 <input
                   type="text"
                   onChange={(e) => setName(e.target.value)}
-                  value={name}
+                  defaultValue={store.user.name}
                   className="form-control input-profileUser mb-2"
                   name="name"
                   id="name"
                   placeholder="Nombre"
+                  required
                 />
+                <div className="invalid-feedback bg-danger bg-opacity-75 border-danger rounded p-2 text-white mb-2">
+                  Nombre incorrecto
+                </div>
               </div>
             </div>
             <div className="form-group d-flex justify-content-center">
-              <div className="col-md-6">
+              <div className="col-md-6 mb-2">
                 <input
                   type="text"
                   onChange={(e) => setFirstName(e.target.value)}
-                  value={firstName}
+                  defaultValue={store.user.first_name}
                   className="form-control input-profileUser mb-2"
                   name="firstName"
                   placeholder="Primer apellido"
+                  required
                 />
+                <div className="invalid-feedback bg-danger bg-opacity-75 border-danger rounded p-2 text-white mb-2">
+                  Apellido incorrecto
+                </div>
               </div>
             </div>
             <div className="form-group d-flex justify-content-center">
-              <div className="col-md-6">
+              <div className="col-md-6 mb-2">
                 <input
                   type="text"
                   onChange={(e) => setLastName(e.target.value)}
-                  value={lastName}
+                  defaultValue={store.user.last_name}
                   className="form-control input-profileUser mb-2"
                   name="firstName"
                   placeholder="Segundo apellido"
@@ -177,15 +202,19 @@ const ProfileUser = () => {
             </div>
 
             <div className="form-group d-flex justify-content-center">
-              <div className="col-md-6">
+              <div className="col-md-6 mb-2">
                 <input
                   type="email"
                   onChange={(e) => setEmail(e.target.value)}
-                  value={email}
+                  defaultValue={store.user.email}
                   className="form-control input-profileUser mb-2"
                   name="email"
                   placeholder="Correo electrónico"
+                  required
                 />
+                <div className="invalid-feedback bg-danger bg-opacity-75 border-danger rounded p-2 text-white mb-2">
+                  Email incorrecto
+                </div>
               </div>
             </div>
 
@@ -193,15 +222,23 @@ const ProfileUser = () => {
               <div className="col-lg-6">
                 <input
                   type="password"
+                  minLength="8"
+                  maxLength="16"
                   onChange={(e) => setPassword(e.target.value)}
                   value={password}
                   className="form-control mb-3 input-profileUser mb-2"
                   name="password"
                   placeholder="Contraseña"
+                  required
                 />
+                
               </div>
             </div>
-
+            {error && (
+                <p className="text-danger bg-danger bg-opacity-75 border-danger rounded p-2 text-white">
+                  {error}
+                </p>
+              )}
             <div className="form-group ">
               <div className=" d-flex justify-content-evenly mb-3">
                 <button

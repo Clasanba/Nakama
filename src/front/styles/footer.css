@@ -1,15 +1,22 @@
 .footer {
   color: #1f5046;
-  
 }
 .icons-footer:hover{
   -webkit-transform:scale(1.3);transform:scale(1.3);
   color:rgb(145, 11, 64);
 }
-.item-footer{
+.item-footer {
   float: right;
 }
 .copy-name{
   float: left;
   font-size: calc(0.55em + 0.5vw)
 }
+.linkedin {
+  text-decoration: none;
+  color:#1f5046;
+  cursor: pointer;
+}.linkedin:hover{
+  color: rgb(145, 11, 64);
+}
+
