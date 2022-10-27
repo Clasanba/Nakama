@@ -25,7 +25,7 @@ const Training = () => {
           </div>
         </div>
       </div>
-      <Favorites />
+      <Favorites id="fav" />
     </>
   );
 };
