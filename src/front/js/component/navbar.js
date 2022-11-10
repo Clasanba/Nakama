@@ -4,6 +4,8 @@ import logoconsombra from "../../img/logoconsombra.png";
 import "../../styles/navBar.css";
 import { deleteToken } from "../auth";
 import { Context } from "../store/appContext";
+import { Favorites } from "../component/favorites";
+import Training from "../pages/training";
 
 export const Navbar = () => {
   const { store, actions } = useContext(Context);
@@ -20,7 +22,10 @@ export const Navbar = () => {
       link: "/training",
       title: "Entrenamientos",
       children: [
-        { link: "#fav", title: <div>Favoritos {store.favorites.length} </div> },
+        {
+          link: "#fav",
+          title: <div>Favoritos {store.favorites.length} </div>,
+        },
       ],
     });
   }
@@ -132,16 +137,20 @@ export const Navbar = () => {
               {pages.map((page, index) => {
                 if (page.children) {
                   return (
-                    <li key={index} className="nav-item dropdown me-2">
+                    <li key={index} className="nav-item dropdown me-2 link-btn">
+                      <Link
+                        to={page.link}
+                        className="dropdown-item nav-link text-with-color fw-bold"
+                      >
+                        {page.title}
+                      </Link>
                       <a
                         className="nav-link dropdown-toggle text-end text-with-color"
                         href="#"
                         role="button"
                         data-bs-toggle="dropdown"
                         aria-expanded="false"
-                      >
-                        {page.title}
-                      </a>
+                      ></a>
                       <ul className="dropdown-menu ">
                         {page.children.map((child) => {
                           return (

@@ -30,7 +30,7 @@
     height: 25px;
     width: 25px;
   }
-  .bi-person-circle{
+  .bi-person-circle {
     margin-right: 1rem;
     height: 30px;
     width: 30px;
@@ -38,9 +38,10 @@
 }
 .geist-icon:hover {
   stroke: rgb(145, 11, 64);
-  
 }
-.bi-person-circle{
-  
+.bi-person-circle {
   margin-right: 1rem;
+}
+.link-btn {
+  display: flex;
 }
