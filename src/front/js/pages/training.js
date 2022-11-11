@@ -1,10 +1,19 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
+import { useQuery } from "react-query";
 import { CardTraining } from "../component/card_training";
 import { Favorites } from "../component/favorites";
 import "../../styles/training.css";
 import "../../styles/favorites.css";
 
 const Training = () => {
+  /*const fav = useQuery().get("fav");
+  const favRef = useRef();
+  useEffect(() => {
+    if (fav == true) {
+      favRef.current.scrollIntoView({ behaviour: "smooth" });
+    }
+  }, [fav]);*/
+
   return (
     <>
       <div className=" bg-training">
@@ -25,9 +34,9 @@ const Training = () => {
           </div>
         </div>
       </div>
-      <span id="fav">
+      <div>
         <Favorites />
-      </span>
+      </div>
     </>
   );
 };

@@ -23,7 +23,7 @@ export const Navbar = () => {
       title: "Entrenamientos",
       children: [
         {
-          link: "#fav",
+          link: "/training?fav",
           title: <div>Favoritos {store.favorites.length} </div>,
         },
       ],
@@ -140,7 +140,7 @@ export const Navbar = () => {
                     <li key={index} className="nav-item dropdown me-2 link-btn">
                       <Link
                         to={page.link}
-                        className="dropdown-item nav-link text-with-color fw-bold"
+                        className="nav-link text-with-color me-4"
                       >
                         {page.title}
                       </Link>
