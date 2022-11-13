@@ -18,7 +18,10 @@ export const CardTraining = () => {
           `${YOUTUBE_PLAYLIST}?part=snippet&playlistId=PLiVna37s3zrijZRwQIf1DNxUP1YgM5_Mc&maxResults=50&key=${process.env.YOUTUBE_API_KEY}`
         )
           .then((response) => response.json())
-          .then((data) => setVideos(data.items));
+          .then((data) => {
+            actions.setTrainingsLoaded(true);
+            setVideos(data.items);
+          });
       } catch (error) {
         console.log(error);
       }

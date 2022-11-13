@@ -23,7 +23,8 @@ export const Navbar = () => {
       title: "Entrenamientos",
       children: [
         {
-          link: "/training?fav",
+          link: "/training",
+          click: () => actions.scrollToFavs(true),
           title: <div>Favoritos {store.favorites.length} </div>,
         },
       ],
@@ -156,6 +157,7 @@ export const Navbar = () => {
                           return (
                             <li key={child.link}>
                               <Link
+                                onClick={child.click}
                                 to={child.link}
                                 className="dropdown-item nav-link text-with-color fw-bold fs-6"
                               >

@@ -1,18 +1,27 @@
-import React, { useEffect, useRef } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import { useQuery } from "react-query";
 import { CardTraining } from "../component/card_training";
 import { Favorites } from "../component/favorites";
 import "../../styles/training.css";
 import "../../styles/favorites.css";
+import { Context } from "../store/appContext";
 
 const Training = () => {
-  /*const fav = useQuery().get("fav");
+  const { store, actions } = useContext(Context);
+
   const favRef = useRef();
   useEffect(() => {
-    if (fav == true) {
-      favRef.current.scrollIntoView({ behaviour: "smooth" });
+    if (store.trainingsLoaded && store.favoritesLoaded && store.scrollToFavs) {
+      actions.scrollToFavs(false);
+
+      if (store.favorites.length > 0) {
+        setTimeout(
+          () => favRef.current.scrollIntoView({ behaviour: "smooth" }),
+          100
+        );
+      }
     }
-  }, [fav]);*/
+  }, [store.scrollToFavs, store.trainingsLoaded, store.favoritesLoaded]);
 
   return (
     <>
@@ -34,7 +43,7 @@ const Training = () => {
           </div>
         </div>
       </div>
-      <div>
+      <div ref={favRef}>
         <Favorites />
       </div>
     </>
