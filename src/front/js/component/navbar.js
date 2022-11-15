@@ -4,6 +4,8 @@ import logoconsombra from "../../img/logoconsombra.png";
 import "../../styles/navBar.css";
 import { deleteToken } from "../auth";
 import { Context } from "../store/appContext";
+import { Favorites } from "../component/favorites";
+import Training from "../pages/training";
 
 export const Navbar = () => {
   const { store, actions } = useContext(Context);
@@ -16,20 +18,61 @@ export const Navbar = () => {
   ];
 
   if (store.isLoggedIn) {
-    pages.push({ link: "/training", title: "Entrenamientos" });
+    pages.push({
+      link: "/training",
+      title: "Entrenamientos",
+      children: [
+        {
+          link: "/training",
+          click: () => actions.scrollToFavs(true),
+          title: <div>Favoritos {store.favorites.length} </div>,
+        },
+      ],
+    });
   }
 
   const links = store.isLoggedIn
     ? [
         {
           link: "/profile",
-          title: <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" className="bi bi-person-circle" viewBox="0 0 16 16">
-          <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
-          <path fillRule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
-        </svg>,
+          title: (
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="35"
+              height="35"
+              fill="currentColor"
+              className="bi bi-person-circle"
+              viewBox="0 0 16 16"
+            >
+              <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+              <path
+                fillRule="evenodd"
+                d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"
+              />
+            </svg>
+          ),
         },
         {
-          title: <svg data-testid="geist-icon" className="geist-icon" fill="none" height="35" shapeRendering="geometricPrecision" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" viewBox="0 0 24 24" width="35" style={{color: "#1f5046"}}><path d="M15 3h4a2 2 0 012 2v14a2 2 0 01-2 2h-4"/><path d="M10 17l5-5-5-5"/><path d="M15 12H3"/></svg> ,
+          title: (
+            <svg
+              data-testid="geist-icon"
+              className="geist-icon"
+              fill="none"
+              height="35"
+              shapeRendering="geometricPrecision"
+              stroke="currentColor"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2.5"
+              viewBox="0 0 24 24"
+              width="35"
+              style={{ color: "#1f5046" }}
+            >
+              <path d="M15 3h4a2 2 0 012 2v14a2 2 0 01-2 2h-4" />
+              <path d="M10 17l5-5-5-5" />
+              <path d="M15 12H3" />
+            </svg>
+          ),
           onclick: (e) => {
             e.preventDefault();
             deleteToken();
@@ -46,11 +89,25 @@ export const Navbar = () => {
             { link: "/ProfessionalRegister", title: "Profesional" },
           ],
         },
-        { link: "/login", title:
-         <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" className="bi bi-person-circle" viewBox="0 0 16 16">
-        <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
-        <path fillRule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
-      </svg>}
+        {
+          link: "/login",
+          title: (
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="35"
+              height="35"
+              fill="currentColor"
+              className="bi bi-person-circle"
+              viewBox="0 0 16 16"
+            >
+              <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+              <path
+                fillRule="evenodd"
+                d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"
+              />
+            </svg>
+          ),
+        },
       ];
 
   return (
@@ -78,16 +135,61 @@ export const Navbar = () => {
             id="navbarSupportedContent"
           >
             <ul className="navbar-nav page-nav flex-grow-1 ">
-              {pages.map((page) => (
-                <li key={page.link} className="nav-item">
-                  <Link
-                    to={page.link}
-                    className="nav-link text-with-color me-4"
-                  >
-                    {page.title}
-                  </Link>
-                </li>
-              ))}
+              {pages.map((page, index) => {
+                if (page.children) {
+                  return (
+                    <li key={index} className="nav-item dropdown me-2 link-btn">
+                      <div className="d-flex">
+                        <a
+                          className="nav-link text-end text-with-color"
+                          href={page.link}
+                          role="link"
+                        >
+                          {page.title}
+                        </a>
+                        <a
+                          className="nav-link nav-link-own dropdown-toggle text-end text-with-color"
+                          href="#fav-menu"
+                          role="button"
+                          data-bs-toggle="collapse"
+                          data-bs-target="#fav-menu"
+                          aria-expanded="false"
+                        >
+                          {" "}
+                        </a>
+                      </div>
+                      <ul
+                        className="dropdown-menu own-dropdown-menu"
+                        id="fav-menu"
+                      >
+                        {page.children.map((child) => {
+                          return (
+                            <li key={child.link}>
+                              <Link
+                                onClick={child.click}
+                                to={child.link}
+                                className="dropdown-item nav-link text-with-color fw-bold fs-6"
+                              >
+                                {child.title}
+                              </Link>
+                            </li>
+                          );
+                        })}
+                      </ul>
+                    </li>
+                  );
+                }
+                return (
+                  <li key={page.link} className="nav-item">
+                    <Link
+                      to={page.link}
+                      className="nav-link text-with-color me-4"
+                    >
+                      {page.title}
+                    </Link>
+                  </li>
+                );
+              })}
             </ul>
 
             <ul className="navbar-nav page-nav me-2">
@@ -119,13 +221,13 @@ export const Navbar = () => {
                         >
                           {linkPage.title}
                         </a>
-                        <ul className="dropdown-menu ">
+                        <ul className="dropdown-menu own-dropdown-menu">
                           {linkPage.children.map((child) => {
                             return (
-                              <li key={child.link} >
+                              <li key={child.link}>
                                 <Link
                                   to={child.link}
-                                  className="dropdown-item nav-link text-with-color fw-bold fs-6" 
+                                  className="dropdown-item nav-link text-with-color fw-bold fs-6"
                                 >
                                   {child.title}
                                 </Link>

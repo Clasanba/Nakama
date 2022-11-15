@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useEffect, useContext } from "react";
 import { getToken } from "../auth";
 import "../../styles/favorites.css";
 import { Context } from "../store/appContext";
