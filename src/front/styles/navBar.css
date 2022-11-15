@@ -13,7 +13,21 @@
 .icon-collapse {
   font-size: 30%;
 }
+
+.own-dropdown-menu {
+  padding-right: 10px;
+  background-clip: padding-box;
+  background-color: none !important;
+  border: none !important;
+  top: 100%;
+  left: 0;
+  margin-top: 0.125rem;
+}
+
 @media (max-width: 992px) {
+  .dropdown-menu {
+    position: block;
+  }
   .page-nav {
     align-items: flex-end;
   }
@@ -44,4 +58,5 @@
 }
 .link-btn {
   display: flex;
+  flex-direction: column;
 }

@@ -139,20 +139,29 @@ export const Navbar = () => {
                 if (page.children) {
                   return (
                     <li key={index} className="nav-item dropdown me-2 link-btn">
-                      <Link
-                        to={page.link}
-                        className="nav-link text-with-color me-4"
+                      <div className="d-flex">
+                        <a
+                          className="nav-link text-end text-with-color"
+                          href={page.link}
+                          role="link"
+                        >
+                          {page.title}
+                        </a>
+                        <a
+                          className="nav-link nav-link-own dropdown-toggle text-end text-with-color"
+                          href="#fav-menu"
+                          role="button"
+                          data-bs-toggle="collapse"
+                          data-bs-target="#fav-menu"
+                          aria-expanded="false"
+                        >
+                          {" "}
+                        </a>
+                      </div>
+                      <ul
+                        className="dropdown-menu own-dropdown-menu"
+                        id="fav-menu"
                       >
-                        {page.title}
-                      </Link>
-                      <a
-                        className="nav-link dropdown-toggle text-end text-with-color"
-                        href="#"
-                        role="button"
-                        data-bs-toggle="dropdown"
-                        aria-expanded="false"
-                      ></a>
-                      <ul className="dropdown-menu ">
                         {page.children.map((child) => {
                           return (
                             <li key={child.link}>
@@ -212,7 +221,7 @@ export const Navbar = () => {
                         >
                           {linkPage.title}
                         </a>
-                        <ul className="dropdown-menu ">
+                        <ul className="dropdown-menu own-dropdown-menu">
                           {linkPage.children.map((child) => {
                             return (
                               <li key={child.link}>
