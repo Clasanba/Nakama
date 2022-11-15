@@ -2,9 +2,8 @@
   height: 6.6rem;
 }
 .styleNavbar {
-  /*color: #1f5046;*/
   font-weight: 600;
-  font-size: 1.2em;
+  font-size: 1.6em;
 }
 .page-nav {
   justify-content: center;
@@ -14,14 +13,50 @@
 .icon-collapse {
   font-size: 30%;
 }
+
+.own-dropdown-menu {
+  padding-right: 10px;
+  background-clip: padding-box;
+  background-color: none !important;
+  border: none !important;
+  top: 100%;
+  left: 0;
+  margin-top: 0.125rem;
+}
+
 @media (max-width: 992px) {
+  .dropdown-menu {
+    position: block;
+  }
   .page-nav {
     align-items: flex-end;
   }
   .dropdown-item {
     text-align: right;
   }
+  .styleNavbar {
+    font-size: 1rem;
+    font-weight: 600;
+  }
+  .geist-icon {
+    align-items: flex-end;
+    margin-right: 1rem;
+    height: 25px;
+    width: 25px;
+  }
+  .bi-person-circle {
+    margin-right: 1rem;
+    height: 30px;
+    width: 30px;
+  }
 }
-.dropdown-item:active {
-  background-color: #47c4ab;
+.geist-icon:hover {
+  stroke: rgb(145, 11, 64);
+}
+.bi-person-circle {
+  margin-right: 1rem;
+}
+.link-btn {
+  display: flex;
+  flex-direction: column;
 }

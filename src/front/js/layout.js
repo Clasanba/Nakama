@@ -17,6 +17,7 @@ import UseDataModificate from "./pages/user_data_modification";
 import ProtectedRoute from "./component/protectedRouted";
 import ProfessionalRegister from "./pages/professionalRegister.js";
 import classNames from "classnames";
+import { Favorite } from "@material-ui/icons";
 
 const MainLayout = ({ children }) => {
   const location = useLocation();

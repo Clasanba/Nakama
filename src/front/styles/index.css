@@ -16,8 +16,6 @@
 a.text-with-color:hover,
 a.text-with-color:focus {
   color: rgb(145, 11, 64);
-  -webkit-transform: scale(1.1);
-  transform: scale(1.1);
 }
 .main-home {
   background-image: url("/images/fondo-nakama.jpg");

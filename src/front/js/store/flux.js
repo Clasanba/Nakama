@@ -5,6 +5,9 @@ const getState = ({ setStore }) => {
     store: {
       checkAuth: false,
       favorites: [],
+      favoritesLoaded: false,
+      trainingsLoaded: false,
+      scrollToFavs: false,
       psychology: [
         {
           id: 1,
@@ -179,16 +182,16 @@ const getState = ({ setStore }) => {
         },
       ],
       user: [],
-      init:false,
+      init: false,
       mailSend: false,
-			mailError:false,
-      auth:false,
+      mailError: false,
+      auth: false,
     },
     actions: {
       init: () => {
         setStore({ checkAuth: true });
       },
-      
+
       getDataProfile: () => {
         fetch(process.env.BACKEND_URL + "/api/profile", {
           method: "GET",
@@ -206,6 +209,7 @@ const getState = ({ setStore }) => {
         setStore({ isLoggedIn: false, checkAuth: check });
       },
       getFavorites: () => {
+        setStore({ favoritesLoaded: false });
         fetch(process.env.BACKEND_URL + "/api/favorite", {
           method: "GET",
           headers: {
@@ -219,69 +223,75 @@ const getState = ({ setStore }) => {
             return response.json();
           })
           .then((data) => {
-            setStore({ favorites: data });
+            setStore({ favorites: data, favoritesLoaded: true });
           });
       },
-			
-			// Recuperación de contraseña
-			RecoveryPassword: async (email) =>{
-				const options = {
-					method: "POST",
-					headers:{
-						"Content-Type":"application/json"
-					},
-					body: JSON.stringify({email : email}),
-				};
-				try {
-					const response = await fetch(
-						process.env.BACKEND_URL + "/api/recoverypassword",options
-					);
-					if (response.status === 200){
-						setStore({mailSend: true});
-					}else {
-						setStore({mailError: true});
-					}
-				} catch (error) {
-					setStore({mailError: true})
-				}
 
-			},
-      loginGoogle: async (user) => {
-        
-        try{
-          const resp = await fetch(process.env.BACKEND_URL + "/api/register_google", {
+      setTrainingsLoaded: (value) => {
+        setStore({ trainingsLoaded: value });
+      },
+
+      scrollToFavs: (value) => {
+        setStore({ scrollToFavs: value });
+      },
+
+      // Recuperación de contraseña
+      RecoveryPassword: async (email) => {
+        const options = {
           method: "POST",
-          headers:{
+          headers: {
             "Content-Type": "application/json",
-            Accept: "application/json",
           },
-          body: JSON.stringify({
-            name: user.firstName,
-            email: user.email,
-            photo: user.photoUrl,
-            first_name: user.lastName,
-            last_name:"",
-            user_name: user.displayName,
-
-
-          }),
+          body: JSON.stringify({ email: email }),
+        };
+        try {
+          const response = await fetch(
+            process.env.BACKEND_URL + "/api/recoverypassword",
+            options
+          );
+          if (response.status === 200) {
+            setStore({ mailSend: true });
+          } else {
+            setStore({ mailError: true });
+          }
+        } catch (error) {
+          setStore({ mailError: true });
         }
-        );
-        const data = await resp.json ();
-        if (resp.status === 200){
-          setStore({
-            auth:true,
-          });
-          localStorage.setItem("token",data.access_token)
+      },
+      loginGoogle: async (user) => {
+        try {
+          const resp = await fetch(
+            process.env.BACKEND_URL + "/api/register_google",
+            {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+                Accept: "application/json",
+              },
+              body: JSON.stringify({
+                name: user.firstName,
+                email: user.email,
+                photo: user.photoUrl,
+                first_name: user.lastName,
+                last_name: "",
+                user_name: user.displayName,
+              }),
+            }
+          );
+          const data = await resp.json();
+          if (resp.status === 200) {
+            setStore({
+              auth: true,
+            });
+            localStorage.setItem("token", data.access_token);
+          }
+          return data;
+        } catch (error) {
+          console.log("Algo salió mal", error);
         }
-        return data
-      }catch (error){
-        console.log ("Algo salió mal",error)
-      }
+      },
     },
-			}
-		}
-	};
-
+  };
+};
 
 export default getState;
